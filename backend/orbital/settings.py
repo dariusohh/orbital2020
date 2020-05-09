@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'login',
+    'register',
 ]
 
 MIDDLEWARE = [
@@ -51,10 +53,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'orbital.urls'
 
+SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(SETTINGS_PATH, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,14 +76,20 @@ WSGI_APPLICATION = 'orbital.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
+#    }
+#}
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangodatabase',
-        'USER': 'dbadmin',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
+        'NAME': 'Cosumer_Data',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': 'xhisadog',
     }
 }
 

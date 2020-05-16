@@ -5,6 +5,7 @@ User = settings.AUTH_USER_MODEL
 
 # Create your models here.
 class Expense(models.Model):
+    username = models.TextField();
     name = models.TextField();
     amount = models.TextField();
     

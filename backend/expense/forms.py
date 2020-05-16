@@ -8,9 +8,3 @@ class ExpenseForm(forms.ModelForm):
         model = Expense
         fields = ["name","amount"]
 
-    def clean_content(self):
-        amount = self.cleaned_data.get("amount")
-        if len(amount) > MAX_VALUE_LENGTH:
-            raise forms.ValidationError("Too much moolah")
-        return amount
-

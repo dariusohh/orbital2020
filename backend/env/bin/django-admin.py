@@ -1,4 +1,4 @@
-#!/Users/darius/Desktop/orbital2020/backend/env/bin/python3
+#!/Users/darius/Desktop/orbital/backend/env/bin/python
 from django.core import management
 
 if __name__ == "__main__":

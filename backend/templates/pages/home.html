@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class= 'row text-center'>
+    <div class='col'>
+        <h1> Welcome to Wallet</h1> 
+    </div>  
+</div>
+
+<div class = 'row mb-10'>
+    <div class = 'col-md-4 mx-auto col-10'>
+        <form class = 'form' id = "expense-create-form" method = 'POST' action = '/create-expense/'>
+                {% csrf_token %}
+            <input type = 'hidden' value = '/' name = 'next' />
+            <textarea class = 'form-control' name = 'name' placeholder = "What expense is this?"></textarea>
+            <textarea class = 'form-control' name = 'amount' placeholder = "Amount spent..."></textarea>
+            <button type = 'submit' class = 'btn btn-primary'>Add Expense</button>
+        </form>
+    </div>
+</div>
+
+
+
+<div id = 'expense'>
+    Replace me 
+</div>
+
+<script>
+    function handleExpenseCreateFormDidSubmit(event) {
+        event.preventDefault()
+        const myForm = event.target
+        const myFormData = new FormData(myForm)
+        const url = myForm.getAttribute('action')
+        const method = myForm.getAttribute('method')
+        const xhr = new XMLHttpRequest()
+        xhr.open(method, url)
+        xhr.onload = function() {
+            const serverResponse = xhr.response
+            const expenseEl = document.getElementById("expense")
+            loadExpense(expenseEl)
+        }
+        xhr.send(myFormData)
+    }
+
+    const expenseCreateFormEl = document.getElementById("expense-create-form") 
+    expenseCreateFormEl.addEventListener("submit", handleExpenseCreateFormDidSubmit)
+
+    
+
+    const expenseEl = document.getElementById("expense")
+
+    function loadExpense(expenseElement) {
+        const xhr = new XMLHttpRequest()
+        const method = 'GET'
+        const url = '../expense/'
+        const responseType = 'json'
+        xhr.responseType = responseType
+        xhr.open(method, url)
+        xhr.onload = function() {
+        const serverResponse = xhr.response
+        var listedItems = serverResponse
+        var finalExpenseStr = ""
+        var i;
+        for (i=0;i<listedItems.length;i++) {
+            finalExpenseStr += "<h1>" + listedItems[i].name + "<h1/>"
+            finalExpenseStr += "<h2> $" + listedItems[i].amount + "<h2/>"
+            finalExpenseStr += "<br/>"
+        }
+        expenseElement.innerHTML = finalExpenseStr
+        }
+    xhr.send()
+    }
+    
+    loadExpense(expenseEl)
+    
+
+</script>
+
+
+{% endblock content %}

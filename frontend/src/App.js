@@ -1,5 +1,5 @@
 import React from 'react';
-import 'antd/dist/antd.css';
+import './Expense.css';
 import { connect } from 'react-redux';
 import BaseRouter from './routes';
 import {BrowserRouter as Router} from 'react-router-dom'

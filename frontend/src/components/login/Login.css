@@ -1,0 +1,55 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: #358a91;
+	display: flex;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	height: 100vh;
+}
+
+button {
+	border-radius: 20px;
+	border: 1px solid rgb(43, 135, 255);
+	background-color: rgb(18, 52, 204);
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+button.ghost {
+	background-color: transparent;
+	border-color : #358a91;
+}
+
+.Form {
+	background-color: transparent;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding: 20px 50px;
+	height: 100%;
+    text-align: center;
+}
+
+input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: px 0;
+	width: 100%;
+}

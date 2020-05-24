@@ -1,35 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Form , Input, Button } from 'antd';
+import { Form , Input } from 'antd';
 import * as actions from '../../store/actions/auth'
+import './Login.css';
 
 class LoginForm extends React.Component {
 
     handleFinish = values => {
-        this.props.onAuth(values.username, values.password)
-        this.props.history.push('/');
+        this.props.onAuth(values.username, values.password);
+        this.props.history.push('/expense/');
     }
 
     render() {
-
         let errorMessage = null;
         if (this.props.error) {
             errorMessage = (
                 <p>{this.props.error.message}</p>
             )
         }
-
         return (
         <div>
             {errorMessage}
             <Form onFinish={this.handleFinish}>
-      <Form.Item name="username" rules={[{ required: true }]}>
+      <Form.Item name="username" rules={[{ required: true, message: 'Username is required!' }]}>
         <Input placeholder = "Username"/>
       </Form.Item>
-      <Form.Item name="password" rules={[{ required: true }]}>
+      <br/>
+      <Form.Item name="password" rules={[{ required: true, message: 'Password is required!'}]}>
         <Input placeholder = "Password"/>
       </Form.Item>
-      <Button htmlType = "submit"> Login </Button>
+      <br/>
+      <button html = "submit"> Login </button>
         </Form>
         </div>
         )

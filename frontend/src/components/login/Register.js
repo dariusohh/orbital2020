@@ -1,8 +1,8 @@
-
-import { Form, Input, Button } from 'antd';
+import { Form, Input } from 'antd';
 import React from 'react';
 import * as actions from '../../store/actions/auth'
 import { connect } from 'react-redux'; 
+import './Login.css';
 
 class RegisterForm extends React.Component {
 
@@ -16,13 +16,14 @@ class RegisterForm extends React.Component {
 
     render() {
       return (
-        <Form name="nest-messages" onFinish={this.handleFinish}>
+        <Form onFinish={this.handleFinish}>
           <Form.Item
             name= "username"
             label="Username"
             rules={[
               {
                 required: true,
+                message: 'Username is required!'
               },
             ]}
           >
@@ -34,7 +35,8 @@ class RegisterForm extends React.Component {
             rules={[
               {
                 required: true,
-                type: 'email'
+                type: 'email',
+                message: 'Email is required!'
               },
             ]}
           >
@@ -76,11 +78,10 @@ class RegisterForm extends React.Component {
       >
         <Input.Password />
       </Form.Item>
-
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <button type="submit">
               Submit
-            </Button>
+            </button>
           </Form.Item>
         </Form>
       );

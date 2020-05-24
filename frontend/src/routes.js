@@ -10,7 +10,7 @@ const BaseRouter = () => (
         <Route exact path = '/expense/' component = {Expense}/>
         <Route exact path = '/login/' component = {LoginForm}/>
         <Route exact path = '/register/' component = {RegisterForm}/>
-        <Route exact path = '/Home/' component = {Homepage}/>
+        <Route exact path = '/' component = {Homepage}/>
     </div>
 )
 

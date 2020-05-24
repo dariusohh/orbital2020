@@ -1,12 +1,12 @@
 import React from 'react';
-import axios from 'axios';
+import axios from './node_modules/axios';
 import { connect } from 'react-redux';
 import {Grid,Cell} from 'react-mdl';
 import './home.css';
-import { Container, Row, Col } from 'react-grid-system';
+import { Container, Row, Col } from './node_modules/react-grid-system';
 import Image from './assets/Image.jpg';
 import {Link } from "react-router-dom";
-import Spacer from 'react-add-space';
+import Spacer from './node_modules/react-add-space';
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
 
 

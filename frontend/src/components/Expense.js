@@ -15,14 +15,14 @@ class Expense extends React.Component {
 }
 
 componentDidMount() {
-  setTimeout(() => 
+    setTimeout(() => 
       axios.get('api/')
       .then(res => {
           const new_res = res.data.filter(x => x.username === localStorage.getItem("username"));
           this.setState({
               expense: new_res
           });
-      }),1000);
+      }), 200);
   }
 
   render() {

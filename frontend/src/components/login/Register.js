@@ -12,15 +12,25 @@ function RegisterForm({ onAuth }) {
   const history = useHistory();
 
   const onSubmit = e => {
-        onAuth(e.username, 
+      props.onAuth(e.username, 
           e.email,
           e.password,
           e.confirm)
-          history.push('/expense/');
-
+          setTimeout(() => {
+            if (props.error) {
+                history.push('/expense/');
+            }
+            },400)
     }
 
+  let errorMessage = null;
+    if (props.error) {
+        errorMessage = (
+            <p>Username/email already exist!</p>
+        )
+    }
       return (
+          {errorMessage}
         <form onSubmit = {handleSubmit(onSubmit)}>
           <input type="text" 
           placeholder="Username" 

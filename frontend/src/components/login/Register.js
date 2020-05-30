@@ -1,99 +1,75 @@
-import { Form, Input } from 'antd';
-import React from 'react';
+import React, { useRef } from 'react';
 import * as actions from '../../store/actions/auth'
 import { connect } from 'react-redux'; 
 import './Login.css';
+import {useForm} from "react-hook-form";
+import { useHistory } from "react-router"; 
 
-class RegisterForm extends React.Component {
+function RegisterForm({ onAuth }) {
+  const { register, handleSubmit, errors, watch } = useForm();
+  const password = useRef({});
+  password.current = watch("password", "");
+  const history = useHistory();
 
-    handleFinish = values => {
-        this.props.onAuth(values.username, 
-          values.email,
-          values.password,
-          values.confirm)
-        this.props.history.push('/');
+  const onSubmit = e => {
+        onAuth(e.username, 
+          e.email,
+          e.password,
+          e.confirm)
+          history.push('/expense/');
+
     }
 
-    render() {
       return (
-        <Form onFinish={this.handleFinish}>
-          <Form.Item
-            name= "username"
-            label="Username"
-            rules={[
-              {
-                required: true,
-                message: 'Username is required!'
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            name= "email"
-            label="Email"
-            rules={[
-              {
-                required: true,
-                type: 'email',
-                message: 'Email is required!'
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-        name="password"
-        label="Password"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your password!',
-          },
-        ]}
-        hasFeedback
-      >
-        <Input.Password />
-      </Form.Item>
+        <form onSubmit = {handleSubmit(onSubmit)}>
+          <input type="text" 
+          placeholder="Username" 
+          name="username" 
+          ref={register({required:"Username is required"})} />
+          {errors.username && <p>{errors.username.message}</p>}
+        <br/>
 
-      <Form.Item
+          <input type="text" 
+          placeholder="Email" 
+          name="email" 
+          ref={register({required:"Email is required", pattern:{value:/^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/g,message:"Email is invalid"}})}/>
+          {errors.email && <p>{errors.email.message}</p>}
+        <br/>
+
+          <input
+            type = "password"
+            placeholder="Password"
+            name="password"
+            ref={register({required:"Password is required",
+            minLength:{value:8,message:"Password should have minimum length of 8"}, 
+            pattern:{value:/[^\w\d]*(([0-9]+.*[A-Za-z]+.*)|[A-Za-z]+.*([0-9]+.*))/,message:"Password must contain at least one letter and number"}})}
+            />
+            {errors.password && <p>{errors.password.message}</p>}
+          <br/>
+          <br/>
+          <input
         name="confirm"
-        label="Confirm Password"
-        dependencies={['password']}
-        hasFeedback
-        rules={[
-          {
-            required: true,
-            message: 'Please confirm your password!',
-          },
-          ({ getFieldValue }) => ({
-            validator(rule, value) {
-              if (!value || getFieldValue('password') === value) {
-                return Promise.resolve();
-              }
-              return Promise.reject('The two passwords that you entered do not match!');
-            },
-          }),
-        ]}
-      >
-        <Input.Password />
-      </Form.Item>
-          <Form.Item>
-            <button type="submit">
-              Submit
-            </button>
-          </Form.Item>
-        </Form>
+        placeholder = "Confirm Password"
+        type="password"
+        ref={register({
+          validate: value =>
+            value === password.current
+        })}
+      />
+      {errors.confirm && <p>The passwords do not match</p>}
+      <br/>
+      <br/>
+      <button type = "submit">Sign Up</button>
+        </form>
       );
-    };
 
 }
 
 const mapStateToProps = (state) => {
-    return {
-        loading: state.loading,
-        error: state.error
-    }
+  return {
+      loading: state.loading,
+      error: state.error
+  }
 }
 
 const mapDispatchToProps = dispatch => {

@@ -11,7 +11,7 @@ class CustomLayout extends React.Component {
         <Layout>
         <Navbar />
         <Content style={{ padding: '0 50px' }}>
-            <div style={{background: '#fff',
+            <div style={{
                 padding: 24,
                 minHeight: 280}}>
                 {this.props.children}

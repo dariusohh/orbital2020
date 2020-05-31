@@ -19,7 +19,7 @@ class LoginForm extends React.Component {
         let errorMessage = null;
         if (this.props.error) {
             errorMessage = (
-                <p>Invalid username or password. Please try again.</p>
+                <p className = "error">Invalid username or password. Please try again.</p>
             )
         }
         return (
@@ -29,11 +29,9 @@ class LoginForm extends React.Component {
       <Form.Item name="username" >
         <Input placeholder = "Username"/>
       </Form.Item>
-      <br/>
       <Form.Item name="password" >
         <Input placeholder = "Password"/>
       </Form.Item>
-      <br/>
       <button html = "submit"> Login </button>
         </Form>
         </div>

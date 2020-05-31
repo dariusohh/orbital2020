@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import './Login.css';
 import {useForm} from "react-hook-form";
 import { useHistory } from "react-router"; 
-import { useSelector } from "react-redux";
 
 function RegisterForm(props) {
   const { register, handleSubmit, errors, watch } = useForm();
@@ -27,7 +26,7 @@ function RegisterForm(props) {
   let errorMessage = null;
     if (props.error) {
         errorMessage = (
-            <p>Username/email already exist!</p>
+            <p className = "error">Username/email already exist!</p>
         )
     }
       return (
@@ -37,15 +36,13 @@ function RegisterForm(props) {
           placeholder="Username" 
           name="username" 
           ref={register({required:"Username is required"})} />
-          {errors.username && <p>{errors.username.message}</p>}
-        <br/>
+          {errors.username && <p className = "error">{errors.username.message}</p>}
 
           <input type="text" 
           placeholder="Email" 
           name="email" 
           ref={register({required:"Email is required", pattern:{value:/^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/g,message:"Email is invalid"}})}/>
-          {errors.email && <p>{errors.email.message}</p>}
-        <br/>
+          {errors.email && <p className = "error">{errors.email.message}</p>}
 
           <input
             type = "password"
@@ -55,9 +52,7 @@ function RegisterForm(props) {
             minLength:{value:8,message:"Password should have minimum length of 8"}, 
             pattern:{value:/[^\w\d]*(([0-9]+.*[A-Za-z]+.*)|[A-Za-z]+.*([0-9]+.*))/,message:"Password must contain at least one letter and number"}})}
             />
-            {errors.password && <p>{errors.password.message}</p>}
-          <br/>
-          <br/>
+            {errors.password && <p className = "error">{errors.password.message}</p>}
           <input
         name="confirm"
         placeholder = "Confirm Password"
@@ -67,9 +62,7 @@ function RegisterForm(props) {
             value === password.current
         })}
       />
-      {errors.confirm && <p>The passwords do not match</p>}
-      <br/>
-      <br/>
+      {errors.confirm && <p className = "error">The passwords do not match</p>}
       <button type = "submit">Sign Up</button>
         </form>
       );

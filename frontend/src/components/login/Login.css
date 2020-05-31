@@ -14,12 +14,14 @@ body {
 button {
 	border-radius: 20px;
 	border: 1px solid rgb(43, 135, 255);
-	background-color: rgb(18, 52, 204);
+	background-color: rgba(48, 94, 223, 0.603);
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
 	padding: 12px 45px;
 	letter-spacing: 1px;
+	margin-left:15px;
+	margin-top: 10px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
 }
@@ -47,11 +49,24 @@ button.ghost {
     text-align: center;
 }
 
-input {
+input[type="password"] {
 	background-color: #eee;
 	border: none;
 	padding: 12px 15px;
 	margin: 15px;
+	margin-top: 0px;
+	margin-bottom: 25px;
+	width: 100%;
+	font-size:16px;
+}
+
+input[type="text"] {
+	font-size:16px;
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 15px;
+	margin-bottom:25px;
 	width: 100%;
 }
 

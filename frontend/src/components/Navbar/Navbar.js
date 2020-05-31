@@ -2,6 +2,7 @@ import React from 'react';
 import './Navbar.css';
 import * as actions from '../../store/actions/auth';
 import { connect } from 'react-redux';
+import logo from './logo.png'
 
 class Navbar extends React.Component {
 
@@ -10,6 +11,7 @@ class Navbar extends React.Component {
         <nav className="topnav">
         <div> 
           <ul>
+            <p style={{padding:"0",margin:"0"}}><img className = "logo" src={logo} alt = "Logo"/></p>
             <ul>
               <a href="/">Home</a>
             </ul>

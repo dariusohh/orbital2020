@@ -6,7 +6,7 @@ import {useForm} from "react-hook-form";
 import { useHistory } from "react-router"; 
 import { useSelector } from "react-redux";
 
-function RegisterForm({ onAuth, error }) {
+function RegisterForm(props) {
   const { register, handleSubmit, errors, watch } = useForm();
   const password = useRef({});
   password.current = watch("password", "");
@@ -17,16 +17,6 @@ function RegisterForm({ onAuth, error }) {
           e.email,
           e.password,
           e.confirm)
-<<<<<<< HEAD
-          handleRedirect();
-    }
-
-  const handleRedirect = () => 
-  {
-    console.log(error);
-  }
-
-=======
           setTimeout(() => {
             if (props.error) {
                 history.push('/expense/');
@@ -40,10 +30,9 @@ function RegisterForm({ onAuth, error }) {
             <p>Username/email already exist!</p>
         )
     }
->>>>>>> 5e8907d1df283c3eb47a58f2905f98d5ef2fc65a
       return (
-          {errorMessage}
         <form onSubmit = {handleSubmit(onSubmit)}>
+        {errorMessage}
           <input type="text" 
           placeholder="Username" 
           name="username" 

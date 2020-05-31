@@ -17,7 +17,7 @@ function RegisterForm(props) {
           e.password,
           e.confirm)
           setTimeout(() => {
-            if (props.error) {
+            if (localStorage.getItem("username")) {
                 history.push('/expense/');
             }
             },400)

@@ -27,7 +27,7 @@ export const Transaction = ({transaction}) => {
         <form onSubmit={onUpdate}>
             <div className ="form-control">
             <label htmlFor="text">Category</label>
-            <input type="text"  name = "name" placeholder="Enter..." />
+            <input type="text" style={{margin:"0"}} name = "name" placeholder="Enter..." />
             </div>
             <div className="form-control">
             <label htmlFor="amount"> Expense <br />

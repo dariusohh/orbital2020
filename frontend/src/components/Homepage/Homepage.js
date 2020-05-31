@@ -36,7 +36,7 @@ class Homepage extends React.Component {
   AnalyticsWallet Welcomes You 
 </h1>
 
-  <p className='text'>“ we are the first e-wallet web application designed 
+  <p className='text'>“ We are the first e-wallet web application designed 
     to help start-up companies keep track of their finances 
     as well as to connect with Venture Capitalists.”
 </p>

@@ -1,36 +1,126 @@
-/* .homepage-grid {
-background: #00d2ff; 
-background: -webkit-linear-gradient(to right, #928DAB, #00d2ff);  
-background: linear-gradient(to right, #928DAB, #00d2ff); 
-width: 1126px;
-margin: auto;
-} */
- 
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  margin: auto;
+}
 .avatar-img{
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   text-align: center;
-  width: 1126px;
+    width: 77%;
     margin: auto;
 }
-
-.containers{
-background: #00d2ff; 
-background: -webkit-linear-gradient(to right, #928DAB, #00d2ff);  
-background: linear-gradient(to right, #928DAB, #00d2ff); 
-border-radius: 10px;
-width: 563px;
+.banner {
+  font-size: 65px;
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color:white;
+  letter-spacing: 5px;
+  font-weight: 100;
+ 
 }
 
+.c{
+border-radius: 10px;
+width: 1000px;
+border-spacing: 100px;
+text-align: center;
+}
+.text {
+  font-size: 25px;
+  color: midnightblue;
+  text-align: center;
+}
 .containers h1 {
-    font-size: 25px;
+    font-size: 20px;
     color: whitesmoke;
     text-align:center;
     font-style: italic;
+    
 }
 
 .space {
-    padding-bottom: 150px;
+    padding-bottom: 100px;
+}
+.space2 {
+  padding-bottom: 70px;
+}
+
+.banner2 {
+  font-size: 100px;
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color:white;
+  letter-spacing: 5px;
+  font-weight: 100;
+}
+.Button{
+color: #333;
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ border: 1px solid blue;
+ border-bottom: 5px solid blue;
+ background-color: #fff;
+ font-size: 25px;
+ margin: 50px;
+ padding: 10px 70px 10px 70px;
+ display: inline-block;
+ -webkit-touch-callout: none;
+ -webkit-user-select: none;
+ -khtml-user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ user-select: none;
+ top: 0px;
+
+
+ 
+
+ }
+ 
+
+ .Button:hover{
+ cursor: hand; 
+ cursor: pointer;
+ }
+ 
+ .Button:active{
+ border-bottom: 30px solid #999;
+ top: 30px;
+ }
+
+
+.VCtext {
+  color:white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size:40px;
+  letter-spacing: 10px;
+  font-weight: 100;
+  text-align: center;
+
+  
+}
+.Su {
+  background-color: rgb(91, 125, 159);
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 750px 750px 700px;
+  column-gap: 250px;
+  padding-bottom: 250px;
+  padding-top: 25px;
+
+}
+.B {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  
 }

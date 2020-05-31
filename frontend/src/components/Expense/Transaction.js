@@ -20,7 +20,7 @@ export const Transaction = ({transaction}) => {
 
     return (
         <li className={transaction.amount <0 ?'minus' : 'plus'}>
-    <div className='amm'>{transaction.name} : {sign}${Math.abs(transaction.amount)} </div>
+    <div>{transaction.name} : {sign}${Math.abs(transaction.amount)} </div>
     <Popup trigger={<button className="update-btn">Update</button>} modal closeOnDocumentClick>
         <div>
             <h3>Update transaction</h3>

@@ -77,9 +77,6 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
  user-select: none;
  top: 0px;
 
-
- 
-
  }
  
 
@@ -110,8 +107,8 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
 
 .wrapper {
   display: grid;
-  grid-template-columns: 750px 750px 700px;
-  column-gap: 250px;
+  grid-template-columns: 45% 45%;
+  column-gap: 10%;
   padding-bottom: 250px;
   padding-top: 25px;
 

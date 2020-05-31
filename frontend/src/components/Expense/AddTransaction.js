@@ -21,7 +21,7 @@ class AddTransaction extends React.Component {
       <form onSubmit={this.onSubmit}>
         <div className ="form-control">
           <label htmlFor="text">Category</label>
-          <input type="text"  name = "name" placeholder="Enter..." />
+          <input type="text"  name = "name" placeholder="Enter..." style={{margin:"0"}}/>
         </div>
         <div className="form-control">
           <label htmlFor="amount"> Expense <br />

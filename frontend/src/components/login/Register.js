@@ -13,10 +13,11 @@ function RegisterForm({ onAuth, error }) {
   const history = useHistory();
 
   const onSubmit = e => {
-        onAuth(e.username, 
+      props.onAuth(e.username, 
           e.email,
           e.password,
           e.confirm)
+<<<<<<< HEAD
           handleRedirect();
     }
 
@@ -25,7 +26,23 @@ function RegisterForm({ onAuth, error }) {
     console.log(error);
   }
 
+=======
+          setTimeout(() => {
+            if (props.error) {
+                history.push('/expense/');
+            }
+            },400)
+    }
+
+  let errorMessage = null;
+    if (props.error) {
+        errorMessage = (
+            <p>Username/email already exist!</p>
+        )
+    }
+>>>>>>> 5e8907d1df283c3eb47a58f2905f98d5ef2fc65a
       return (
+          {errorMessage}
         <form onSubmit = {handleSubmit(onSubmit)}>
           <input type="text" 
           placeholder="Username" 

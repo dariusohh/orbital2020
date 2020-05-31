@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import './Login.css';
 import {useForm} from "react-hook-form";
 import { useHistory } from "react-router"; 
+import { useSelector } from "react-redux";
 
-function RegisterForm({ onAuth }) {
+function RegisterForm({ onAuth, error }) {
   const { register, handleSubmit, errors, watch } = useForm();
   const password = useRef({});
   password.current = watch("password", "");
@@ -16,9 +17,13 @@ function RegisterForm({ onAuth }) {
           e.email,
           e.password,
           e.confirm)
-          history.push('/expense/');
-
+          handleRedirect();
     }
+
+  const handleRedirect = () => 
+  {
+    console.log(error);
+  }
 
       return (
         <form onSubmit = {handleSubmit(onSubmit)}>

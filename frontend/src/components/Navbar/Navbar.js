@@ -15,6 +15,14 @@ class Navbar extends React.Component {
             <ul>
               <a href="/">Home</a>
             </ul>
+          <ul>
+              { this.props.isAuthenticated ?
+              
+                <a href= "http://localhost:3000/expense/" >Expense Tracking</a>
+                :
+                null
+              }
+            </ul>
             <ul>
               { this.props.isAuthenticated ?
                 <a href="/" onClick = {this.props.logout}>Logout</a>

@@ -2,13 +2,8 @@
 	box-sizing: border-box;
 }
 
-body {
-	background-image: url('./background.jpg');
-	background-size: cover;
-	display: flex;
-	flex-direction: column;
-	font-family: 'Montserrat', sans-serif;
-	height: 100vh;
+body{
+	background: url('./background.jpg');
 }
 
 button {

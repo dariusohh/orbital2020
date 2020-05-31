@@ -5,7 +5,7 @@ import './Login.css';
 import {useForm} from "react-hook-form";
 import { useHistory } from "react-router"; 
 
-function RegisterForm({ onAuth }) {
+function RegisterForm(props) {
   const { register, handleSubmit, errors, watch } = useForm();
   const password = useRef({});
   password.current = watch("password", "");

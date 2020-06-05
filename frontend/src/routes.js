@@ -11,6 +11,8 @@ const BaseRouter = () => (
         <Route exact path = '/login/' component = {LoginForm}/>
         <Route exact path = '/register/' component = {RegisterForm}/>
         <Route exact path = '/' component = {Homepage}/>
+        <Route exact path = '/Book' component = {BooKKeeping}/>
+        <Route exact path = '/visual' component = {Visualisation}/>
     </div>
 )
 

@@ -17,7 +17,7 @@ class AddTransaction extends React.Component {
       render() {
     return (
         <div>
-        <h3>Add new transaction</h3>
+        <h3 className='text-3'>Add new transaction</h3>
       <form onSubmit={this.onSubmit}>
         <div className ="form-control">
           <label htmlFor="text">Category</label>

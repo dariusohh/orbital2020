@@ -23,6 +23,14 @@ class Navbar extends React.Component {
                 null
               }
             </ul>
+      <ul>
+            { this.props.isAuthenticated ?
+              
+              <a href= "http://localhost:3000/visual" > Data Visualisation</a>
+              :
+             null
+            }
+            </ul>
             <ul>
               { this.props.isAuthenticated ?
                 <a href="/" onClick = {this.props.logout}>Logout</a>

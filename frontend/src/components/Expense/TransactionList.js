@@ -9,7 +9,7 @@ class TransactionList extends React.Component {
     render() {
     return (
         <>
-        <h3>Previous Transactions</h3>
+        <h3  className='text-3'>Previous Transactions</h3>
         <ul className="list">
           {this.props.data.map(transaction => (
           <Transaction key={transaction.id} transaction={transaction} />

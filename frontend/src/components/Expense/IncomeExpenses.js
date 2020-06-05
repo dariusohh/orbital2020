@@ -18,7 +18,7 @@ class IncomeExpenses extends React.Component {
       </p>
         </div>
         <div>
-          <h4>Expense</h4>
+          <h4 className='text-2'>Expense</h4>
           <p className="money minus">{(this.props.data
           .map(transaction => transaction.amount)
           .map(num => parseFloat(num))
@@ -26,11 +26,11 @@ class IncomeExpenses extends React.Component {
           .toFixed(2)}</p>
         </div>
         <div>
-          <h3>Total Transactions</h3>
+          <h3 className='text-2'>Total Transactions</h3>
           <p className="money total">{this.props.data.length}</p>
         </div>
         <div>
-          <h3>Nett Revenue</h3>
+          <h3 className='text-2'>Nett Revenue</h3>
           <p className="money total">{this.props.data
           .map(transaction => transaction.amount)
           .map(num => parseFloat(num))

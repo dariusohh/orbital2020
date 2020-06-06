@@ -10,6 +10,11 @@ class TransactionList extends React.Component {
     return (
         <>
         <h3  className='text-3'>Previous Transactions</h3>
+          <Link to="/book">
+            <button className="Btn">
+              click for overview
+            </button>
+      </Link>
         <ul className="list">
           {this.props.data.map(transaction => (
           <Transaction key={transaction.id} transaction={transaction} />

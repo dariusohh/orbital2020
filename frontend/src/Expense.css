@@ -177,3 +177,24 @@ input[type='number'] {
 .list li:hover .update-btn {
   opacity: 1;
 }
+
+.text-1 {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size:25px;
+  letter-spacing: 5px;
+  color:black;
+}
+
+.text-2 {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size:15px;
+  letter-spacing: 5px;
+  color:black;
+}
+
+.text-3 {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size:20px;
+  letter-spacing: 5px;
+  color:black;
+}

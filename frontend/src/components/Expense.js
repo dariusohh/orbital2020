@@ -2,7 +2,6 @@ import React from 'react';
 import { Header } from './Expense/Header';
 import IncomeExpenses from './Expense/IncomeExpenses';
 import TransactionList from './Expense/TransactionList';
-import AddTransaction from './Expense/AddTransaction';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
@@ -32,7 +31,6 @@ componentDidMount() {
       <div className='container'>
         <IncomeExpenses data={this.state.expense}/>
         <TransactionList data={this.state.expense}/>
-        <AddTransaction />
       </div>
       </>
     )

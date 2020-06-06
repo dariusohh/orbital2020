@@ -57,7 +57,7 @@ input[type="password"] {
 
 input[type="text"] {
 	font-size:16px;
-	border: none;
+	border: 1px solid #dedede;
 	padding: 12px 15px;
 	margin: 15px;
 	margin-bottom:25px;
@@ -67,4 +67,11 @@ input[type="text"] {
 .error {
 	color: red;
 	font-style: oblique;
+}
+
+button:hover {background-color: #1942c7}
+
+button:active {
+  background-color: #1942c7;
+  transform: translateY(4px);
 }

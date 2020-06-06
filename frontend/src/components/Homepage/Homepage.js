@@ -66,6 +66,7 @@ class Homepage extends React.Component {
     <img 
         src= {B}
         className='B'
+        alt = "B"
         />
         <Spacer amount={2} />
         <h1 className='VCtext'> Venture-Capitalists </h1>
@@ -80,6 +81,7 @@ class Homepage extends React.Component {
   <div className='Su'>
   <img 
         src= {A}
+        alt = "A"
         className='B'
         />
 <Spacer amount={2} />

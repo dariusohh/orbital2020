@@ -1,12 +1,45 @@
 import {Bar} from 'react-chartjs-2';
 import React from 'react';
 import {Link } from "react-router-dom"; 
+import axios from 'axios';
+import { connect } from 'react-redux';
 
-export const BarGraph = (props) => {
+axios.defaults.baseURL = 'http://127.0.0.1:8000/';
+
+export class BarGraph extends React.Component  {
+    
+  state = {
+    expense: []
+}
+
+
+componentDidMount() {
+    setTimeout(() => 
+      axios.get('api/')
+      .then(res => {
+          const new_res = res.data.filter(x => x.username === localStorage.getItem("username"));
+          this.setState({
+              expense: new_res
+          });
+      }), 200);
+  }
+
+
+render() {
+    const xlabels = []
+    const y = this.props.data
+    .filter(item => item.amount < 0).map(x => xlabels.push(x.name))
+    const ylabels = []
+    const z = this.props.data
+    .map(transaction => transaction.amount)
+    .map(num => parseFloat(num))
+    .filter(item => item < 0).map(y => ylabels.push(y*-1))
+    
     const data = {
-        labels: ['Development', 'Marketing', 'Project', 'Raw material'],
+          labels: xlabels,
         datasets: [
           {
+          
             label: 'Expense Breakdown',
             fill: false,
             lineTension: 0.1,
@@ -25,14 +58,15 @@ export const BarGraph = (props) => {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [650, 590, 800, 81]
+            data: ylabels
           }
         ]
       };
     return (
         <div>
              <h2 className='text2'> Expense Breakdown</h2>
-             <Bar data={data}/>
+             <Bar 
+             data={data}/>
              <Link to="/Login">
             <button className="Btn">
               More
@@ -42,4 +76,14 @@ export const BarGraph = (props) => {
       
     )
 }
+}
+
+const mapStateToProps = state => {
+  return {
+      token: state.token
+  }
+}
+
+export default connect(mapStateToProps)(BarGraph);
+
 

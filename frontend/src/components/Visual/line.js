@@ -1,12 +1,43 @@
 import React from 'react';
 import {Line} from 'react-chartjs-2';
 import {Link } from "react-router-dom"; 
-export const Graph= (props) => {
+import axios from 'axios';
+import { connect } from 'react-redux';
+
+axios.defaults.baseURL = 'http://127.0.0.1:8000/';
+
+export class  Graph extends React.Component {
+  state = {
+    expense: []
+}
+
+
+componentDidMount() {
+    setTimeout(() => 
+      axios.get('api/')
+      .then(res => {
+          const new_res = res.data.filter(x => x.username === localStorage.getItem("username"));
+          this.setState({
+              expense: new_res
+          });
+      }), 200);
+  }
+
+
+
+render() {
+
+  const xlabels = []
+  const y = this.props.data.map(x => x.created_at).map(z => xlabels.push(z.slice(5,10)))
+  const ylabels = []
+  const z = this.props.data
+  .map(item => item.amount).map((acc, item) => (acc += item)).map(y => ylabels.push(y))
+
     const data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: xlabels,
         datasets: [
           {
-            label: 'Sales Progress',
+            label: 'Profit Progress',
             fill: false,
             lineTension: 0.1,
             backgroundColor: 'rgba(75,192,192,0.4)',
@@ -24,7 +55,7 @@ export const Graph= (props) => {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [65, 59, 80, 81, 56, 55, 40]
+            data: ylabels
           }
         ]
       };
@@ -32,7 +63,7 @@ export const Graph= (props) => {
     
     return (
         <div>
-        <h2 className='text2'>Sales Progress</h2>
+        <h2 className='text2'>Profit Progress</h2>
         <Line data={data} />
         <Link to="/Login">
             <button className="Btn">
@@ -42,4 +73,15 @@ export const Graph= (props) => {
       </div>
     )
 }
+
+}
+
+const mapStateToProps = state => {
+  return {
+      token: state.token
+  }
+}
+
+export default connect(mapStateToProps)(Graph);
+
 

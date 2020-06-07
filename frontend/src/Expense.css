@@ -248,3 +248,10 @@ input[type='number'] {
     border-radius: .5em;
     background-color: #fff;
 }
+
+.react-datepicker__input-container input {
+  border-radius:30px;
+  font-size:14px !important;
+  padding: 5px 10px !important;
+  width: 50% !important;
+}

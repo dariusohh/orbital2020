@@ -18,16 +18,15 @@ export const Expense = ({transaction}) => {
     }
 
     const daydiff = (objdate) => {
-        const currdate_gmt8 = new Date()
-        const currdate_utc = new Date(currdate_gmt8 - 8*60*60*1000)
+        const currdate = new Date()
         const objyear = objdate.substring(0,4)
         const objmth = objdate.substring(5,7) - 1
         const objday = objdate.substring(8,10)
-        const objhour = objdate.substring(11,13)
+        const objhour = parseInt(objdate.substring(11,13)) + 8
         const objmin = objdate.substring(14,16)
         const objsec = objdate.substring(17,19)
         const olddate = new Date(objyear,objmth,objday,objhour,objmin,objsec)
-        const daydiff = Math.floor((currdate_utc.getTime() - olddate.getTime()) / (1000*60*60*24))
+        const daydiff = Math.floor((currdate.getTime() - olddate.getTime()) / (1000*60*60*24))
         if (daydiff === 0) {
             return "Created Today";
         } else if (daydiff === 1) {

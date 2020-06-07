@@ -12,8 +12,6 @@ class TransactionList extends React.Component {
     render() {
     return (
         <div className = "trans-container">
-        <Row>
-            <Col>
                 <ul className="list">
                   <h3>Revenue</h3>
                   {this.props.data.map(transaction => (
@@ -21,9 +19,9 @@ class TransactionList extends React.Component {
                   ))}
                   <AddButton type="Revenue"/>
                 </ul>
-             </Col>
+             
           <div className = "divider"></div>
-            <Col>
+           
                 <ul className="list">
                 <h3>Expense</h3>
                 {this.props.data.map(transaction => (
@@ -31,8 +29,6 @@ class TransactionList extends React.Component {
                   ))}
                   <AddButton type="Expense"/>
                 </ul>
-            </Col>
-           </Row>
         </div>
 
     )

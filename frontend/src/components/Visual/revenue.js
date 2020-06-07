@@ -17,7 +17,7 @@ class Revenue extends React.Component {
               $ {this.props.data
           .map(transaction => transaction.amount)
           .map(num => parseFloat(num))
-          .reduce((acc, item) => (acc += item), 0).toFixed(2)}
+          .reduce((acc, item) => (acc += item), 0).toFixed(2)*1}
     </text>
           
 

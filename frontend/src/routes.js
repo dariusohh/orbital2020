@@ -4,6 +4,7 @@ import Expense from './components/Expense'
 import LoginForm from './components/login/Login'
 import RegisterForm from './components/login/Register'
 import Homepage from './components/Homepage/Homepage'
+import Visual from './components/Visual/Visual'
 
 const BaseRouter = () => (
     <div>
@@ -11,6 +12,7 @@ const BaseRouter = () => (
         <Route exact path = '/login/' component = {LoginForm}/>
         <Route exact path = '/register/' component = {RegisterForm}/>
         <Route exact path = '/' component = {Homepage}/>
+        <Route exact path = '/visual' component = {Visual}/>
     </div>
 )
 

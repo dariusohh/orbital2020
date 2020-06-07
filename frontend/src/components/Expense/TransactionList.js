@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Expense} from './Expense';
 import {Revenue} from './Revenue';
 import AddButton from './AddButton';
+import {Row, Col} from 'reactstrap';
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
 

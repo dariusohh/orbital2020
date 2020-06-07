@@ -32,9 +32,10 @@ border-spacing: 100px;
 text-align: center;
 }
 .text {
-  font-size: 25px;
-  color: midnightblue;
+  font-size: 30px !important;
+  color: midnightblue !important;
   text-align: center;
+  letter-spacing: 5px !important;
 }
 .containers h1 {
     font-size: 20px;

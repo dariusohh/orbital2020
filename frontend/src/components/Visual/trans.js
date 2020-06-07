@@ -1,6 +1,6 @@
 import React from 'react'
 import {Expense} from '../Expense/Expense';
-import {Revenue} from '../Expnese/Revenue';
+import {Revenue} from '../Expense/Revenue';
 import {Link } from "react-router-dom";
 import axios from 'axios';
 
@@ -17,6 +17,9 @@ class Trans extends React.Component {
         <ul className="list">
           {this.props.data.slice(-4, -1).map(transaction => (
           <Expense key={transaction.id} transaction={transaction} />
+          ))}
+          {this.props.data.slice(-4, -1).map(transaction => (
+          <Revenue key={transaction.id} transaction={transaction} />
           ))}
         </ul>
     </>

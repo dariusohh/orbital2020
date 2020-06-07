@@ -61,7 +61,7 @@ class Homepage extends React.Component {
 
 
   
-<div class="wrapper">
+<div className="wrapper">
   <div className= 'Su'>
     <img 
         src= {B}

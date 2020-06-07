@@ -6,46 +6,40 @@ import logo from './logo.png'
 
 class Navbar extends React.Component {
 
+  
   render() {
     return (
-        <nav className="topnav">
-        <div> 
-          <ul>
-            <p style={{padding:"0",margin:"0"}}><img className = "logo" src={logo} alt = "Logo"/></p>
-            <ul>
-              <a href="/">Home</a>
-            </ul>
-          <ul>
-              { this.props.isAuthenticated ?
-              
-                <a href= "http://localhost:3000/expense/" >Expense Tracking</a>
-                :
-                null
-              }
-            </ul>
+
+      <div id='cssmenu'>
       <ul>
-            { this.props.isAuthenticated ?
-              
-              <a href= "http://localhost:3000/visual" > Data Visualisation</a>
-              :
-             null
-            }
-            </ul>
-            <ul>
-              { this.props.isAuthenticated ?
-                <a href="/" onClick = {this.props.logout}>Logout</a>
-                :
-                <a href="http://localhost:3000/login/">Login</a>
-              }
-            </ul>
-            { !this.props.isAuthenticated &&
-            <ul>
-              <a href="http://localhost:3000/register/">Sign Up</a>
-            </ul>
-            }
-          </ul>
-        </div>
-      </nav>
+        <li><p style={{padding:"0",margin:"0"}}><img className = "logo" src={logo} alt = "Logo"/></p></li>
+        <li className={window.location.pathname === '/' ? 'active' : null}><a href='/'>Home</a></li>
+        <li className={window.location.pathname === '/expense' ? 'active' : null}>
+        { this.props.isAuthenticated &&
+          <a href= "/expense" >Expense Tracking</a>
+        }
+        </li>
+        <li className={window.location.pathname === '/login' ? 'active' : null}>
+        { !this.props.isAuthenticated && 
+          <a href='/login'>Login</a>
+        }
+        </li>
+        <li className={window.location.pathname === '/visual' ? 'active' : null}>
+          { this.props.isAuthenticated &&
+            <a href= "/visual" > Data Visualisation</a>
+          }
+          
+        </li>
+        <li className={window.location.pathname === '/register' ? 'active' : null}>
+          { !this.props.isAuthenticated && 
+            <a href='/register'>Register</a>
+          }
+        </li>
+          { this.props.isAuthenticated && 
+            <li><a href="/" onClick = {this.props.logout}>Logout</a></li>
+          }
+      </ul>
+      </div>
 
     );
 

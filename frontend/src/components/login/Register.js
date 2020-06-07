@@ -3,13 +3,11 @@ import * as actions from '../../store/actions/auth'
 import { connect } from 'react-redux'; 
 import './Login.css';
 import {useForm} from "react-hook-form";
-import { useHistory } from "react-router"; 
 
 function RegisterForm(props) {
   const { register, handleSubmit, errors, watch } = useForm();
   const password = useRef({});
   password.current = watch("password", "");
-  const history = useHistory();
 
   const onSubmit = e => {
       props.onAuth(e.username, 
@@ -18,7 +16,7 @@ function RegisterForm(props) {
           e.confirm)
           setTimeout(() => {
             if (localStorage.getItem("username")) {
-                history.push('/expense/');
+              window.location.href = "/expense";
             }
             },400)
     }

@@ -17,12 +17,33 @@ export const Expense = ({transaction}) => {
             .catch(err => console.log(err))
     }
 
+    const daydiff = (objdate) => {
+        const currdate_gmt8 = new Date()
+        const currdate_utc = new Date(currdate_gmt8 - 8*60*60*1000)
+        const objyear = objdate.substring(0,4)
+        const objmth = objdate.substring(5,7) - 1
+        const objday = objdate.substring(8,10)
+        const objhour = objdate.substring(11,13)
+        const objmin = objdate.substring(14,16)
+        const objsec = objdate.substring(17,19)
+        const olddate = new Date(objyear,objmth,objday,objhour,objmin,objsec)
+        const daydiff = Math.floor((currdate_utc.getTime() - olddate.getTime()) / (1000*60*60*24))
+        if (daydiff === 0) {
+            return "Created Today";
+        } else if (daydiff === 1) {
+            return "Created Yesterday";
+        } else {
+            return "Created " + daydiff + " days ago"
+        }
+    }
+
     return (
         <div>
         {transaction.amount < 0 &&
         <li className={transaction.amount <0 ?'minus' : 'plus'}>
              <div>
              <div >{transaction.name} : ${Math.abs(transaction.amount)}  </div>
+             <div className = "date">{daydiff(transaction.created_at)}</div>
             </div>  
             <Popup trigger={<button className="update-btn">Update</button>} modal closeOnDocumentClick>
         <div>

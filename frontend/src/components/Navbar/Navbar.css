@@ -4,7 +4,6 @@
   height: 40px;
 }
 
-@import url(http://fonts.googleapis.com/css?family=Raleway);
 #cssmenu,
 #cssmenu ul,
 #cssmenu ul li,
@@ -32,7 +31,6 @@
 #cssmenu {
   width: auto;
   border-bottom: 3px solid #0987ee;
-  font-family: Raleway, sans-serif;
   line-height: 1;
 }
 #cssmenu ul {
@@ -60,7 +58,7 @@
   z-index: 2;
   padding: 18px 25px 12px 25px;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 600;
   text-decoration: none;
   color: #444444;
   -webkit-transition: all .2s ease;
@@ -101,5 +99,12 @@
 #cssmenu > ul > li:hover > a:after,
 #cssmenu > ul > li > a:hover:after {
   background: #0987ee;
+}
+
+.date {
+  right: 2%;
+  font-size: 10pt;
+  position: absolute;
+  top: 3px;
 }
 

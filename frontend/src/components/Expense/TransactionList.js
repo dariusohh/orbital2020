@@ -11,22 +11,27 @@ class TransactionList extends React.Component {
     render() {
     return (
         <div className = "trans-container">
-        <ul className="list">
-          <h3>Revenue</h3>
-          {this.props.data.map(transaction => (
-          <Revenue key={transaction.id} transaction={transaction} />
-          ))}
-          <AddButton type="Revenue"/>
-        </ul>
-        <div className = "divider">
-        </div>
-        <ul className="list">
-        <h3>Expense</h3>
-        {this.props.data.map(transaction => (
-          <Expense key={transaction.id} transaction={transaction} />
-          ))}
-          <AddButton type="Expense"/>
-        </ul>
+        <Row>
+            <Col>
+                <ul className="list">
+                  <h3>Revenue</h3>
+                  {this.props.data.map(transaction => (
+                  <Revenue key={transaction.id} transaction={transaction} />
+                  ))}
+                  <AddButton type="Revenue"/>
+                </ul>
+             </Col>
+          <div className = "divider"></div>
+            <Col>
+                <ul className="list">
+                <h3>Expense</h3>
+                {this.props.data.map(transaction => (
+                  <Expense key={transaction.id} transaction={transaction} />
+                  ))}
+                  <AddButton type="Expense"/>
+                </ul>
+            </Col>
+           </Row>
         </div>
 
     )

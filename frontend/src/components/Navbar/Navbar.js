@@ -30,6 +30,11 @@ class Navbar extends React.Component {
           }
           
         </li>
+        <li className={window.location.pathname === '/profile' ? 'active' : null}>
+          { this.props.isAuthenticated &&
+            <a href= "/profile" > Profile</a>
+          }
+        </li>
         <li className={window.location.pathname === '/register' ? 'active' : null}>
           { !this.props.isAuthenticated && 
             <a href='/register'>Register</a>

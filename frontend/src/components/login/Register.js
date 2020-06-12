@@ -3,6 +3,10 @@ import * as actions from '../../store/actions/auth'
 import { connect } from 'react-redux'; 
 import './Login.css';
 import {useForm} from "react-hook-form";
+import axios from 'axios';
+
+
+axios.defaults.baseURL = 'http://127.0.0.1:8000/';
 
 function RegisterForm(props) {
   const { register, handleSubmit, errors, watch } = useForm();
@@ -17,6 +21,9 @@ function RegisterForm(props) {
           setTimeout(() => {
             if (localStorage.getItem("username")) {
               window.location.href = "/expense";
+              return axios.post('profile/', {username: e.username,
+                      company_name:"", company_description:"",show_public:false})
+                      .catch(err => console.log(err));
             }
             },400)
     }

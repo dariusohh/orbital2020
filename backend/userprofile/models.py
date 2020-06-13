@@ -7,10 +7,12 @@ class UserProfile(models.Model):
     company_industry = models.TextField(blank = True)
     company_description = models.TextField(blank = True)
     show_public = models.BooleanField()
-     email = models.TextField(blank = True)
+    email = models.TextField(blank = True)
     office = models.TextField(blank = True)
     tele = models.TextField(blank = True)
     ratings = models.IntegerField(blank=True)
+    budget = models.DecimalField(decimal_places = 2, max_digits = 12)
+    target = models.DecimalField(decimal_places = 2, max_digits = 12)
 
    
   

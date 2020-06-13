@@ -23,7 +23,9 @@ axios.defaults.baseURL = 'http://127.0.0.1:8000/';
 class Visualisation extends React.Component {
    
   state = {
-    expense: []
+    expense: [],
+    budget: 0,
+    revenue:0
 }
 
 componentDidMount() {
@@ -34,6 +36,15 @@ componentDidMount() {
           this.setState({
               expense: new_res
           });
+      axios.get(`profile/${localStorage.getItem("username")}/`)
+      .then(res => {
+        const budget = res.data.budget
+        const target = res.data.target
+        this.setState({
+          budget: budget,
+          target: target
+        })
+      })
       }), 200);
   }
 
@@ -53,7 +64,7 @@ componentDidMount() {
     <Col className='header1'><h2 className='text2'>Target Tracker</h2>
     <UpCircleFilled style={{ fontSize: '80px',color: '#08c' }}/>
     <Spacer amount={10} />
-    <Target data={this.state.expense}/>
+    <Target data={this.state.expense} target= {this.state.target}/>
     </Col>
     <Spacer amount={10} />
     <Col className='header3'>
@@ -69,7 +80,7 @@ componentDidMount() {
     <Col className='header4'><h2 className='text2'>Budget Left (SGD)</h2>
     <DollarCircleOutlined  style={{ fontSize: '90px',color: '#08c' }}/>
     <Spacer amount={8} />
-    <AddBudget data={this.state.expense}/>
+    <AddBudget data={this.state.expense} budget ={this.state.budget}/>
     </Col>
 
   </Row>

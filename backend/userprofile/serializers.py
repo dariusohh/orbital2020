@@ -5,4 +5,4 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
         fields = ["username","company_name","company_industry","company_description","show_public"
-                   ,"email","office","tele","ratings"]
+                   ,"email","office","tele","ratings","budget","target"]

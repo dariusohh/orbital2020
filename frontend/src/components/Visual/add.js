@@ -6,26 +6,17 @@ axios.defaults.baseURL = 'http://127.0.0.1:8000/';
 
 export class AddBudget extends React.Component {
 
-    onSubmit = (event) => {
-      const budget = event.target.budget.value;
-      const username = localStorage.getItem("username");
-      return axios.post('apii/', { username: username,
-            budget:budget})
-              .catch(err => console.log(err))
-      }
-
       render() {
     return (
       
         <>
            
            <text style= {{fontSize:70, color:'IndianRed', textAlign:"center"}}>
-           $ {10000-(this.props.data
+           $ {this.props.budget -(this.props.data
           .map(transaction => transaction.amount)
           .map(num => parseFloat(num))
           .filter(item => item < 0).reduce((acc, item) => (acc += item), 0) * -1)
           .toFixed(2)}
-        
           </text>
           {/* <Spacer amount={5} />
         <Popup trigger={<button className="Btn">Add Budget</button>} modal closeOnDocumentClick>

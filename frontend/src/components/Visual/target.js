@@ -48,18 +48,13 @@ class Target extends React.Component {
     
   render() {
   return (
-
-
     <text style= {{fontSize:70, color:'DarkSlateGray', textAlign:"center"}}>
-     {(this.props.data
+     {((this.props.data
           .map(transaction => transaction.amount)
           .map(num => parseFloat(num))
-          .reduce((acc, item) => (acc += item), 0).toFixed(2)/10000)* 100} %
+          .reduce((acc, item) => (acc += item), 0) / this.props.target * 100).toFixed(2))} %
       </text>
-
-
-
-    )
+  )
   }
 }
 

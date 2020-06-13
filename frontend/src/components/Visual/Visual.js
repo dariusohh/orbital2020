@@ -56,7 +56,7 @@ componentDidMount() {
    <>
    <h1 className='text'>Overall Analysis</h1>
    <Container className='space-2'>
-   <h2 className='line'></h2>
+   <h2 className='line'> </h2>
    </Container>
 
    <div>
@@ -87,7 +87,8 @@ componentDidMount() {
  
   </div>
  
-<Container className='space-1'></Container>
+ <br/>
+<div className='space-1'></div>
   <div>
   <Row >
   <Col className='data' > <Graph data={this.state.expense}/> </Col>
@@ -97,7 +98,7 @@ componentDidMount() {
     <Col className='data'><BarGraph2 data={this.state.expense} /></Col>
   </Row>
   </div>
-  <Container className='space-1'></Container>
+  <div className='space-1'></div>
 <div>
  <Row>
   <Col sm={7} className='wrapper-1'>

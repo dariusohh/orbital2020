@@ -28,10 +28,10 @@ componentDidMount() {
 render() {
 
   const xlabels = []
-  const y = this.props.data.map(x => x.created_at).map(z => xlabels.push(z.slice(5,10)))
+  this.props.data.map(x => x.created_at).forEach(z => xlabels.push(z.slice(5,10)))
   const ylabels = []
-  const z = this.props.data
-  .map(item => item.amount).map((acc, item) => (acc += item)).map(y => ylabels.push(y))
+  this.props.data
+  .map(item => item.amount).map((acc, item) => (acc += item)).forEach(y => ylabels.push(y))
 
     const data = {
         labels: xlabels,

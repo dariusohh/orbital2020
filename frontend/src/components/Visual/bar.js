@@ -12,7 +12,6 @@ export class BarGraph extends React.Component  {
     expense: []
 }
 
-
 componentDidMount() {
     setTimeout(() => 
       axios.get('api/')
@@ -24,16 +23,20 @@ componentDidMount() {
       }), 200);
   }
 
-
 render() {
-    const xlabels = []
-    const y = this.props.data
-    .filter(item => item.amount < 0).map(x => xlabels.push(x.name))
-    const ylabels = []
-    const z = this.props.data
-    .map(transaction => transaction.amount)
-    .map(num => parseFloat(num))
-    .filter(item => item < 0).map(y => ylabels.push(y*-1))
+  var grouping = {};
+  this.props.data.filter(item => item.amount < 0).forEach(x => {
+    if (x.name in grouping) {
+      grouping[x.name] += -parseFloat(x.amount)
+    } else {
+      grouping[x.name] = -parseFloat(x.amount)
+    }
+  })
+  const xlabels = Object.keys(grouping).sort()
+  var ylabels = []
+  for (let x of xlabels) {
+    ylabels.push(grouping[x])
+  }
     
     const data = {
           labels: xlabels,

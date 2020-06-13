@@ -76,7 +76,7 @@ componentDidMount() {
 
     </Col>
     
-    <Spacer amount={5} />
+    <Spacer amount={10} />
     <Col className='header4'><h2 className='text2'>Budget Left (SGD)</h2>
     <DollarCircleOutlined  style={{ fontSize: '90px',color: '#08c' }}/>
     <Spacer amount={8} />

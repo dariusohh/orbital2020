@@ -48,7 +48,7 @@ class AddButton extends React.Component {
             <div className="form-control">
             <label htmlFor="amount"> Amount <br />
                 </label>
-            <input name= "amount" type="number"
+            <input name= "amount" type="number" step = "0.01"
             placeholder="Enter amount..." />
             </div>
             <button className="btn">Add {this.props.type}</button>

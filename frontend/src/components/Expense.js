@@ -4,8 +4,9 @@ import IncomeExpenses from './Expense/IncomeExpenses';
 import TransactionList from './Expense/TransactionList';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css";
+import { DateRangePicker } from 'rsuite';
+import 'rsuite/dist/styles/rsuite-default.css'
+import{ FilterFilled } from  '@ant-design/icons';
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
 
@@ -13,17 +14,20 @@ class Expense extends React.Component {
   
   state = {
     expense: [],
-    startDate: new Date(new Date().setMonth(new Date().getMonth() - 1)),
+    startDate: new Date(new Date().setDate(1)),
     endDate: new Date()
 }
 
   dateFilter = (objdate) => {
-        const objyear = objdate.substring(0,4)
-        const objmth = objdate.substring(5,7) - 1
-        const objday = objdate.substring(8,10)
-        const olddate = new Date(objyear,objmth,objday)
-        return (olddate.getTime() <= this.state.endDate.getTime()) 
-        && (this.state.startDate.getTime() - (1000 * 60 * 60 * 24) <= olddate.getTime())
+    const objyear = objdate.substring(0,4)
+    const objmth = objdate.substring(5,7) - 1
+    const objday = objdate.substring(8,10)
+    const objhour = parseInt(objdate.substring(11,13)) + 8
+    const objmin = objdate.substring(14,16)
+    const objsec = objdate.substring(17,19)
+    const olddate = new Date(objyear,objmth,objday, objhour, objmin, objsec)
+        return (olddate.getTime() <= new Date(new Date(this.state.endDate.setHours(23)).setMinutes(59)).setSeconds(59)) 
+        && (this.state.startDate.getTime() <= olddate.getTime())
   }
 
 componentDidMount() {
@@ -54,27 +58,15 @@ componentDidMount() {
       <>
       <Header />
       <div className='container'>
-        <div className = "date-container">
         <div>
-      <label>Start date:</label>
-        <DatePicker 
-        showMonthDropdown
-        selected = {this.state.startDate}
-        onChange = {date => this.setState({startDate:date})}
-        maxDate={this.state.endDate}
-        />
+        <label className="date-label">Date</label>
+        <FilterFilled style={{marginRight:"5px"}}/>
+      <DateRangePicker 
+        value={[this.state.startDate,this.state.endDate]}
+        onChange={arr => this.setState({startDate:arr[0],endDate:arr[1]})}
+        disabledDate={date => date.getTime() - new Date().getTime() > 0}/>
         </div>
-        <div className = "endDate">
-        <label>End date:</label>
-        <DatePicker 
-        showMonthDropdown
-        selected = {this.state.endDate}
-        onChange = {date => this.setState({endDate:date})}
-        minDate = {this.state.startDate}
-        maxDate={new Date()}
-        />
-        </div>
-        </div>
+        <div className = "space-2"></div>
         <IncomeExpenses data={this.state.expense}/>
         <TransactionList data={this.state.expense}/>
       </div>

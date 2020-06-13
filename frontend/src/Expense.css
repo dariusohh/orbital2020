@@ -255,3 +255,10 @@ input[type='number'] {
   padding: 5px 10px !important;
   width: 50% !important;
 }
+
+.date-label{
+  font-family: 'Roboto', sans-serif;
+  font-size : 19px;
+  font-weight: 550;
+  margin-right: 3px;
+}

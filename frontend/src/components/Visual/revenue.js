@@ -17,8 +17,6 @@ class Revenue extends React.Component {
           .map(num => parseFloat(num))
           .reduce((acc, item) => (acc += item), 0).toFixed(2)*1}
     </span>
-          
-
 
     )
   }

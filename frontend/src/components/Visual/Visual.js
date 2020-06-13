@@ -13,7 +13,9 @@ import {Container, Row,Col}from 'react-grid-system';
 import {AddBudget} from './add';
 import {Time} from './timeline';
 import { connect } from 'react-redux';
-
+import { DateRangePicker } from 'rsuite';
+import 'rsuite/dist/styles/rsuite-default.css'
+import{ FilterFilled } from  '@ant-design/icons';
 
 import{StockOutlined,DollarCircleOutlined,UpCircleFilled } from  '@ant-design/icons';
 
@@ -25,14 +27,28 @@ class Visualisation extends React.Component {
   state = {
     expense: [],
     budget: 0,
-    revenue:0
+    revenue:0,
+    startDate: new Date(new Date().setDate(1)),
+    endDate: new Date()
+}
+
+dateFilter = (objdate) => {
+  const objyear = objdate.substring(0,4)
+  const objmth = objdate.substring(5,7) - 1
+  const objday = objdate.substring(8,10)
+  const objhour = parseInt(objdate.substring(11,13)) + 8
+  const objmin = objdate.substring(14,16)
+  const objsec = objdate.substring(17,19)
+  const olddate = new Date(objyear,objmth,objday, objhour, objmin, objsec)
+      return (olddate.getTime() <= new Date(new Date(this.state.endDate.setHours(23)).setMinutes(59)).setSeconds(59)) 
+      && (this.state.startDate.getTime() <= olddate.getTime())
 }
 
 componentDidMount() {
     setTimeout(() => 
       axios.get('api/')
       .then(res => {
-          const new_res = res.data.filter(x => x.username === localStorage.getItem("username"));
+          const new_res = res.data.filter(x => x.username === localStorage.getItem("username")).filter(x => this.dateFilter(x.created_at));
           this.setState({
               expense: new_res
           });
@@ -48,27 +64,45 @@ componentDidMount() {
       }), 200);
   }
 
- 
+  componentDidUpdate(prevProps, prevState) {
+    if ((prevState.startDate.getTime() !== this.state.startDate.getTime()) || 
+    (prevState.endDate.getTime() !== this.state.endDate.getTime())) {
+      axios.get('api/')
+      .then(res => {
+          var new_res = res.data.filter(x => x.username === localStorage.getItem("username")).filter(x => this.dateFilter(x.created_at))
+          this.setState({
+              expense: new_res
+          });
+      })}
+  }
 
   render() {
 
   return (
    <>
    <h1 className='text'>Overall Analysis</h1>
-   <Container className='space-2'>
+
    <h2 className='line'> </h2>
-   </Container>
 
    <div>
+        <label className="date-label">Date</label>
+        <FilterFilled style={{marginRight:"5px"}}/>
+      <DateRangePicker 
+        value={[this.state.startDate,this.state.endDate]}
+        onChange={arr => this.setState({startDate:arr[0],endDate:arr[1]})}
+        disabledDate={date => date.getTime() - new Date().getTime() > 0}/>
+        </div>
+        <div className = "space-2"></div>
+   <div>
    <Row>
-    <Col className='header1'><h2 className='text2'>Target Tracker</h2>
+    <Col className='header1'><h2 className='text2'>Profit Target</h2>
     <UpCircleFilled style={{ fontSize: '80px',color: '#08c' }}/>
     <Spacer amount={10} />
     <Target data={this.state.expense} target= {this.state.target}/>
     </Col>
     <Spacer amount={10} />
     <Col className='header3'>
-    <h2 className='text2'>Nett Revenue (SGD)</h2>
+    <h2 className='text2'>Nett Profit (SGD)</h2>
     <StockOutlined style={{ fontSize: '90px',color: '#08c' }}/>
     <Spacer amount={10} />
     <Revenue data={this.state.expense}/>
@@ -91,7 +125,7 @@ componentDidMount() {
 <div className='space-1'></div>
   <div>
   <Row >
-  <Col className='data' > <Graph data={this.state.expense}/> </Col>
+  <Col className='data' > <Graph data={this.state.expense} startDate = {this.state.startDate} endDate = {this.state.endDate}/> </Col>
   <Spacer amount={2} />
     <Col className='data' ><BarGraph data={this.state.expense} /></Col>
     <Spacer amount={2} />

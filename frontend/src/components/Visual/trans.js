@@ -13,7 +13,7 @@ class Trans extends React.Component {
     return (
         <>
         <ul className="list">
-          {this.props.data.slice(0,4).map(transaction => (
+          {this.props.data.slice(0,3).map(transaction => (
           transaction.amount > 0 ? 
           <Revenue key={transaction.id} transaction={transaction} />
           :

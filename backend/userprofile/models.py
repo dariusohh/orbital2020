@@ -10,9 +10,9 @@ class UserProfile(models.Model):
     email = models.TextField(blank = True)
     office = models.TextField(blank = True)
     tele = models.TextField(blank = True)
-    ratings = models.IntegerField(blank=True)
-    budget = models.DecimalField(decimal_places = 2, max_digits = 12)
-    target = models.DecimalField(decimal_places = 2, max_digits = 12)
+    ratings = models.IntegerField(blank=True,null = True)
+    budget = models.DecimalField(decimal_places = 2, max_digits = 12, blank = True)
+    target = models.DecimalField(decimal_places = 2, max_digits = 12, blank = True)
 
    
   

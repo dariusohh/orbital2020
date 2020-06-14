@@ -20,7 +20,7 @@ function RegisterForm(props) {
           e.confirm)
           setTimeout(() => {
             if (localStorage.getItem("username")) {
-              window.location.href = "/profile")
+              window.location.href = "/profile"
               return axios.post('profile/', {username: e.username,
                       company_name:"", 
                       company_industry:"",

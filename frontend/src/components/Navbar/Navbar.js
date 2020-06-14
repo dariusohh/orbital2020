@@ -24,15 +24,19 @@ class Navbar extends React.Component {
           <a href='/login'>Login</a>
         }
         </li>
-        <li className={window.location.pathname === '/visual' ? 'active' : null}>
+        
           { this.props.isAuthenticated &&
-            <a href= "/visual" > Data Visualisation</a>
+            <li className={window.location.pathname === '/visual' || window.location.pathname === '/predict' ? "dropdown-active" : "dropdown"}>
+            <a className="dropdown-menu" href= "/visual" > Data Visualisation</a>
+            <div className ="dropdown-content">
+              <a href = "/visual">Actual</a>
+              <a href = "/predict">Prediction</a>
+            </div>
+            </li>
           }
-          
-        </li>
         <li className={window.location.pathname === '/profile' ? 'active' : null}>
           { this.props.isAuthenticated &&
-            <a href= "/profile" > Profile</a>
+            <a href= "/profile"> Profile</a>
           }
         </li>
         <li className={window.location.pathname === '/register' ? 'active' : null}>

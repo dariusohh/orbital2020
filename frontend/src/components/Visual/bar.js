@@ -43,7 +43,7 @@ render() {
         datasets: [
           {
           
-            label: 'Expense Breakdown',
+            label: 'Expense',
             fill: false,
             lineTension: 0.1,
             backgroundColor: 'rgba(75,192,192,0.4)',
@@ -65,11 +65,20 @@ render() {
           }
         ]
       };
+
+      var options = {
+        legend:{display:false},
+        scales:{
+        xAxes:[{gridLines:{display:false}}],
+        yAxes:[{gridLines:{display:true}}]
+        }
+      }
+
     return (
         <div>
              <h2 className='text2'> Expense Breakdown</h2>
              <Bar 
-             data={data}/>
+             data={data} options = {options}/>
              <Link to="/Login">
             <button className="Btn">
               More

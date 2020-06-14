@@ -18,7 +18,7 @@ export const Expense = ({transaction}) => {
     }
 
     const daydiff = (objdate) => {
-        const currdate = new Date()
+        const currdate = new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate())
         const objyear = objdate.substring(0,4)
         const objmth = objdate.substring(5,7) - 1
         const objday = objdate.substring(8,10)
@@ -26,7 +26,8 @@ export const Expense = ({transaction}) => {
         const objmin = objdate.substring(14,16)
         const objsec = objdate.substring(17,19)
         const olddate = new Date(objyear,objmth,objday,objhour,objmin,objsec)
-        const daydiff = Math.floor((currdate.getTime() - olddate.getTime()) / (1000*60*60*24))
+        const transdate = new Date(olddate.getFullYear(),olddate.getMonth(),olddate.getDate())
+        const daydiff = Math.floor((currdate.getTime() -transdate.getTime()) / (1000*60*60*24))
         if (daydiff === 0) {
             return "Created Today";
         } else if (daydiff === 1) {

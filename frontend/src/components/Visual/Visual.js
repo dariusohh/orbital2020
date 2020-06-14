@@ -9,7 +9,7 @@ import './visual.css'
 import Spacer from 'react-add-space';
 import {BarGraph2} from './barR';
 import {Graph} from'./line';
-import {Container, Row,Col}from 'react-grid-system';
+import {Row,Col}from 'react-grid-system';
 import {AddBudget} from './add';
 import {Time} from './timeline';
 import { connect } from 'react-redux';
@@ -40,7 +40,8 @@ dateFilter = (objdate) => {
   const objmin = objdate.substring(14,16)
   const objsec = objdate.substring(17,19)
   const olddate = new Date(objyear,objmth,objday, objhour, objmin, objsec)
-      return (olddate.getTime() <= new Date(new Date(this.state.endDate.setHours(23)).setMinutes(59)).setSeconds(59)) 
+  const currdate = new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate(),23,59,59)
+      return (olddate.getTime() <= currdate.getTime()) 
       && (this.state.startDate.getTime() <= olddate.getTime())
 }
 
@@ -124,27 +125,36 @@ componentDidMount() {
  <br/>
 <div className='space-1'></div>
   <div>
-  <Row >
-  <Col className='data' > <Graph data={this.state.expense} startDate = {this.state.startDate} endDate = {this.state.endDate}/> </Col>
+  <Row style = {{textAlign:"center", justifyContent:"center", display:"flex",flexWrap:"nowrap"}}>
+  <div style = {{width:"33%"}}>
+  <Col className='data' > <Graph data={this.state.expense} 
+                                  startDate = {this.state.startDate} 
+                                  endDate = {this.state.endDate}
+                                  /> </Col>
+                                  </div>
   <Spacer amount={2} />
+  <div style = {{width:"33%"}}>
     <Col className='data' ><BarGraph data={this.state.expense} /></Col>
+    </div>
     <Spacer amount={2} />
+    <div style = {{width:"33%"}}>
     <Col className='data'><BarGraph2 data={this.state.expense} /></Col>
+    </div>
   </Row>
   </div>
   <div className='space-1'></div>
 <div>
  <Row>
+ <Col className='wrapper-1'>
+   <h2 className='line'> <span className='text2'>Timeline</span></h2>
+   <Time data={this.state.expense}/>
+   </Col>
+   <Spacer amount={15} />
   <Col sm={7} className='wrapper-1'>
   <h2 className='line'> <span className='text2'>Recent Transactions</span></h2>
   <Trans data={this.state.expense}/>
   </Col>
-  <Spacer amount={15} />
-   <Col className='wrapper-1'>
-   <h2 className='line'> <span className='text2'>Timeline</span></h2>
-   <Time data={this.state.expense}/>
    
-   </Col>
  </Row>
 </div>
 

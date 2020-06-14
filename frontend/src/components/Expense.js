@@ -26,8 +26,9 @@ class Expense extends React.Component {
     const objmin = objdate.substring(14,16)
     const objsec = objdate.substring(17,19)
     const olddate = new Date(objyear,objmth,objday, objhour, objmin, objsec)
-        return (olddate.getTime() <= new Date(new Date(this.state.endDate.setHours(23)).setMinutes(59)).setSeconds(59)) 
-        && (this.state.startDate.getTime() <= olddate.getTime())
+    const currdate = new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate(),23,59,59)
+      return (olddate.getTime() <= currdate.getTime()) 
+      && (this.state.startDate.getTime() <= olddate.getTime())
   }
 
 componentDidMount() {

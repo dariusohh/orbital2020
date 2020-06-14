@@ -12,7 +12,7 @@ class Trans extends React.Component {
     render() {
     return (
         <>
-        <ul className="list">
+        <ul className="list" style={{width:"100%"}}>
           {this.props.data.slice(0,3).map(transaction => (
           transaction.amount > 0 ? 
           <Revenue key={transaction.id} transaction={transaction} />

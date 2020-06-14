@@ -44,7 +44,7 @@ componentDidMount() {
         labels: xlabels,
         datasets: [
           {
-            label: 'Revenue Breakdown',
+            label: 'Revenue',
             backgroundColor: 'rgba(71, 181, 209, 0.84)',
             borderColor: 'rgba(71, 181, 209, 0.84)',
             borderWidth: 1,
@@ -54,10 +54,19 @@ componentDidMount() {
           }
         ]
       };
+
+      var options = {
+        legend:{display:false},
+        scales:{
+        xAxes:[{gridLines:{display:true}}],
+        yAxes:[{gridLines:{display:false}}]
+        }
+      }
+
 return (
   <div>
     <h2 className='text2'> Revenue Breakdown</h2>
-    <HorizontalBar data={data}/>
+    <HorizontalBar data={data} options={options}/>
     <Link to="/Login">
             <button className="Btn">
               More

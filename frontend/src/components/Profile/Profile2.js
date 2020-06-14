@@ -27,7 +27,6 @@ class Profile2 extends React.Component {
         company_industry: "",
         company_description: "", 
         show_public: ""},
-        isAuthenticated:false,
         header:'Click to find out more about the company!',
         expense: [] ,
     update: false
@@ -35,32 +34,44 @@ class Profile2 extends React.Component {
   }
 
 
+  state= {
+    profile:{},
+    expense :[]
+  }
 
 componentDidMount() {
-      axios.get(`profile/${localStorage.getItem("username")}/`)
+  const name= this.props.match.params.username
+      axios.get(`profile/${this.props.match.params.username}/`)
       .then(prof => {
           this.setState({
               profile: prof.data,
-              isAuthenticated:true
           });
       })
-      axios.get('api/')
+      axios.get(`api/`)
       .then(res => {
-          const new_res = res.data.filter(x => x.username === localStorage.getItem("username"));
+          const new_res = res.data.filter(x => x.username === name);
           this.setState({
               expense: new_res
+          });
+      })
+
+      axios.get(`profile/${localStorage.getItem("username")}/`)
+      .then(prof => {
+          this.setState({
+    
+              isAuthenticated:true
           });
       })
   }
  
 
- 
+
   
 
 
 
 handleprogress = e => {
-  const x = <Graph data={this.state.expense}/>
+  const x = <Graph data={this.state}/>
   this.setState(
     {
       header:"Company's Progress",
@@ -72,7 +83,7 @@ handlecon = e => {
   console.log(e)
   this.setState(
     { header:"Contact Us",
-      text:<Contact/>});
+      text:<Contact data={this.state.profile}/>});
 }
 handleO = e => {
   window.location.href = "/profile";
@@ -82,27 +93,36 @@ handleO = e => {
 handleintro = e => {
   this.setState(
     { header: 'About us',
-      text : <About/>
+      text : <About data={this.state.profile}/>
     });
 }
-  render() {
 
+render() {
 
   return (
       <>
-    {/* <h1 className='industry'>Company's industry</h1> */}
+     
       <div className='profile'>
         <div>
+      {this.state.profile.images===null &&
         <img
          className='avatar'
-         src={p1}
+         src={p3}
   />
-  </div>
-    
-        { this.state.isAuthenticated && <EditOutlined 
-        onClick= {this.handleO}
-  style={{ fontSize: '30px', color: 'white' }}/> }
+      }
+      { this.state.profile.images !==null&&
+            <img
+         className='avatar'
+         src={this.state.profile.images}
+  />
+      }
 
+  </div>
+    {this.state.isAuthenticated == true &&
+         <EditOutlined 
+        onClick= {this.handleO}
+  style={{ fontSize: '30px', color: 'white' }}/> 
+    }
         <Spacer amount={5} />
           <text className='name'>{this.state.profile.company_name}</text>
       </div>
@@ -136,8 +156,8 @@ handleintro = e => {
    
       </>
     )
-  }
-}
+  
+}}
 
 const mapStateToProps = state => {
   return {

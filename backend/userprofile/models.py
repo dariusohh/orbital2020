@@ -13,6 +13,5 @@ class UserProfile(models.Model):
     ratings = models.IntegerField(blank=True,null = True)
     budget = models.DecimalField(decimal_places = 2, max_digits = 12, blank = True)
     target = models.DecimalField(decimal_places = 2, max_digits = 12, blank = True)
-
    
   

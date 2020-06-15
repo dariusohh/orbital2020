@@ -7,7 +7,6 @@ import Homepage from './components/Homepage/Homepage'
 import Visual from './components/Visual/Visual'
 import Profile from './components/Profile/Profile'
 import Profile2 from './components/Profile/Profile2';
-import AddPic from './components/Profile/addpic';
 
 const BaseRouter = () => (
     <div>
@@ -18,7 +17,6 @@ const BaseRouter = () => (
         <Route exact path = '/visual' component = {Visual}/>
          <Route exact path="/profile/:username/" component={Profile2} />{" "}
         <Route exact path = '/profile' component = {Profile}/>
-     <Route exact path = '/addpic' component = {AddPic}/>
     </div>
 )
 

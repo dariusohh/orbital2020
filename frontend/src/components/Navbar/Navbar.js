@@ -4,7 +4,6 @@ import axios from 'axios';
 import * as actions from '../../store/actions/auth';
 import { connect } from 'react-redux';
 import logo from './logo.png'
-import {Link} from "react-router-dom";
 
 class Navbar extends React.Component {
 
@@ -51,9 +50,9 @@ componentDidMount() {
             </div>
             </li>
           }
-        <li className={window.location.pathname === '/profile' ? 'active' : null}>
+        <li className={window.location.pathname.startsWith('/profile') ? 'active' : null}>
           { this.props.isAuthenticated &&
-            <Link to ={`profile/${this.state.profile.username}`}>Profile</Link>
+            <a href={`/profile/${this.state.profile.username}`}>Profile</a>
           }
         </li>
         <li className={window.location.pathname === '/register' ? 'active' : null}>

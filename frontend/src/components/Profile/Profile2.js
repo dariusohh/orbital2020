@@ -3,14 +3,10 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { Row,Col}from 'react-grid-system';
 import './profile.css';
-import Text from 'react-text';
 import Spacer from 'react-add-space';
-import p1 from './pic/p1.jpg';
-import p2 from './pic/p2.jpg';
-import p3 from './pic/p3.jpg';
 import {Graph} from'./progress';
 import Contact from './contact';
-import About from './about';
+import About from './about.js';
 
 
 import{ EditOutlined} from  '@ant-design/icons';
@@ -27,26 +23,28 @@ class Profile2 extends React.Component {
         company_industry: "",
         company_description: "", 
         show_public: ""},
-        isAuthenticated:false,
         header:'Click to find out more about the company!',
-        expense: [] ,
+        expense: [],
     update: false
     }
   }
 
-
+  state= {
+    profile:{},
+    expense :[]
+  }
 
 componentDidMount() {
-      axios.get(`profile/${localStorage.getItem("username")}/`)
+  const name= this.props.match.params.username
+      axios.get(`profile/${this.props.match.params.username}/`)
       .then(prof => {
           this.setState({
               profile: prof.data,
-              isAuthenticated:true
           });
       })
-      axios.get('api/')
+      axios.get(`api/`)
       .then(res => {
-          const new_res = res.data.filter(x => x.username === localStorage.getItem("username"));
+          const new_res = res.data.filter(x => x.username === name);
           this.setState({
               expense: new_res
           });
@@ -54,13 +52,14 @@ componentDidMount() {
   }
  
 
- 
+
+
   
 
 
 
 handleprogress = e => {
-  const x = <Graph data={this.state.expense}/>
+  const x = <Graph data={this.state}/>
   this.setState(
     {
       header:"Company's Progress",
@@ -72,7 +71,7 @@ handlecon = e => {
   console.log(e)
   this.setState(
     { header:"Contact Us",
-      text:<Contact/>});
+      text:<Contact data={this.state.profile}/>});
 }
 handleO = e => {
   window.location.href = "/profile";
@@ -82,27 +81,22 @@ handleO = e => {
 handleintro = e => {
   this.setState(
     { header: 'About us',
-      text : <About/>
+      text : <About data={this.state.profile}/>
     });
 }
-  render() {
 
+render() {
 
   return (
       <>
-    {/* <h1 className='industry'>Company's industry</h1> */}
+  
       <div className='profile'>
-        <div>
-        <img
-         className='avatar'
-         src={p1}
-  />
-  </div>
-    
-        { this.state.isAuthenticated && <EditOutlined 
+        
+    {this.props.token !== null &&
+         <EditOutlined 
         onClick= {this.handleO}
-  style={{ fontSize: '30px', color: 'white' }}/> }
-
+  style={{ fontSize: '30px', color: 'white' }}/> 
+    }
         <Spacer amount={5} />
           <text className='name'>{this.state.profile.company_name}</text>
       </div>
@@ -110,14 +104,14 @@ handleintro = e => {
       
          <div>
       <Row>
-        <Col className='menu'>
+        <Col className='menu' style = {{padding:"0"}}>
         <button className='bc' onClick={this.handleintro}>About Us</button>
          </Col>
-        <Col className='menu'>
+        <Col className='menu' style = {{padding:"0"}}>
         <button className='bc' onClick= {this.handleprogress}>Company's Progress</button>
         </Col>
         
-        <Col className='menu'>
+        <Col className='menu' style = {{padding:"0"}}>
         <button className='bc' onClick= {this.handlecon}>Contact Us </button>
         </Col>
       </Row>
@@ -136,8 +130,8 @@ handleintro = e => {
    
       </>
     )
-  }
-}
+  
+}}
 
 const mapStateToProps = state => {
   return {

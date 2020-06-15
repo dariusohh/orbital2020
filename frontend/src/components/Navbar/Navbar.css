@@ -30,11 +30,11 @@
 }
 #cssmenu {
   width: auto;
-  border-bottom: 3px solid #0987ee;
+  border-bottom: 3px solid #598ae6;
   line-height: 1;
 }
 #cssmenu ul {
-  background: #9cbbdf;
+  background-image: linear-gradient(rgb(155, 225, 238), rgba(35, 76, 190, 0.781))
 }
 #cssmenu > ul > li {
   float: left;
@@ -98,7 +98,7 @@
 #cssmenu > ul > li.active > a:after,
 #cssmenu > ul > li:hover > a:after,
 #cssmenu > ul > li > a:hover:after {
-  background: #0987ee;
+  background: #598ae6;
 }
 
 .date {
@@ -121,8 +121,12 @@
   display: block;
 }
 
+#cssmenu .dropdown-active a {
+  color:white;
+}
+
 #cssmenu .dropdown-active a:after {
-  background:#0987ee;
+  background:#598ae6;
 }
 
 #cssmenu .dropdown-content a {

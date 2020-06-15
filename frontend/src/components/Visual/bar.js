@@ -46,7 +46,7 @@ render() {
             label: 'Expense',
             fill: false,
             lineTension: 0.1,
-            backgroundColor: 'rgba(75,192,192,0.4)',
+            backgroundColor: 'rgba(210, 82, 127, 1)',
             borderColor: 'rgba(75,192,192,1)',
             borderCapStyle: 'butt',
             borderDash: [],

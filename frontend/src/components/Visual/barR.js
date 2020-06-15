@@ -45,7 +45,7 @@ componentDidMount() {
         datasets: [
           {
             label: 'Revenue',
-            backgroundColor: 'rgba(71, 181, 209, 0.84)',
+            backgroundColor: 'rgba(54, 215, 183, 1)',
             borderColor: 'rgba(71, 181, 209, 0.84)',
             borderWidth: 1,
             hoverBackgroundColor: 'rgba(255,99,132,0.4)',

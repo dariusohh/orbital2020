@@ -1,12 +1,29 @@
 import React from 'react';
 import './Navbar.css';
+import axios from 'axios';
 import * as actions from '../../store/actions/auth';
 import { connect } from 'react-redux';
 import logo from './logo.png'
+import {Link} from "react-router-dom";
 
 class Navbar extends React.Component {
 
-  
+  state = {
+    expense: [],
+    profile:{}
+
+}
+componentDidMount() {
+  setTimeout(() => 
+    
+    axios.get(`profile/${localStorage.getItem("username")}/`)
+    .then(prof => {
+        this.setState({
+            profile: prof.data,
+        });
+ 
+    }), 200);
+}
   render() {
     return (
 
@@ -36,7 +53,7 @@ class Navbar extends React.Component {
           }
         <li className={window.location.pathname === '/profile' ? 'active' : null}>
           { this.props.isAuthenticated &&
-            <a href= "/profile"> Profile</a>
+            <Link to ={`profile/${this.state.profile.username}`}>Profile</Link>
           }
         </li>
         <li className={window.location.pathname === '/register' ? 'active' : null}>

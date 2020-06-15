@@ -81,7 +81,7 @@ handleO = e => {
     
 handleintro = e => {
   this.setState(
-    { header: 'About us',
+    { header: 'About Us',
       text : <About data={this.state.profile}/>
     });
 }

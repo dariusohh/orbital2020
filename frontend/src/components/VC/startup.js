@@ -17,6 +17,7 @@ export class StartUp extends React.Component{
             <br/>
             <div className="description">
         <h5>Company's Description:</h5>
+            <br/>
                 <h6>{this.props.data.company_description}</h6>
                 <br/>
              

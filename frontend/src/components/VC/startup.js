@@ -13,9 +13,10 @@ export class StartUp extends React.Component{
         <div className ="list">
             <div className='side'> <img  className="pic" src={user}/>
             <h2>{ this.props.data.company_name}</h2></div>
-            <h4>{this.props.data.company_industry}</h4>
+             <h4> {this.props.data.company_industry} Industry</h4>
             <br/>
             <div className="description">
+        <h5>Company's Description:</h5>
                 <h6>{this.props.data.company_description}</h6>
                 <br/>
              

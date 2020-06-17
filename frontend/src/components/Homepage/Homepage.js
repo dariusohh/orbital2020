@@ -71,7 +71,7 @@ class Homepage extends React.Component {
         <Spacer amount={2} />
         <h1 className='VCtext'> Venture-Capitalists </h1>
         <Container>
-        <Link to="/Login">
+          <Link to="/listing">
             <button className="Button">
               click to check out the features
             </button>

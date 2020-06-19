@@ -1,5 +1,5 @@
 .header {
-    height: 400px;
+    height: 180px;
     background-color: aliceblue;
     border-radius: 2%;
     background: url(./back.jpg); 
@@ -7,9 +7,9 @@
 }
 
 .header h1{
-    padding-top: 10%;
+    padding-top: 60px;
     text-align: center;
-    font-size: 100px;
+    font-size: 80px;
     /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     letter-spacing: 2px;
     font-style: italic; */
@@ -25,7 +25,7 @@
 }
 
 
-.list {
+.startup-list {
     height:fit-content;
     background-color:whitesmoke;
     border-radius: 4px;
@@ -45,4 +45,33 @@
 .brr {
     height: 30px;
     background-color: transparent;
+}
+
+.filter-button {
+    background:transparent;
+    color:black;
+    border:0px;
+    padding:0px;
+    font-size:20px;
+}
+
+.filter-button:active {
+    transform:none;
+    background:transparent;
+}
+
+.filter-button:hover {
+    background:none;
+}
+
+#search_input.searchBox {
+    padding: 8px 15px;
+    margin:0px;
+}
+
+.reset-btn {
+    padding:5px 10px;
+    margin-left:20px;
+    border-radius:5px;
+    background-color:grey;
 }

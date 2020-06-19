@@ -15,7 +15,6 @@ import {Time} from './timeline';
 import { connect } from 'react-redux';
 import { DateRangePicker } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css'
-import{ FilterFilled } from  '@ant-design/icons';
 
 import{StockOutlined,DollarCircleOutlined,UpCircleFilled } from  '@ant-design/icons';
 
@@ -29,7 +28,8 @@ class Visualisation extends React.Component {
     budget: 0,
     revenue:0,
     startDate: new Date(new Date().setDate(1)),
-    endDate: new Date()
+    endDate: new Date(),
+    filter:false
 }
 
 dateFilter = (objdate) => {
@@ -85,14 +85,20 @@ componentDidMount() {
 
    <h2 className='line'> </h2>
 
+   { this.state.filter ? 
+        <button className= "filter-button" onClick={() => this.setState({filter:false})}>▼  Filter</button>
+            :
+        <button className= "filter-button" onClick={() => this.setState({filter:true})}>▶  Filter</button>
+        }
+  {this.state.filter && 
    <div>
-        <label className="date-label">Date</label>
-        <FilterFilled style={{marginRight:"5px"}}/>
+        <label className="date-label">Date:</label>
       <DateRangePicker 
         value={[this.state.startDate,this.state.endDate]}
         onChange={arr => this.setState({startDate:arr[0],endDate:arr[1]})}
         disabledDate={date => date.getTime() - new Date().getTime() > 0}/>
         </div>
+  }
         <div className = "space-2"></div>
    <div>
    <Row>

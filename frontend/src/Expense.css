@@ -258,7 +258,12 @@ input[type='number'] {
 
 .date-label{
   font-family: 'Roboto', sans-serif;
-  font-size : 19px;
-  font-weight: 550;
-  margin-right: 3px;
+  font-size : 18px;
+  margin-right: 15px;
+  margin-left: 50px;
+  margin-top:20px;
+}
+
+.exp-dropdown:disabled {
+  opacity:0.5;
 }

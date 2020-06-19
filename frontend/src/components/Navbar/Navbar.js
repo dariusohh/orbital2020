@@ -35,7 +35,7 @@ componentDidMount() {
           <a href= "/expense" >Expense Tracking</a>
         }
         </li>
-       <li className={window.location.pathname === '/Listing' ? 'active' : null}>
+       <li className={window.location.pathname === '/listing' ? 'active' : null}>
         { !this.props.isAuthenticated && 
           <a href='/listing'>Listing</a>
         }

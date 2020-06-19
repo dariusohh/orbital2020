@@ -130,7 +130,7 @@ render() {
        <>
         <Line data={data} options={options}/>
         <text style= {{fontSize:30, color:'DarkSlateGray', textAlign:"center"}}>
-    Current Profit: SGD ${this.props.data
+    Total Profit: SGD ${this.props.data
           .map(transaction => transaction.amount)
           .map(num => parseFloat(num))
           .reduce((acc, item) => (acc += item), 0).toFixed(2)}

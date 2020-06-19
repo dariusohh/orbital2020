@@ -6,7 +6,6 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { DateRangePicker } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css'
-import{ FilterFilled } from  '@ant-design/icons';
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
 
@@ -15,7 +14,8 @@ class Expense extends React.Component {
   state = {
     expense: [],
     startDate: new Date(new Date().setDate(1)),
-    endDate: new Date()
+    endDate: new Date(),
+    filter:false
 }
 
   dateFilter = (objdate) => {
@@ -58,16 +58,22 @@ componentDidMount() {
   return (
       <>
       <Header />
-      <div className='container'>
-        <div>
-        <label className="date-label">Date</label>
-        <FilterFilled style={{marginRight:"5px"}}/>
-      <DateRangePicker 
+      <h2 className='line'> </h2>
+      <div className='container' style={{marginTop:"0px"}}> 
+        { this.state.filter ? 
+        <button className= "filter-button" onClick={() => this.setState({filter:false})}>▼  Filter</button>
+            :
+        <button className= "filter-button" onClick={() => this.setState({filter:true})}>▶  Filter</button>
+        }
+        { this.state.filter && 
+          <div>
+        <label className="date-label">Date:</label>
+        <DateRangePicker 
         value={[this.state.startDate,this.state.endDate]}
         onChange={arr => this.setState({startDate:arr[0],endDate:arr[1]})}
         disabledDate={date => date.getTime() - new Date().getTime() > 0}/>
         </div>
-        <div className = "space-2"></div>
+        }
         <IncomeExpenses data={this.state.expense}/>
         <TransactionList data={this.state.expense}/>
       </div>

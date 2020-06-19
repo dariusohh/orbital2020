@@ -20,14 +20,13 @@ render() {
         <Row>
           
           <Col  xs= {8.5}> 
-            <Row>
+            <Row style = {{textAlign:"center", justifyContent:"center", display:"flex",flexWrap:"nowrap"}}>
               <Col className="wrap">
               <Row className ="header-5">
                 <h1 className="test-5">Forecasted Company's Progress</h1>
             </Row>
-            <Row>
                  <div className ='content'><Graph2 data={this.props.data.expense}/></div> 
-                 </Row>
+
               </Col >
 
 

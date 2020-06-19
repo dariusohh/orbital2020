@@ -21,16 +21,16 @@ class Homepage extends React.Component {
   return (
 
 <div> 
-<Container className='containers'> </Container>
+<div className='containers'> </div>
 <img 
         src= {i}
         alt ="avater"
         className= "avatar-img"
         />
 
-<Container className='space'>
+<div className='space'>
 
-</Container>
+</div>
 
 <h1 className ='banner'>
   AnalyticsWallet Welcomes You 
@@ -42,7 +42,7 @@ class Homepage extends React.Component {
 </p>
 
 
-<Container className='space2'></Container>
+<div className='space2'></div>
 
 <Container className='c'>
 <Link to="/Register">
@@ -52,12 +52,12 @@ class Homepage extends React.Component {
             </Link>
 </Container>
 
-<Container className='space'></Container>
+<div className='space'></div>
 
 <h1 className ='banner2'>
     Our Services
 </h1>
-<Container className='space'></Container>
+<div className='space'></div>
 
 
   

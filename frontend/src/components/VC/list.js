@@ -4,6 +4,8 @@ import './VC.css';
 import List2 from './list2';
 import { Row,Col}from 'react-grid-system';
 import { connect } from 'react-redux';
+import StarRatings from 'react-star-ratings';
+import { Multiselect } from 'multiselect-react-dropdown';
 
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
@@ -14,9 +16,10 @@ class List extends React.Component {
      
         this.state = {
             profile:[],
-          low:0,
-          high:5,
-          x:["y"]
+          rating:0,
+          industry:[],
+          x:["y"],
+          filter:false
         };
       }
     componentDidMount() {
@@ -26,7 +29,7 @@ class List extends React.Component {
             const x =[]
             const y =[]
             const z=[]
-           var new_res = res.data.map(y => x.push(y)).map(x => y.push(x.company_industry))
+           res.data.map(y => x.push(y)).map(x => y.push(x.company_industry))
            .map(y => z.push(y.company_name))
            this.setState ({
                profile: x,
@@ -35,24 +38,7 @@ class List extends React.Component {
         })
           
       }
-      handleChange = (e) => {
-          this.setState ({
-              low: e.target.value
-          })
-      }
-      handlebig= (e) => {
-        this.setState ({
-            high: e.target.value
-        })
-    }
-    // handlefilter = (e) =>
-    // {
-    //     const final=[]
-    //     const y = this.state.x.map(e => final.push(e))
-    //     this.setState({
-    //         x : final.push(e.target.value)
-    //     })
-    // }
+    
        
     render() {
     return (
@@ -64,21 +50,51 @@ class List extends React.Component {
         <div >
             <Row>
                 <Col xs={4}>
-        <h5>Enter Rating's Upper range</h5>
-        <input style={{width: '100px'}} type="number" onChange={this.handleChange}/>
-        <h5>Enter Rating's lower range</h5>
-        <input style={{width: '100px'}} type="number" onChange={this.handlebig}/>
+        { this.state.filter ? 
+        <button className= "filter-button" onClick={() => this.setState({filter:false})}>▼  Filter</button>
+            :
+        <button className= "filter-button" onClick={() => this.setState({filter:true})}>▶  Filter</button>
+        }
+        { (this.state.rating !== 0 || this.state.industry.length !== 0) && 
+            <button className="reset-btn" onClick={() => this.setState({rating:0,industry:[],filter:false})}>Reset Filter</button>
+        }
+        <br/>
+        { this.state.filter &&
+        <div style={{margin:"20px 50px"}}>
+        <h5>Rating:</h5>
+        <StarRatings 
+            rating= {this.state.rating}
+            numberOfStars={5}
+            changeRating={(num) => this.setState({rating:num})}
+            starDimension="30px"
+            starSpacing="10px"
+            starRatedColor="DarkGoldenRod"
+            starHoverColor="gold"
+            />
+        </div>
+        
+        }
         </Col>
+        { this.state.filter &&
         <Col xs={7}>
-           <h5> Enter Desired Industry: </h5>
-        <input style={{width: '700px'}} type="text"/>
+           <h5 style={{marginTop:"47px"}}> Industry: </h5>
+        <Multiselect options={this.state.profile.map(x => x.company_industry)}
+            onSelect= {lst => this.setState({industry:lst})}
+            onRemove= {lst => this.setState({industry:lst})}
+            isObject={false}
+            avoidHighlightFirstOption
+            selectedValues = {this.state.industry}
+            />
         </Col>
+        }
         </Row>
         </div>
        
      <br/>
  <div >
-       <List2 data = {this.state.profile.filter(x => x.ratings <= this.state.high && x.ratings >= this.state.low )}/>
+       <List2 data = {this.state.profile.filter(x => x.show_public).filter(x => x.ratings === this.state.rating || this.state.rating === 0)
+           .filter(x => this.state.industry.length === 0 || this.state.industry.includes(x.company_industry))
+           }/>
  </div>
 </>
     )

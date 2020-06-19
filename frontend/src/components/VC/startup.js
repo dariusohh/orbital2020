@@ -1,7 +1,6 @@
 import React from 'react'
 import './VC.css';
 import user from './user.png';
-import { render } from 'react-dom';
 import StarRatings from 'react-star-ratings';
 import {Link } from "react-router-dom"; 
 export class StartUp extends React.Component{
@@ -10,8 +9,8 @@ export class StartUp extends React.Component{
 
     return (
         <>
-        <div className ="list">
-            <div className='side'> <img  className="pic" src={user}/>
+        <div className ="startup-list">
+            <div className='side'> <img  className="pic" src={user} alt="dp"/>
             <h2>{ this.props.data.company_name}</h2></div>
              <h4> {this.props.data.company_industry} Industry</h4>
             <br/>

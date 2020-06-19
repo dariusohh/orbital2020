@@ -1,11 +1,11 @@
 .profile {
-    padding-top: 1%;
+    padding-top: 4%;
    max-width: 100%;
     text-align: center;
     align-items: center;
     padding-right: 5%;
     padding-left: 5%;
-    padding-bottom: 1%;
+    padding-bottom: 4%;
     background: url(./pic/background.jpg); 
     
 border-radius: 5px;
@@ -15,7 +15,7 @@ opacity: 0.9;
 
 .name{
    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-   font-size: 50px;
+   font-size: 70px;
    letter-spacing: 10px;
    text-align: center;
    color:white;

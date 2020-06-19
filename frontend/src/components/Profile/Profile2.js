@@ -23,7 +23,7 @@ class Profile2 extends React.Component {
         company_industry: "",
         company_description: "", 
         show_public: ""},
-        header:'Click to find out more about the company!',
+        header:'About Us',
         expense: [],
     update: false
     }
@@ -40,6 +40,7 @@ componentDidMount() {
       .then(prof => {
           this.setState({
               profile: prof.data,
+            text: <About data={prof.data}/>
           });
       })
       axios.get(`api/`)
@@ -80,7 +81,7 @@ handleO = e => {
     
 handleintro = e => {
   this.setState(
-    { header: 'About us',
+    { header: 'About Us',
       text : <About data={this.state.profile}/>
     });
 }

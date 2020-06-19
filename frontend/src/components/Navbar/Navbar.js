@@ -35,6 +35,11 @@ componentDidMount() {
           <a href= "/expense" >Expense Tracking</a>
         }
         </li>
+       <li className={window.location.pathname === '/Listing' ? 'active' : null}>
+        { !this.props.isAuthenticated && 
+          <a href='/listing'>Listing</a>
+        }
+        </li>
         <li className={window.location.pathname === '/login' ? 'active' : null}>
         { !this.props.isAuthenticated && 
           <a href='/login'>Login</a>

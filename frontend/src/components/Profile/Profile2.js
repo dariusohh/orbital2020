@@ -117,9 +117,6 @@ render() {
         </Col>
       </Row>
     </div>  <Spacer amount={20} />
-    <div className='header-7'>
-      {this.state.header}
-    </div>
     <Spacer amount={20} />
       <div className='body'>
         

@@ -80,7 +80,7 @@ opacity: 0.9;
 }
 
 .header-5 {
-  background-color:cornflowerblue;
+  background-image:linear-gradient(to top left,rgb(162, 230, 247),rgb(24, 81, 238));
   text-align:center;
   display:block !important;
 }
@@ -114,4 +114,8 @@ opacity: 0.9;
 .bc:hover {
     background-image:linear-gradient(rgb(16, 186, 243),rgb(45, 45, 138));
     color:white;
+}
+
+.bc:active {
+    transform:translateY(0px);
 }

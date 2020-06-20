@@ -5,7 +5,6 @@ import './profile.css';
 import Target from './target';
 import Expense from './expense';
 import Graph2 from "./line";
-import Summary from "./summary";
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
 
 export class  Graph extends React.Component {
@@ -18,8 +17,7 @@ render() {
     return (
       <div>
         <Row>
-          
-          <Col  xs= {8.5}> 
+          <Col> 
             <Row style = {{textAlign:"center", justifyContent:"center", display:"flex",flexWrap:"nowrap"}}>
               <Col className="wrap">
               <Row className ="header-5">
@@ -60,16 +58,6 @@ render() {
                  </Row>
               </Col >
             </Row>
-          </Col>
-        <Col xs={0.2}></Col>
-          <Col className="wrap"xs= {3}>
-            <Row className ="header-5">
-                <h1 className="test-5">Summary of Company's Performance</h1>
-            </Row>
-            <Row >
-               <div className ='content' ><Summary data= {this.props.data}/></div> 
-            </Row>
-            
           </Col>
         </Row>
       </div>

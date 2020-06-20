@@ -11,32 +11,32 @@ export class StartUp extends React.Component{
         <>
         <div className ="startup-list">
             <div className='side'> <img  className="pic" src={user} alt="dp"/>
-            <h2>{ this.props.data.company_name}</h2></div>
-             <h4> {this.props.data.company_industry} Industry</h4>
+            <h2>{ this.props.data.company_name}</h2>
             <br/>
-            <div className="description">
-        <h5>Company's Description:</h5>
-            <br/>
-                <h6>{this.props.data.company_description}</h6>
-                <br/>
-             
-                <h4>Ratings</h4>
-                <StarRatings
+             <h4 style={{color:"#2F4F4F"}}> {this.props.data.company_industry}</h4>
+            <StarRatings
           rating={this.props.data.ratings}
-          starRatedColor="DarkGoldenRod"
+          starRatedColor="GoldenRod"
           numberOfStars={5}
           name='rating'
           starDimension="30px"
-          starSpacing="10px"
-          
-        />  
+          starSpacing="10px"/>
+            </div>
+            <div className="description-box">
+            <div className="description">
+                <h5 style={{textAlign:"center", fontSize:"25px"}}>Description</h5>
+            <br/>
+                <h6>{this.props.data.company_description}</h6>
+                <br/>
+
             </div>
             <br/>
             <Link to={`/profile/${this.props.data.username}`}>
-            <button className="Btn">
-              More
+            <button className="detail-btn">
+              View details
             </button>
             </Link>
+            </div>
         </div>
         <div className='brr'></div>
         </>

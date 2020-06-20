@@ -68,7 +68,7 @@ class List extends React.Component {
             changeRating={(num) => this.setState({rating:num})}
             starDimension="30px"
             starSpacing="10px"
-            starRatedColor="DarkGoldenRod"
+            starRatedColor="GoldenRod"
             starHoverColor="gold"
             />
         </div>

@@ -8,6 +8,7 @@ import Visual from './components/Visual/Visual'
 import Profile from './components/Profile/Profile'
 import Profile2 from './components/Profile/Profile2';
 import List from './components/VC/list';
+import Predict from './components/Prediction/Predict'
 
 const BaseRouter = () => (
     <div>
@@ -19,6 +20,7 @@ const BaseRouter = () => (
          <Route exact path="/profile/:username/" component={Profile2} />{" "}
         <Route exact path = '/profile' component = {Profile}/>
       <Route exact path = '/listing' component = {List}/>
+      <Route exact path='/predict' component = {Predict}/>
     </div>
 )
 

@@ -45,12 +45,14 @@ class Homepage extends React.Component {
           firm to invest. In light of this,Analytics wallet aim to help Venture-Capitalist find their desired companies to invest in. Click to check out 
           how we can help you! </p>
         <Container>
-        <Link to="/listing">
-            <button className="Button">
-              click to check it out !
+     <br/>
+    <br/>
+  <Link to="/Login">
+            <button className="detail-btn">
+            click to check it out !
             </button>
             </Link>
-            </Container>
+  </Container>
 </div>
   <div className='Su'>
   <img 
@@ -66,12 +68,14 @@ struggle faced by startup is fund management hence AnalyticsWallet aim to help s
 we also aim to smoothen the process of startup connecting with Venture Capitalist. Click 
 the button to check out how we can help you! </p>
   <Container >
-  <Link to="/Login">
-            <button className="Button">
-            click to check it out !
+    <br/>
+        <br/>
+        <Link to="/listing">
+            <button className="detail-btn">
+              click to check it out !
             </button>
             </Link>
-  </Container>
+            </Container>
   
   </div>
   

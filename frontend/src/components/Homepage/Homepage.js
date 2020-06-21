@@ -8,6 +8,7 @@ import i from './assets/i.jpg';
 import {Link } from "react-router-dom";
 import A from './assets/A.jpg';
 import B from './assets/B.jpg';
+import logo from './logo.png'
 
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
@@ -21,59 +22,32 @@ class Homepage extends React.Component {
   return (
 
 <div> 
-<div className='containers'> </div>
 <img 
-        src= {i}
-        alt ="avater"
-        className= "avatar-img"
+        src= {logo}
+        className='llogo'
         />
-
-<div className='space'>
-
-</div>
-
-<h1 className ='banner'>
-  AnalyticsWallet Welcomes You 
-</h1>
-
-  <p className='text'>“ We are the first e-wallet web application designed 
+        <br/>
+        <p className="subtext2"> "AnalyticsWallet is the first e-wallet web application designed 
     to help start-up companies keep track of their finances 
-    as well as to connect with Venture Capitalists.”
-</p>
-
-
-<div className='space2'></div>
-
-<Container className='c'>
-<Link to="/Register">
-            <button className="Button">
-              click to start your journey with us
-            </button>
-            </Link>
-</Container>
-
-<div className='space'></div>
-
-<h1 className ='banner2'>
-    Our Services
-</h1>
-<div className='space'></div>
-
-
+    as well as to connect with Venture Capitalists."</p>
+        <h2 className='line'> <span className='text2'></span></h2>
   
-<div className="wrapper">
+<div class="wrapper">
   <div className= 'Su'>
     <img 
         src= {B}
         className='B'
-        alt = "B"
         />
         <Spacer amount={2} />
-        <h1 className='VCtext'> Venture-Capitalists </h1>
+        <h1 className='VCtext'> Venture-Capitalists </h1><br/>
+        <p className="subtext">
+          With a growing startup scene in Singapore, AnalyticsWallet recognised that it is getting increasingly difficult to find the right 
+          firm to invest. In light of this,Analytics wallet aim to help Venture-Capitalist find their desired companies to invest in. Click to check out 
+          how we can help you! </p>
         <Container>
-          <Link to="/listing">
+        <Link to="/listing">
             <button className="Button">
-              click to check out the features
+              click to check it out !
             </button>
             </Link>
             </Container>
@@ -81,15 +55,20 @@ class Homepage extends React.Component {
   <div className='Su'>
   <img 
         src= {A}
-        alt = "A"
         className='B'
         />
 <Spacer amount={2} />
   <h1 className='VCtext'> Start-Up </h1> 
+  <br/>
+  <p className="subtext">
+The startup scene in Singapore is growing exponentially. AnalyticsWallet recognised that one prominent 
+struggle faced by startup is fund management hence AnalyticsWallet aim to help startup overcome this challenge using technology.Additionally, 
+we also aim to smoothen the process of startup connecting with Venture Capitalist. Click 
+the button to check out how we can help you! </p>
   <Container >
   <Link to="/Login">
             <button className="Button">
-              click to check out the features
+            click to check it out !
             </button>
             </Link>
   </Container>
@@ -99,7 +78,6 @@ class Homepage extends React.Component {
   </div>
 
 </div>
-
 
     )
   }

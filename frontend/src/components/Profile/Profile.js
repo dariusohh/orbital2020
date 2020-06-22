@@ -126,7 +126,8 @@ return axios.put(`profile/${username}/`,
             </select>
                   <br/>
                 <label>Company Description:</label>
-                <input type = "text" name = "company_description" onChange={(event)=>this.handleKeypress(event)} defaultValue = {this.state.profile.company_description} disabled  = {!this.state.update}/>
+                <br/>
+                <textarea style={{height:'100px', width:'100%',margin:15}} name = "company_description" onChange={(event)=>this.handleKeypress(event)} defaultValue = {this.state.profile.company_description} disabled  = {!this.state.update}/>
                 <p> Count :  {this.state.count} / 450 </p>
                 {this.state.count > 450 &&
                 <p style={{color:'red'}}>Maximum Character Reached</p>

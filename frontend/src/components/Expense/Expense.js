@@ -13,7 +13,7 @@ export const Expense = ({transaction}) => {
         const amount = event.target.amount.value;
         const username = localStorage.getItem("username");
         return axios.put(`api/${transaction.id}/`, {name: name, username: username,
-            amount: amount})
+            amount: -amount})
             .catch(err => console.log(err))
     }
 

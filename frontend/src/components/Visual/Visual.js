@@ -40,7 +40,7 @@ dateFilter = (objdate) => {
   const objmin = objdate.substring(14,16)
   const objsec = objdate.substring(17,19)
   const olddate = new Date(objyear,objmth,objday, objhour, objmin, objsec)
-  const currdate = new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate(),23,59,59)
+  const currdate = new Date(this.state.endDate.getFullYear(),this.state.endDate.getMonth(),this.state.endDate.getDate(),23,59,59)
       return (olddate.getTime() <= currdate.getTime()) 
       && (this.state.startDate.getTime() <= olddate.getTime())
 }

@@ -6,7 +6,6 @@ from rest_framework.routers import DefaultRouter
 from django.conf.urls.static import static
 from django.conf import settings
 from post.views import PostView
-from django.urls import path, include
 from expense.views import predict
 
 

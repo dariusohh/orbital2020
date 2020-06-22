@@ -7,22 +7,6 @@ import logo from './logo.png'
 
 class Navbar extends React.Component {
 
-  state = {
-    expense: [],
-    profile:{}
-
-}
-componentDidMount() {
-  setTimeout(() => 
-    
-    axios.get(`profile/${localStorage.getItem("username")}/`)
-    .then(prof => {
-        this.setState({
-            profile: prof.data,
-        });
- 
-    }), 200);
-}
   render() {
     return (
 
@@ -57,7 +41,7 @@ componentDidMount() {
           }
         <li className={window.location.pathname.startsWith('/profile') ? 'active' : null}>
           { this.props.isAuthenticated &&
-            <a href={`/profile/${this.state.profile.username}`}>Profile</a>
+            <a href={`/profile/${localStorage.getItem("username")}`}>Profile</a>
           }
         </li>
         <li className={window.location.pathname === '/register' ? 'active' : null}>

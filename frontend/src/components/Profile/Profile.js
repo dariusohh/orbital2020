@@ -9,7 +9,8 @@ class Profile extends React.Component {
             company_industry: "",
             company_description: "", 
             show_public: ""},
-        update: false
+        update: false,
+             count:0
     }
     
     componentDidMount() {
@@ -17,7 +18,8 @@ class Profile extends React.Component {
           axios.get(`profile/${localStorage.getItem("username")}/`)
           .then(prof => {
               this.setState({
-                  profile: prof.data
+                  profile: prof.data,
+                    count : prof.data.company_description.length
               });
           })
       }
@@ -82,6 +84,10 @@ return axios.put(`profile/${username}/`,
     switchChange = checked => {
         this.setState({ show_public: checked });
     }
+  handleKeypress(event) {
+    console.log('*****', event.target.value);
+    this.setState({ count:event.target.value.length });
+  }
 
   
     handleImageChange = (e) => {
@@ -118,9 +124,13 @@ return axios.put(`profile/${username}/`,
                 }
 
             </select>
-                <br/>
+                  <br/>
                 <label>Company Description:</label>
-                <input type = "text" name = "company_description" defaultValue = {this.state.profile.company_description} disabled  = {!this.state.update}/>
+                <input type = "text" name = "company_description" onChange={(event)=>this.handleKeypress(event)} defaultValue = {this.state.profile.company_description} disabled  = {!this.state.update}/>
+                <p> Count :  {this.state.count} / 450 </p>
+                {this.state.count > 450 &&
+                <p style={{color:'red'}}>Maximum Character Reached</p>
+                }
                 <br/>
                 <label>Company Contact Number:</label>
                 <input type = "text" name = "tele" defaultValue = {this.state.profile.tele} disabled  = {!this.state.update}/>

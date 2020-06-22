@@ -56,7 +56,7 @@ class Profile extends React.Component {
         const company_name = event.target.company_name.value;
         const company_industry = event.target.company_industry.value;        
 
-const company_description = event.target.company_description.value;
+const company_description = event.target.company_description.value.limit(450);
 const show_public = event.target.show_public.checked;
 const username = localStorage.getItem("username");
 const tele = event.target.tele.value;

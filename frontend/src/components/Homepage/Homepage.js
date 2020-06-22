@@ -19,6 +19,7 @@ class Homepage extends React.Component {
   
 
   render() {
+
   return (
 
 <div> 
@@ -47,11 +48,11 @@ class Homepage extends React.Component {
         <Container>
      <br/>
     <br/>
-  <Link to="/Login">
+  <a href="/listing">
             <button className="detail-btn">
             click to check it out !
             </button>
-            </Link>
+            </a>
   </Container>
 </div>
   <div className='Su'>
@@ -70,11 +71,20 @@ the button to check out how we can help you! </p>
   <Container >
     <br/>
         <br/>
-        <Link to="/listing">
+        { this.props.token !== null ? 
+        <a href="/expense">
             <button className="detail-btn">
               click to check it out !
             </button>
-            </Link>
+        </a>
+        :
+        <a href="/login">
+            <button className="detail-btn">
+              click to check it out !
+            </button>
+        </a>
+
+        }
             </Container>
   
   </div>

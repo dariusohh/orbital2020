@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import Spacer from 'react-add-space';
 import './profile.css';
 import{ MailOutlined, PhoneOutlined, HomeOutlined} from  '@ant-design/icons';
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import {Line} from 'react-chartjs-2';
-import {Link } from "react-router-dom"; 
 import axios from 'axios';
 import { connect } from 'react-redux';
 
@@ -76,7 +75,7 @@ render() {
     month_expense[mthyear] = 0
   }
 
-  this.props.data.forEach(x => {
+  this.state.expense.forEach(x => {
     const objyear = x.created_at.substring(0,4)
     const objmth = x.created_at.substring(5,7) - 1
     const objday = x.created_at.substring(8,10)
@@ -85,11 +84,13 @@ render() {
     const objsec = x.created_at.substring(17,19)
     const createddate = new Date(objyear,objmth,objday, objhour, objmin, objsec)
     const created = createddate.toLocaleDateString().slice(3,6) + createddate.toLocaleDateString().slice(8,10)
-    month_profit[created] += parseFloat(x.amount)
-    if (x.amount > 0) {
-      month_revenue[created] += parseFloat(x.amount)
-    } else {
-      month_expense[created] -= parseFloat(x.amount)
+    if (created in month_profit) {
+      month_profit[created] += parseFloat(x.amount)
+      if (x.amount > 0) {
+        month_revenue[created] += parseFloat(x.amount)
+      } else {
+        month_expense[created] -= parseFloat(x.amount)
+      }
     }
   })
 
@@ -191,15 +192,10 @@ render() {
             <h2 className='text2'>Monthly Progress</h2>
           }
         <Line data={data} options = {options}/>
-        <Link to="/Login">
-            <button className="Btn">
-              More
-            </button>
-            </Link>
             { this.state.option === "day" ? 
-            <button onClick={(e) => this.setState({option:"month"})}>Change to Month</button>
+            <button className = "toggle-btn" onClick={(e) => this.setState({option:"month"})}>Change to Month</button>
             :
-            <button onClick={(e) => this.setState({option:"day"})}>Change to Day</button>
+            <button className = "toggle-btn" onClick={(e) => this.setState({option:"day"})}>Change to Day</button>
             }
       </div>
     )

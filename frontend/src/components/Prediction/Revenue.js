@@ -1,6 +1,5 @@
 import React from 'react';
 import {Line} from 'react-chartjs-2';
-import {Link } from "react-router-dom"; 
 import axios from 'axios';
 import { connect } from 'react-redux';
 
@@ -18,9 +17,9 @@ render() {
     month_revenue[mthyear] = 0
   }
 
-  for (var j = 1; j < 6; j++) {
-    var mthyeardate = new Date(new Date().getFullYear(),new Date().getMonth() + j)
-    var mthyear = mthyeardate.toLocaleDateString().slice(3,6) + mthyeardate.toLocaleDateString().slice(8,10)
+  for (var k = 1; k < 6; k++) {
+    mthyeardate = new Date(new Date().getFullYear(),new Date().getMonth() + j)
+    mthyear = mthyeardate.toLocaleDateString().slice(3,6) + mthyeardate.toLocaleDateString().slice(8,10)
     month_revenue[mthyear] = 0
   }
 
@@ -41,6 +40,7 @@ render() {
     const objsec = x.created_at.substring(17,19)
     const createddate = new Date(objyear,objmth,objday, objhour, objmin, objsec)
     const created = createddate.toLocaleDateString().slice(3,6) + createddate.toLocaleDateString().slice(8,10)
+      if (parseFloat(x.amount) > 0)
       month_revenue[created] += parseFloat(x.amount)
   })
 
@@ -82,18 +82,18 @@ render() {
             label: 'Revenue Prediction',
             fill: false,
             lineTension: 0.1,
-            backgroundColor: 'rgba(41, 241, 195, 1)',
+            backgroundColor: 'rgb(139,0,139)',
             borderColor: 'rgb(139,0,139)',
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,
             borderJoinStyle: 'miter',
-            pointBorderColor: 'rgba(41, 241, 195, 1)',
+            pointBorderColor: 'rgb(139,0,139)',
             pointBackgroundColor: '#fff',
             pointBorderWidth: 1,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: 'rgba(41, 241, 195, 1)',
-            pointHoverBorderColor: 'rgba(41, 241, 195, 1)',
+            pointHoverBackgroundColor: 'rgb(139,0,139)',
+            pointHoverBorderColor: 'rgb(139,0,139)',
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,

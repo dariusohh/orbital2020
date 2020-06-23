@@ -1,6 +1,5 @@
 import React from 'react';
 import './Navbar.css';
-import axios from 'axios';
 import * as actions from '../../store/actions/auth';
 import { connect } from 'react-redux';
 import logo from './logo.png'

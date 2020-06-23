@@ -13,7 +13,7 @@ render() {
 
   const achievement_arr = this.props.data.achievement.split(",")
   const achievements = []
-  for (const [index,value] of achievement_arr.entries()) {
+  for (var value of achievement_arr) {
     achievements.push(<li style={{fontSize:25}}>{value}</li>)
   }
   

@@ -56,7 +56,7 @@ class Profile extends React.Component {
         const company_name = event.target.company_name.value;
         const company_industry = event.target.company_industry.value;        
 
-const company_description = event.target.company_description.value.limit(450);
+const company_description = event.target.company_description.value;
 const show_public = event.target.show_public.checked;
 const username = localStorage.getItem("username");
 const tele = event.target.tele.value;
@@ -128,8 +128,8 @@ return axios.put(`profile/${username}/`,
                 <label>Company Description:</label>
                 <br/>
                 <textarea style={{height:'100px', width:'100%',margin:15}} name = "company_description" onChange={(event)=>this.handleKeypress(event)} defaultValue = {this.state.profile.company_description} disabled  = {!this.state.update}/>
-                <p> Count :  {this.state.count} / 450 </p>
-                {this.state.count > 450 &&
+                <p> Count :  {this.state.count} / 750 </p>
+                {this.state.count > 750 &&
                 <p style={{color:'red'}}>Maximum Character Reached</p>
                 }
                 <br/>
@@ -163,12 +163,12 @@ return axios.put(`profile/${username}/`,
                 defaultChecked = {this.state.profile.show_public ? "true" : null} disabled  = {!this.state.update}/>
                 <br/>
                 { this.state.update && 
-                <button type="submit">Update Profile</button> 
+                <button type="submit" disabled={this.state.count > 750}>Update Profile</button> 
                 }
             </form>
             { !this.state.update && 
             <form onSubmit = {this.setUpdate}>
-                <button type= "submit">Edit Profile</button>
+                <button className = "update-submit" type= "submit">Edit Profile</button>
             </form>
             }
             </div>

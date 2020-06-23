@@ -1,6 +1,5 @@
 import React from 'react';
 import {HorizontalBar} from 'react-chartjs-2';
-import {Link } from "react-router-dom"; 
 import axios from 'axios';
 import { connect } from 'react-redux';
 
@@ -67,13 +66,7 @@ return (
   <div>
     <h2 className='text2'> Revenue Breakdown</h2>
     <HorizontalBar data={data} options={options}/>
-    <Link to="/Login">
-            <button className="Btn">
-              More
-            </button>
-            </Link>
   </div>
-   
 )
 }
 }

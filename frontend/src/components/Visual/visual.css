@@ -88,3 +88,18 @@
     font-style: italic
 
 }
+
+.toggle-btn {
+    padding:5px;
+    position:absolute;
+    top:0;
+    right:3%;
+    border-radius:3px;
+    color: rgb(37, 35, 35);
+    background-color:cyan;
+    border:0;
+}
+
+.toggle-btn:hover {
+    background-color:turquoise;
+}

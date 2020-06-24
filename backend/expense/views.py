@@ -19,5 +19,5 @@ def predict(request):
     revenue = list(filter(lambda x:float(x["amount"]) > 0 ,data))
     predicted_revenue = revenue_predictor(revenue) if len(revenue) > 1 else []
     expense = list(filter(lambda x:float(x["amount"]) < 0 ,data))
-    predicted_expense = expense_predictor(revenue) if len(revenue) > 1 else []
+    predicted_expense = expense_predictor(revenue) if len(expense) > 1 else []
     return JsonResponse({"revenue_pred":predicted_revenue,"expense_pred": predicted_expense})

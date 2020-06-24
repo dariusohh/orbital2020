@@ -34,6 +34,11 @@ class Predict extends React.Component {
             : 
                 <RevenueGraph data={this.state.expense} prediction = {this.state.prediction.revenue_pred}/>
             }
+               { this.state.prediction.length === 0 ? 
+                <h1 style={{textAlign:"center"}}>Loading</h1>
+            : 
+            <ExpenseGraph data={this.state.expense} prediction = {this.state.prediction.expense_pred}/>
+            }
             </div>
         )
       }

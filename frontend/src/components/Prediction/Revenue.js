@@ -18,7 +18,7 @@ render() {
   }
 
   for (var k = 1; k < 6; k++) {
-    mthyeardate = new Date(new Date().getFullYear(),new Date().getMonth() + j)
+    mthyeardate = new Date(new Date().getFullYear(),new Date().getMonth() + k)
     mthyear = mthyeardate.toLocaleDateString().slice(3,6) + mthyeardate.toLocaleDateString().slice(8,10)
     month_revenue[mthyear] = 0
   }
@@ -57,21 +57,21 @@ render() {
         datasets: [
 
           {
-            label: 'Revenue',
+            label: 'Actual',
             fill: false,
             lineTension: 0.1,
-            backgroundColor: 'rgba(41, 241, 195, 1)',
-            borderColor: 'rgba(41, 241, 195, 1)',
+            backgroundColor: 'rgb(0,191,255)',
+            borderColor: 'rgb(0,191,255)',
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,
             borderJoinStyle: 'miter',
-            pointBorderColor: 'rgba(41, 241, 195, 1)',
+            pointBorderColor: 'rgb(0,191,255)',
             pointBackgroundColor: '#fff',
             pointBorderWidth: 1,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: 'rgba(41, 241, 195, 1)',
-            pointHoverBorderColor: 'rgba(41, 241, 195, 1)',
+            pointHoverBackgroundColor: 'rgb(0,191,255)',
+            pointHoverBorderColor: 'rgb(0,191,255)',
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
@@ -79,7 +79,7 @@ render() {
           },
 
           {
-            label: 'Revenue Prediction',
+            label: 'Predicted',
             fill: false,
             lineTension: 0.1,
             backgroundColor: 'rgb(139,0,139)',

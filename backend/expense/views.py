@@ -17,5 +17,7 @@ class ExpenseViewSet(viewsets.ModelViewSet):
 def predict(request):
     data = request.data
     revenue = list(filter(lambda x:float(x["amount"]) > 0 ,data))
+    predicted_revenue = revenue_predictor(revenue) if len(revenue) > 1 else []
     expense = list(filter(lambda x:float(x["amount"]) < 0 ,data))
-    return JsonResponse({"revenue_pred":revenue_predictor(revenue),"expense_pred": expense_predictor(expense)})
+    predicted_expense = expense_predictor(revenue) if len(revenue) > 1 else []
+    return JsonResponse({"revenue_pred":predicted_revenue,"expense_pred": predicted_expense})

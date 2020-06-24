@@ -2,12 +2,10 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import Chart from "react-apexcharts";
+import {Line} from 'react-chartjs-2';
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
 
 export class ExpenseGraph extends React.Component {
-
-
         
 
 render() {
@@ -21,7 +19,7 @@ render() {
   }
 
   for (var k = 1; k < 6; k++) {
-    mthyeardate = new Date(new Date().getFullYear(),new Date().getMonth() + j)
+    mthyeardate = new Date(new Date().getFullYear(),new Date().getMonth() + k)
     mthyear = mthyeardate.toLocaleDateString().slice(3,6) + mthyeardate.toLocaleDateString().slice(8,10)
     month_expense[mthyear] = 0
   }
@@ -31,7 +29,7 @@ render() {
   this.props.prediction.forEach(x => {
     const objyear = x.date.substring(2,4)
     const objmth = x.date.substring(5,7)
-    month_predictions[objmth + "/" + objyear] = x.value
+    month_predictions[objmth + "/" + objyear] = -x.value
   })
 
   this.props.data.forEach(x => {
@@ -44,7 +42,7 @@ render() {
     const createddate = new Date(objyear,objmth,objday, objhour, objmin, objsec)
     const created = createddate.toLocaleDateString().slice(3,6) + createddate.toLocaleDateString().slice(8,10)
       if (parseFloat(x.amount) < 0)
-      month_expense[created] += parseFloat(x.amount)
+      month_expense[created] -= parseFloat(x.amount)
   })
 
   const mth_xlabels = Object.keys(month_expense)
@@ -55,55 +53,69 @@ render() {
     pred_label.push(month_predictions[x])
   }
 
-const series = [{
-    name: 'Expense',
-    type: 'column',
-    data: mthexpense_label
-  }, {
-    name: 'Predicted Expense',
-    type: 'line',
-    data: pred_label
-  }]
-
-const options = {
-    chart: {
-      height: 350,
-      type: 'line',
-    },
-    stroke: {
-      width: [0, 4]
-    },
-    title: {
-      text: 'Forecasted Expenses'
-    },
-    dataLabels: {
-      enabled: true,
-      enabledOnSeries: [1]
-    },
+  const data = {
     labels: mth_xlabels,
-    xaxis: {
-      type: 'datetime'
-    },
-    yaxis: [{
-      title: {
-        text: 'Expense',
-      },
-    
-    }, {
-      opposite: true,
-      title: {
-        text: 'Forecasted Expense'
-      }
-    }] }
+    datasets: [
 
-    return (
-        <>
-    
-        <div id="chart">
-        <Chart options={options} series={series} type="line" height={350} />
-      </div>
-      </>
-    )
+      {
+        label: 'Actual',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: 'rgb(0,191,255)',
+        borderColor: 'rgb(0,191,255)',
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: 'rgb(0,191,255)',
+        pointBackgroundColor: '#fff',
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: 'rgb(0,191,255)',
+        pointHoverBorderColor: 'rgb(0,191,255)',
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: mthexpense_label
+      },
+
+      {
+        label: 'Predicted',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: 'rgb(139,0,139)',
+        borderColor: 'rgb(139,0,139)',
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: 'rgb(139,0,139)',
+        pointBackgroundColor: '#fff',
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: 'rgb(139,0,139)',
+        pointHoverBorderColor: 'rgb(139,0,139)',
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: pred_label
+      }
+
+    ]
+  };
+
+  var options = {
+    scales:{
+    xAxes:[{gridLines:{display:false}}],
+    yAxes:[{gridLines:{display:true}}]
+    }
+  }
+
+
+return (
+    <Line data={data} options = {options}/>
+)
+
 }
 
 }

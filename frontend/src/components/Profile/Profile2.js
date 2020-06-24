@@ -25,13 +25,15 @@ class Profile2 extends React.Component {
         show_public: ""},
         header:'About Us',
         expense: [],
+        predict:[],
     update: false
     }
   }
 
   state= {
     profile:{},
-    expense :[]
+    expense :[],
+    predict:[]
   }
 
 componentDidMount() {
@@ -49,6 +51,9 @@ componentDidMount() {
           this.setState({
               expense: new_res
           });
+          axios.post('predict/',new_res).then(res => {
+            this.setState({predict:res.data})
+        })
       })
   }
  
@@ -60,7 +65,7 @@ componentDidMount() {
 
 
 handleprogress = e => {
-  const x = <Graph data={this.state}/>
+  const x = <Graph data={this.state} prediction={this.state.predict}/>
   this.setState(
     {
       header:"Company's Progress",

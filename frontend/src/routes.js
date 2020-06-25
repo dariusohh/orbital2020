@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import Expense from './components/Expense'
+import Import from './components/Expense/import';
 import LoginForm from './components/login/Login'
 import RegisterForm from './components/login/Register'
 import Homepage from './components/Homepage/Homepage'
@@ -20,7 +21,8 @@ const BaseRouter = () => (
          <Route exact path="/profile/:username/" component={Profile2} />{" "}
         <Route exact path = '/profile' component = {Profile}/>
       <Route exact path = '/listing' component = {List}/>
-      <Route exact path='/predict' component = {Predict}/>
+      <Route exact path='/predict' component = {Predict}/>'
+     <Route exact path = '/import' component = {Import}/>
     </div>
 )
 

@@ -63,39 +63,30 @@ state = {
                         rows: resp.rows,
                     
                       });
+                      var trans = []
+                    delete resp.rows[0]
+                     for (var key in resp.rows) {
+                       var date = new Date(Math.round((resp.rows[key][2]- 25569)*86400*1000))
+                       trans.push({name:resp.rows[key][0],
+                      amount:resp.rows[key][1],
+                      created_at:date.toISOString(),
+                      username:localStorage.getItem("username")})
                     }
-                  });     
-             
-    var files = e.target.files, f = files[0];
-    var reader = new FileReader();
-    reader.onload = function (e) {
-        var data = e.target.result;
-        let readedData = excel.read(data, {type: 'binary'});
-        const wsname = readedData.SheetNames[0];
-        const ws = readedData.Sheets[wsname];
-        ws.array.forEach(element => {
+                    trans.forEach(x => {
+                      console.log(x)
+                      axios.post('api/', x)
+                    .catch(err => console.log(err))})
+                  }});     
+    }; 
             
-        });
-        /* Convert array to json*/
-        const dataParse = excel.utils.sheet_to_json(ws, {header:1});
-
-        return axios.post('api/',{
-            content: [dataParse]
-        })
-            .catch(err => console.log(err)) 
-    };
-                     
-  
-            
-            
-        }
+        
   
       render() {
         return ( 
             <div>
                 <Row>
                     {/* col 1 */}
-                    <Col className="wrap">
+                    <Col className="wrap2">
                         {/* Header */}
                         <Row className ="header-5">
                         <h1 className="test-5">Add Past Data</h1>
@@ -126,7 +117,7 @@ state = {
                         </Row>
                     </Col>
                     {/* col 2 */}
-                    <Col className="wrap">
+                    <Col className="wrap2">
                      {/* Header */}
                      <Row className ="header-5">
                         <h1 className="test-5">Import Data</h1>
@@ -145,8 +136,6 @@ state = {
                          tableClassName= "ExcelTable2007"
                          tableHeaderRowClass="heading"/>}
                     </div>
-                    <div>{this.state.workbook.slice(1,-1)}</div>
-                 
                         </Row>
                     </Col>
 

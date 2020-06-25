@@ -57,7 +57,7 @@ componentDidMount() {
       var options = {
         legend:{display:false},
         scales:{
-        xAxes:[{gridLines:{display:true}}],
+        xAxes:[{gridLines:{display:true},ticks:{beginAtZero:true}}],
         yAxes:[{gridLines:{display:false}}]
         }
       }

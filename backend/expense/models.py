@@ -12,4 +12,4 @@ class Expense(models.Model):
     created_at = models.DateTimeField( default= timezone.now, null=False)
     
     class Meta:
-        ordering = ['created_at']
+        ordering = ['-created_at']

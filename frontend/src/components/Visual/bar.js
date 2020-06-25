@@ -69,7 +69,7 @@ render() {
         legend:{display:false},
         scales:{
         xAxes:[{gridLines:{display:false}}],
-        yAxes:[{gridLines:{display:true}}]
+        yAxes:[{gridLines:{display:true},ticks:{beginAtZero:true}}]
         }
       }
 

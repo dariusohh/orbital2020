@@ -153,12 +153,12 @@ componentDidMount() {
  <Row>
  <Col className='wrapper-1'>
    <h2 className='line'> <span className='text2'>Timeline</span></h2>
-   <Time data={this.state.expense}/>
+   <Time data={this.state.expense.filter(x => parseFloat(x.amount) !== 0)}/>
    </Col>
    <Spacer amount={15} />
   <Col sm={7} className='wrapper-1'>
   <h2 className='line'> <span className='text2'>Recent Transactions</span></h2>
-  <Trans data={this.state.expense}/>
+  <Trans data={this.state.expense.filter(x => parseFloat(x.amount) !== 0)}/>
   </Col>
    
  </Row>

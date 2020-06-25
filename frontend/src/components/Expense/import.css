@@ -1,0 +1,28 @@
+
+.header-5 {
+    background-image:linear-gradient(to top left,rgb(162, 230, 247),rgb(24, 81, 238));
+    text-align:center;
+    display:block !important;
+    border-style: groove;
+    border-color: grey;
+  }
+
+  .test-5 {
+    font-size: 22px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 2px;
+
+}
+
+.wrap{
+    border-style: groove;
+    border-color: grey;
+    text-align: center;
+    height: 700px;
+    align-items: center;
+}
+
+.form{
+    width:100%
+}
+

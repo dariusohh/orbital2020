@@ -130,11 +130,10 @@ state = {
                     <input type="file" onChange={this.handleUpload} />
                     </div>
                     
-                    <div>
-                        {this.state.rows && <OutTable data={this.state.rows}
-                         columns ={this.state.cols} 
-                         tableClassName= "ExcelTable2007"
-                         tableHeaderRowClass="heading"/>}
+                    <div className="content">
+                        {this.state.rows && 
+                        <h1 className="test-5"
+                        style= {{textAlign:'center'}}>Data imported successfully!</h1>}
                     </div>
                         </Row>
                     </Col>

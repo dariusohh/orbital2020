@@ -102,7 +102,7 @@ state = {
                         </Row>
                         {/* Add manual */}
                         <Row >
-                       <div>
+                       <div className="content">
                 <form onSubmit={this.onSubmit}>
                     <br/>
                     <h4>Category</h4>
@@ -133,7 +133,7 @@ state = {
                         </Row>
                         {/* import excel */}
                         <Row>
-                            <div>
+                            <div className="content">
                         <h4 style= {{textAlign:'center'}}>Import Previous Data Files</h4>
                         <br/>
                     <input type="file" onChange={this.handleUpload} />

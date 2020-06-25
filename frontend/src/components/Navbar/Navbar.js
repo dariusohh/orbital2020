@@ -13,11 +13,15 @@ class Navbar extends React.Component {
       <ul>
         <li><p style={{padding:"0",margin:"0"}}><img className = "logo" src={logo} alt = "Logo"/></p></li>
         <li className={window.location.pathname === '/' ? 'active' : null}><a href='/'>Home</a></li>
-        <li className={window.location.pathname === '/expense' ? 'active' : null}>
-        { this.props.isAuthenticated &&
-          <a href= "/expense" >Expense Tracking</a>
-        }
-        </li>
+           { this.props.isAuthenticated &&
+            <li className={window.location.pathname === '/expense' || window.location.pathname === '/import' ? "dropdown-active" : "dropdown"}>
+            <a className="dropdown-menu" href= "/expense" >Expense Tracking </a>
+            <div className ="dropdown-content">
+              <a href = "/expense">Tracking</a>
+              <a href = "/import">Import</a>
+            </div>
+            </li>
+          }
        <li className={window.location.pathname === '/listing' ? 'active' : null}>
         { !this.props.isAuthenticated && 
           <a href='/listing'>Listing</a>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Form , Input } from 'antd';
 import * as actions from '../../store/actions/auth'
 import './Login.css';
+import GridLoader from "react-spinners/ClipLoader"
 
 class LoginForm extends React.Component {
 
@@ -23,7 +24,13 @@ class LoginForm extends React.Component {
             )
         }
         return (
-        <div>
+        <div> 
+            { this.props.loading && 
+                <div>    
+            <h4 style={{float:'left',marginRight:'1%',marginLeft:'2%'}}>Loading </h4>
+            <GridLoader size={30} css={{float:'left',marginBottom:"2%"}}/>
+            </div>
+            }
             {errorMessage}
             <Form onFinish={this.handleFinish}>
       <Form.Item name="username" >
@@ -32,7 +39,7 @@ class LoginForm extends React.Component {
       <Form.Item name="password" >
         <Input placeholder = "Password"/>
       </Form.Item>
-      <button html = "submit"> Login </button>
+      <button html = "submit" disabled={this.props.loading}> Login </button>
         </Form>
         </div>
         )

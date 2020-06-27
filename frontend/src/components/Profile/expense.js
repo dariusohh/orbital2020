@@ -25,15 +25,15 @@ export class Expense extends React.Component {
 
     const total =(this.props.data.filter(x => yearFilter(x.created_at))
         .map(transaction => transaction.amount).map(num => parseFloat(num))
-        .filter(item => item > 0)
-        .reduce((acc, item) => (acc += item), 0)
+        .filter(item => item < 0)
+        .reduce((acc, item) => (acc -= item), 0)
         .toFixed(2))
 
         const long =(this.props.data.filter(x => yearFilter(x.created_at))
             .map(transaction => transaction.amount)
-            .map(num => parseFloat(num)).filter(item => item > 0)
+            .map(num => parseFloat(num)).filter(item => item < 0)
             .filter(x => x.name in ["Payroll","Rent","Taxes","Utilities"])
-            .reduce((acc, item) => (acc += item), 0)
+            .reduce((acc, item) => (acc -= item), 0)
             .toFixed(2))
         
         

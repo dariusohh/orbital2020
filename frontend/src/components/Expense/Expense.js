@@ -37,6 +37,10 @@ export const Expense = ({transaction}) => {
         }
     }
 
+    var expenseCat = ["Entertainment","Equipment & Furniture","Marketing",
+    "Office Supplies","Payroll","Rent","Software","Taxes","Travel",
+    "Utilities","Others"]
+
     return (
         <div>
         {transaction.amount < 0 &&
@@ -53,17 +57,11 @@ export const Expense = ({transaction}) => {
             <label htmlFor="text">Category</label>
             <br/>
             <select className="exp-dropdown" name = "name">
-              <option value="Entertainment">Entertainment</option>
-              <option value="Equipment & Furniture">Equipment & Furniture</option>
-              <option value="Marketing">Marketing</option>
-              <option value="Office Supplies">Office Supplies</option>
-              <option value="Payroll">Payroll</option>
-              <option value="Rent">Rent</option>
-              <option value="Software">Software</option>
-              <option value="Taxes">Taxes</option>
-              <option value="Travel">Travel</option>
-              <option value="Utilities">Utilities</option>
-              <option value="Others">Others</option>
+                {
+                    expenseCat.map(x => 
+                    <option value={x}>{x}</option>
+                    )
+                }
             </select>
             </div>
             <div className="form-control">

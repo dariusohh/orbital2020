@@ -20,7 +20,6 @@ function RegisterForm(props) {
           e.confirm)
           setTimeout(() => {
             if (localStorage.getItem("username")) {
-              window.location.href = "/profile"
               return axios.post('profile/', {username: e.username,
                       company_name:"", 
                       company_industry:"",
@@ -30,10 +29,10 @@ function RegisterForm(props) {
                       tele:"",
                       ratings:0,
                       budget:0,
-                      target:0})
+                      target:0}).then(() => window.location.href = "/profile")
                       .catch(err => console.log(err));
             }
-            },400)
+            },800)
     }
 
   let errorMessage = null;

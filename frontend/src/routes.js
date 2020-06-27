@@ -21,7 +21,7 @@ const BaseRouter = () => (
          <Route exact path="/profile/:username/" component={Profile2} />{" "}
         <Route exact path = '/profile' component = {Profile}/>
       <Route exact path = '/listing' component = {List}/>
-      <Route exact path='/predict' component = {Predict}/>'
+      <Route exact path='/predict' component = {Predict}/>
      <Route exact path = '/import' component = {Import}/>
     </div>
 )

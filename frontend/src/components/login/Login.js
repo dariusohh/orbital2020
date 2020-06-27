@@ -9,10 +9,10 @@ class LoginForm extends React.Component {
     handleFinish = values => {
         this.props.onAuth(values.username, values.password);
         setTimeout(() => {
-        if (!this.props.error) {
+        if (!this.props.error & !this.props.loading) {
             window.location.href = "/expense";
         }
-        },400)
+        },800)
     }
 
     render() {

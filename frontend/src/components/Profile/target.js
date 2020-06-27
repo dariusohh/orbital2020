@@ -15,7 +15,7 @@ export class Target extends React.Component {
         .map(num => parseFloat(num))
         .reduce((acc, item) => (acc += item), 0).toFixed(2))/ 
         this.props.data.profile.target * 100).toFixed(2)
-    const ylabels = [z, 100-z ]
+    const ylabels = z < 100 ? [z, 100-z ] : [100,0]
 
 
     const data = {

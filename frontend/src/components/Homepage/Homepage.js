@@ -77,11 +77,8 @@ struggle faced by startup is fund management. We help startups overcome this cha
         }
   
   </div>
-  
   </div>
-
 </div>
-
     )
   }
 }

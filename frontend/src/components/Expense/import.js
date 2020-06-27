@@ -5,7 +5,7 @@ import { Row,Col}from 'react-grid-system';
 import './import.css';
 import excel from 'xlsx';
 import {ExcelRenderer, OutTable} from 'react-excel-renderer';
-
+import format from './format.png'
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
 
@@ -15,11 +15,20 @@ state = {
     row:"",
     workbook:""
 }
+
+expenseCat = ["Entertainment","Equipment & Furniture","Marketing",
+    "Office Supplies","Payroll","Rent","Software","Taxes","Travel",
+    "Utilities","Others"]
+
     onSubmit = (event) => {
-        const name = event.target.name.value;
+        var name = event.target.name.value;
         const amount = event.target.amount.value;
         const username = localStorage.getItem("username");
         const created_at = event.target.created_at.value + "T00:00:00.00000Z";
+        if (amount < 0 && !this.expenseCat.includes(name)) {
+          name = "Others"
+        }
+        
         return axios.post('api/', {name: name, username: username,
                 amount: amount, created_at:created_at})
                 .catch(err => console.log(err))
@@ -67,8 +76,13 @@ state = {
                     delete resp.rows[0]
                      for (var key in resp.rows) {
                        var date = new Date(Math.round((resp.rows[key][2]- 25569)*86400*1000))
-                       trans.push({name:resp.rows[key][0],
-                      amount:resp.rows[key][1],
+                       var name = resp.rows[key][0]
+                       var amount = resp.rows[key][1]
+                       if (amount < 0 && !this.expenseCat.includes(name)) {
+                        name = "Others"
+                      }
+                       trans.push({name:name,
+                      amount:amount,
                       created_at:date.toISOString(),
                       username:localStorage.getItem("username")})
                     }
@@ -79,7 +93,7 @@ state = {
                   }});     
     }; 
             
-        
+    
   
       render() {
         return ( 
@@ -104,7 +118,9 @@ state = {
                     <input type="text"  name = "amount" placeholder="Enter..." />
                     <br/>
                     <h4>Date</h4>
-                    <input type="date"  name = "created_at" placeholder="Enter..." />
+                    <input type="date"  name = "created_at" placeholder="Enter..." 
+                    max = {new Date(new Date().getTime() + 8*60*60*1000).toISOString().substring(0,10)}
+                    />
                     <br/>
                     <br/>
                     <br/>
@@ -134,8 +150,16 @@ state = {
                         {this.state.rows && 
                         <h1 className="test-5"
                         style= {{textAlign:'center'}}>Data imported successfully!</h1>}
+                        
                     </div>
                         </Row>
+                        <div className = "format">
+                        <h1 className="test-5">Excel Format Required:</h1>
+                                  <img 
+                  src= {format}
+                  alt="format"
+                  />
+                  </div>
                     </Col>
 
                 </Row>

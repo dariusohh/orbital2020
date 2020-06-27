@@ -11,7 +11,7 @@ class Revenue extends React.Component {
   return (
 
         
-    <span style= {{fontSize:70, color:'RoyalBlue', textAlign:"center"}}>
+    <span style= {{fontSize:60, color:'RoyalBlue', textAlign:"center"}}>
               $ {this.props.data
           .map(transaction => transaction.amount)
           .map(num => parseFloat(num))

@@ -46,7 +46,7 @@ class Target extends React.Component {
     
   render() {
   return (
-    <span style= {{fontSize:70, color:'DarkSlateGray', textAlign:"center"}}>
+    <span style= {{fontSize:60, color:'DarkSlateGray', textAlign:"center"}}>
      {((this.props.data
           .map(transaction => transaction.amount)
           .map(num => parseFloat(num))

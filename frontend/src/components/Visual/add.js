@@ -9,7 +9,7 @@ export class AddBudget extends React.Component {
       
         <>
            
-           <span style= {{fontSize:70, color:'IndianRed', textAlign:"center"}}>
+           <span style= {{fontSize:60, color:'IndianRed', textAlign:"center"}}>
            $ {this.props.budget -(this.props.data
           .map(transaction => transaction.amount)
           .map(num => parseFloat(num))

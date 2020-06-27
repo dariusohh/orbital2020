@@ -13,3 +13,14 @@ class Expense(models.Model):
     
     class Meta:
         ordering = ['-created_at']
+        
+    
+    def is_expense(self):
+        return self.amount <0
+
+    def is_revenue(self):
+        return self.amount>0
+    
+    
+    def is_valid_name(self):
+        return self.name != ""

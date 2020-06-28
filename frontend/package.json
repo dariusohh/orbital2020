@@ -10,6 +10,7 @@
     "apexcharts": "^3.19.2",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
+    "chai": "^4.2.0",
     "chart.js": "^2.9.3",
     "material-ui": "^0.20.2",
     "multiselect-react-dropdown": "^1.5.0",
@@ -43,7 +44,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "mocha",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -60,5 +61,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "mocha": "^8.0.1"
   }
 }

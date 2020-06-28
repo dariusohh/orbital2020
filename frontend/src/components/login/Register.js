@@ -19,21 +19,11 @@ function RegisterForm(props) {
           e.email,
           e.password,
           e.confirm)
-          setTimeout(() => {
+          .then(() => {
             if (localStorage.getItem("username")) {
-              return axios.post('profile/', {username: e.username,
-                      company_name:"", 
-                      company_industry:"",
-                      company_description:"",
-                      show_public:false, 
-                      email:e.email,
-                      tele:"",
-                      ratings:0,
-                      budget:0,
-                      target:0}).then(() => window.location.href = "/profile")
-                      .catch(err => console.log(err));
+              window.location.href = "/profile"
             }
-            },800)
+            })
     }
 
   let errorMessage = null;
@@ -69,7 +59,7 @@ function RegisterForm(props) {
             name="password"
             ref={register({required:"Password is required",
             minLength:{value:8,message:"Password should have minimum length of 8"}, 
-            pattern:{value:/[^\w\d]*(([0-9]+.*[A-Za-z]+.*)|[A-Za-z]+.*([0-9]+.*))/,message:"Password must contain at least one letter and number"}})}
+            })}
             />
             {errors.password && <p className = "error">{errors.password.message}</p>}
           <input
@@ -98,7 +88,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: (username, email, password1, password2) => {
-            dispatch(actions.authSignup(username,email, password1,password2))
+            return dispatch(actions.authSignup(username,email, password1,password2))
         }
     }
 }

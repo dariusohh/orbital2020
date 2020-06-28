@@ -8,12 +8,12 @@ import GridLoader from "react-spinners/ClipLoader"
 class LoginForm extends React.Component {
 
     handleFinish = values => {
-        this.props.onAuth(values.username, values.password);
-        setTimeout(() => {
-        if (!this.props.error & !this.props.loading) {
+        this.props.onAuth(values.username, values.password)
+        .then(() => {
+        if (!this.props.error) {
             window.location.href = "/expense";
         }
-        },800)
+        })
     }
 
     render() {
@@ -57,7 +57,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: (username, password) => {
-            dispatch(actions.authLogin(username,password))
+            return dispatch(actions.authLogin(username,password))
         }
     }
 }

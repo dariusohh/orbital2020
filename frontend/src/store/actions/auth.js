@@ -43,7 +43,7 @@ const checkAuthTimeout = expirationDate => {
 export const authLogin = (username, password) => {
     return dispatch => {
         dispatch(authStart());
-        axios.post('rest_auth/login/', {
+        return axios.post('rest_auth/login/', {
             username: username,
             password: password
         })
@@ -65,11 +65,24 @@ export const authLogin = (username, password) => {
 export const authSignup = (username, email, password1, password2) => {
     return dispatch => {
         dispatch(authStart());
-        axios.post('rest_auth/register/', {
+        return axios.post('rest_auth/register/', {
             username: username,
             email: email,
             password1: password1,
             password2: password2
+        })
+        .then(res => {
+            axios.post('profile/', {username: username,
+                company_name:"", 
+                company_industry:"",
+                company_description:"",
+                show_public:false, 
+                email:email,
+                tele:"",
+                ratings:0,
+                budget:0,
+                target:0})
+            return res
         })
         .then(res => {
             const token = res.data.key;
@@ -80,6 +93,7 @@ export const authSignup = (username, email, password1, password2) => {
             dispatch(authSuccess(token));
             dispatch(checkAuthTimeout(3600))
         })
+        
         .catch(err => {
             dispatch(authFail(err))
     })

@@ -1,11 +1,9 @@
 import React, { useRef } from 'react';
 import * as actions from '../../store/actions/auth'
 import { connect } from 'react-redux'; 
-import './Login.css';
 import {useForm} from "react-hook-form";
 import axios from 'axios';
 import GridLoader from "react-spinners/ClipLoader"
-
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
 

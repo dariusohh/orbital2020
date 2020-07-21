@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form , Input } from 'antd';
 import * as actions from '../../store/actions/auth'
-import './Login.css';
 import GridLoader from "react-spinners/ClipLoader"
 
 class LoginForm extends React.Component {

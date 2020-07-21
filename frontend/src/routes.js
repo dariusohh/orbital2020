@@ -2,27 +2,25 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import Expense from './components/Expense'
 import Import from './components/Expense/import';
-import LoginForm from './components/login/Login'
-import RegisterForm from './components/login/Register'
-import Homepage from './components/Homepage/Homepage'
 import Visual from './components/Visual/Visual'
 import Profile from './components/Profile/Profile'
 import Profile2 from './components/Profile/Profile2';
 import List from './components/VC/list';
 import Predict from './components/Prediction/Predict'
+import SignInSide from './components/signin'
+import SignUp from './components/signup'
 
 const BaseRouter = () => (
     <div>
         <Route exact path = '/expense/' component = {Expense}/>
-        <Route exact path = '/login/' component = {LoginForm}/>
-        <Route exact path = '/register/' component = {RegisterForm}/>
-        <Route exact path = '/' component = {Homepage}/>
         <Route exact path = '/visual' component = {Visual}/>
          <Route exact path="/profile/:username/" component={Profile2} />{" "}
         <Route exact path = '/profile' component = {Profile}/>
       <Route exact path = '/listing' component = {List}/>
       <Route exact path='/predict' component = {Predict}/>
      <Route exact path = '/import' component = {Import}/>
+     <Route exact path = '/' component = {SignInSide}/>
+     <Route exact path = '/register' component = {SignUp}/>
     </div>
 )
 

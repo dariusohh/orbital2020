@@ -7,8 +7,8 @@ import Profile from './components/Profile/Profile'
 import Profile2 from './components/Profile/Profile2';
 import List from './components/VC/list';
 import Predict from './components/Prediction/Predict'
-import SignInSide from './components/signin'
-import SignUp from './components/signup'
+import Login from './components/login2/Login'
+import Register from './components/login2/Register'
 
 const BaseRouter = () => (
     <div>
@@ -19,8 +19,8 @@ const BaseRouter = () => (
       <Route exact path = '/listing' component = {List}/>
       <Route exact path='/predict' component = {Predict}/>
      <Route exact path = '/import' component = {Import}/>
-     <Route exact path = '/' component = {SignInSide}/>
-     <Route exact path = '/register' component = {SignUp}/>
+     <Route exact path = '/' component = {Login}/>
+     <Route exact path = '/register' component = {Register}/>
     </div>
 )
 

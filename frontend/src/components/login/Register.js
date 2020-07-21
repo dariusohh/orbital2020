@@ -11,6 +11,7 @@ function RegisterForm(props) {
   const { register, handleSubmit, errors, watch } = useForm();
   const password = useRef({});
   password.current = watch("password", "");
+  
 
   const onSubmit = e => {
       props.onAuth(e.username, 
@@ -32,7 +33,7 @@ function RegisterForm(props) {
     }
       return (
         <form onSubmit = {handleSubmit(onSubmit)}>
-        { props.loading && 
+        { !props.loading && 
                 <div>    
             <h4 style={{float:'left',marginRight:'1%',marginLeft:'2%'}}>Loading </h4>
             <GridLoader size={30} css={{float:'left',marginBottom:"2%"}}/>

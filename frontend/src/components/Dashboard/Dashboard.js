@@ -13,6 +13,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { mainListItems } from './listItems.js';
+import * as actions from '../../store/actions/auth';
+import { connect } from 'react-redux';
+
 
 const drawerWidth = 240;
 
@@ -97,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Dashboard({child}) {
+function Dashboard(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -107,6 +110,10 @@ export default function Dashboard({child}) {
     setOpen(false);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+  if (!localStorage.getItem("username")) {
+    window.location.href = "/"
+  }
 
   return (
     <div className={classes.root}>
@@ -124,7 +131,7 @@ export default function Dashboard({child}) {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             Dashboard
           </Typography>
-          <a href = "/logout" style={{color:"white",textDecoration:"none"}}>
+          <a a href="/" onClick = {props.logout} style={{color:"white",textDecoration:"none"}}>
           <IconButton color="inherit">
               <ExitToAppIcon />
           </IconButton>
@@ -149,9 +156,19 @@ export default function Dashboard({child}) {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <div style={{margin:"30px"}}>
-         {child}
+         {props.child}
          </div>
       </main>
     </div>
   );
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+      logout: () => {
+          dispatch(actions.logout())
+      }
+  }
+}
+
+export default connect(mapDispatchToProps)(Dashboard);

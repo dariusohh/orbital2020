@@ -9,6 +9,7 @@ class CustomLayout extends React.Component {
     render() {
     return (
         <div>
+
         { !['/register','/','/login'].includes(window.location.pathname) ?
         <Dashboard child={this.props.children}/>
             :

@@ -7,6 +7,7 @@ import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import ImportExportIcon from '@material-ui/icons/ImportExport';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import AssessmentIcon from '@material-ui/icons/Assessment';
+import GroupIcon from '@material-ui/icons/Group';
 
 export const mainListItems = (
   <div>
@@ -48,6 +49,14 @@ export const mainListItems = (
       <AssessmentIcon />
       </ListItemIcon>
       <ListItemText style = {{color:"#DCDCDC"}} primary="Predict"/>
+    </ListItem>
+    </a>
+    <a href = "/listing" style={{color:"black",textDecoration:"none"}}>
+    <ListItem button>
+    <ListItemIcon style = {{color:"white"}}>
+      <GroupIcon />
+      </ListItemIcon>
+      <ListItemText style = {{color:"#DCDCDC"}} primary="View other startups"/>
     </ListItem>
     </a>
     

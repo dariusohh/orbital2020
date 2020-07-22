@@ -7,13 +7,18 @@ import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/auth'
 import GridLoader from "react-spinners/ClipLoader"
 import {Redirect} from 'react-router-dom';
+import './login.css';
+import startup_logo from "./startup_logo.png"
+import vc_logo from "./vc_logo.png"
+import vc_background from "./vc_background.jpg"
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -29,14 +34,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'center',
   },
   paper: {
-    margin: theme.spacing(8, 4),
+    margin: theme.spacing(0, 4),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: "teal"
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -77,18 +82,27 @@ if (props.error) {
     }
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7}>
-      <Typography component="h1" variant="h2">
-            I AM A VC LOOKING FOR STARTUPS TO INVEST IN
-          </Typography>
+      
+      <Grid item xs={false} sm={4} md={7} align="center" style={{backgroundImage: `url(${vc_background})`,backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
+      <img src={vc_logo} alt="Venture Logo" style={{width:"100%"}}/>
+      <div class='btn-cont'>
+  <a class='btn' href='/listing'>
+    View Start Ups to invest in
+    <span class='line-1'></span>
+    <span class='line-2'></span>
+    <span class='line-3'></span>
+    <span class='line-4'></span>
+  </a>
+</div>
       </Grid>
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square style={{backgroundColor:"#e8f4f8"}} align="center">
+        <img src={startup_logo} alt="Startup Logo" style={{width:"500px",marginTop:"10%"}}/>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
+            <LockOpenIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
-            StartUp Sign in
+          <Typography component="h1" variant="h4">
+            Sign In
             { props.loading && 
                 <div>    
             <h4 style={{marginLeft:'20%',marginTop:"5%"}}>Loading </h4>
@@ -106,6 +120,7 @@ if (props.error) {
               label="Username"
               name="username"
               autoFocus
+              autoComplete='off'
             />
             <TextField
               variant="outlined"
@@ -128,7 +143,7 @@ if (props.error) {
             </Button>
             <Grid container justify="center">
               <Grid item>
-                <Link href="/register" variant="body2">
+                <Link href="/register" variant="body1">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

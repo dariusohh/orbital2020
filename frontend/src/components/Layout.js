@@ -10,7 +10,11 @@ class CustomLayout extends React.Component {
     return (
         <div>
 
-        { !['/register','/','/login'].includes(window.location.pathname) ?
+        { (!(['/register','/','/login','/listing'].includes(window.location.pathname) || window.location.pathname.startsWith('/profile/'))
+            || (window.location.pathname === '/listing' && localStorage.getItem("username")) 
+            || (window.location.pathname.startsWith('/profile/') && localStorage.getItem("username"))
+            || (window.location.pathname === '/profile/'))
+            ?
         <Dashboard child={this.props.children}/>
             :
             <div>{this.props.children}</div>

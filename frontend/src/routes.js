@@ -7,8 +7,8 @@ import Profile from './components/Profile/Profile'
 import Profile2 from './components/Profile/Profile2';
 import List from './components/VC/list';
 import Predict from './components/Prediction/Predict'
-import Login from './components/login2/Login'
-import Register from './components/login2/Register'
+import Login from './components/login/Login'
+import Register from './components/login/Register'
 
 const BaseRouter = () => (
     <div>

@@ -36,6 +36,7 @@
     "react-grid-system": "^6.4.2",
     "react-hook-form": "^5.7.2",
     "react-mdl": "^2.1.0",
+    "react-player": "^2.6.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",

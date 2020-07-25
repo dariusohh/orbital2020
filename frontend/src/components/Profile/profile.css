@@ -1,16 +1,12 @@
 .profile {
-    padding-top: 4%;
-   max-width: 100%;
-    text-align: center;
-    align-items: center;
-    padding-right: 5%;
-    padding-left: 5%;
-    padding-bottom: 4%;
+
     background: url(./pic/background.jpg); 
-    
-border-radius: 5px;
+   
+height:540px;
+overflow: hidden;
 opacity: 0.9;
 }
+
 
 
 .name{

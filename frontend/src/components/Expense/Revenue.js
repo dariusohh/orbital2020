@@ -78,8 +78,12 @@ export const Revenue = ({transaction}) => {
         </form>
         </div>
     </Popup>
-
- <DeleteIcon  className="delete-btn"  onClick ={onDelete} type="submit"/>
+    <Popup trigger={<DeleteIcon className="delete-btn">Delete</DeleteIcon>} modal closeOnDocumentClick>
+    <form onSubmit={onDelete}>
+    <InputLabel >Are you sure you want to delete this transaction?</InputLabel>
+    <Button variant="contained"  type="submit"  fullWidth  color="primary">Yes</Button>
+    </form>
+    </Popup>
     </li>
     }
     </div>

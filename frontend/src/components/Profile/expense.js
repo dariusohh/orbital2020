@@ -64,14 +64,22 @@ export class Expense extends React.Component {
 
   return (
     <>
+      <h5>
+  TOTAL EXPENSE
+  </h5>
+ 
+  <h4 style={{float:'right'}} >
+  SGD ${(this.props.data
+    .map(transaction => transaction.amount).map(num => parseFloat(num))
+    .filter(item => item > 0)
+    .reduce((acc, item) => (acc += item), 0)
+    .toFixed(2))}
+ </h4>
+
+ <br/>
+   <div className="line"></div>
    <Bar data={data} options={options}></Bar>
-   <text style= {{fontSize:30, color:'DarkSlateGray', textAlign:"center"}}>
-    Total Expense : SGD ${(this.props.data
-        .map(transaction => transaction.amount).map(num => parseFloat(num))
-        .filter(item => item > 0)
-        .reduce((acc, item) => (acc += item), 0)
-        .toFixed(2))}
-   </text>
+   
 </>
 
     )

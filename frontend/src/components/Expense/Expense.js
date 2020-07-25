@@ -1,7 +1,15 @@
 import React from 'react'
 import axios from 'axios';
 import Popup from "reactjs-popup";
-
+import MenuItem from '@material-ui/core/MenuItem';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Button from '@material-ui/core/button';
+import EditIcon from '@material-ui/icons/Edit';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
+import TextField from '@material-ui/core/TextField';
+import './import.css';
 export const Expense = ({transaction}) => {
 
     const onDelete = event => {
@@ -37,11 +45,12 @@ export const Expense = ({transaction}) => {
         }
     }
 
-    var expenseCat = ["Entertainment","Equipment & Furniture","Marketing",
+    const expenseCat = ["Entertainment","Equipment & Furniture","Marketing",
     "Office Supplies","Payroll","Rent","Software","Taxes","Travel",
     "Utilities","Others"]
 
     return (
+        
         <div>
         {transaction.amount < 0 &&
         <li className={transaction.amount <0 ?'minus' : 'plus'}>
@@ -49,12 +58,12 @@ export const Expense = ({transaction}) => {
              <div >{transaction.name} : ${Math.abs(transaction.amount)}  </div>
              <div className = "date">{daydiff(transaction.created_at)}</div>
             </div>  
-            <Popup trigger={<button className="update-btn">Update</button>} modal closeOnDocumentClick>
-        <div>
-            <h3>Update Expense</h3>
+            <Popup trigger={<EditIcon className="update-btn">Update</EditIcon>} modal closeOnDocumentClick>
+            <div>
+           
         <form onSubmit={onUpdate}>
             <div className ="form-control">
-            <label htmlFor="text">Category</label>
+            <InputLabel >Category</InputLabel>
             <br/>
             <select className="exp-dropdown" name = "name">
                 {
@@ -64,19 +73,19 @@ export const Expense = ({transaction}) => {
                 }
             </select>
             </div>
+            <br/>
             <div className="form-control">
-            <label htmlFor="amount"> Amount <br/>
-                </label>
-            <input name= "amount" type="number" step = "0.01"
+            <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
+         
+            <input name= "amount" type = "text" 
             placeholder="Enter amount..." />
             </div>
-            <button className="btn">Update Expense</button>
+            <br/>
+            <Button variant="contained"  type="submit"  fullWidth  color="primary">Update Expense</Button>
         </form>
         </div>
     </Popup>
-    <form onSubmit = {onDelete}>
-        <button className="delete-btn" type="submit">x</button>
-    </form>
+    <DeleteIcon  className="delete-btn"  onClick ={onDelete} type="submit"/>
         </li>
         }
     </div>

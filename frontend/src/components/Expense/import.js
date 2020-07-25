@@ -1,168 +1,86 @@
 import React from 'react';
 import axios from 'axios';
+import Manual from './manual';
+import HelpIcon from '@material-ui/icons/Help';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/button';
+import Paper from '@material-ui/core/Paper';
+import Exel from './Exel';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import format from './format.png';
 import { Row,Col}from 'react-grid-system';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
 import './import.css';
-import excel from 'xlsx';
-import {ExcelRenderer, OutTable} from 'react-excel-renderer';
-import format from './format.png'
-
+import {ExcelRenderer} from 'react-excel-renderer';
+import Popup from "reactjs-popup";
+import { DropzoneArea} from 'material-ui-dropzone';
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
+
 
 class Import extends React.Component {
 state = {
     cols :"",
     row:"",
-    workbook:""
+    workbook:"",
+    category: "",
+    amount: '',
+    date:"",
+    text:<Manual/>
+}
+handlemanual =e => {
+  this.setState({
+    text: <Manual/>
+  })
+
+  
 }
 
-expenseCat = ["Entertainment","Equipment & Furniture","Marketing",
-    "Office Supplies","Payroll","Rent","Software","Taxes","Travel",
-    "Utilities","Others"]
 
-    onSubmit = (event) => {
-        var name = event.target.name.value;
-        const amount = event.target.amount.value;
-        const username = localStorage.getItem("username");
-        const created_at = event.target.created_at.value + "T00:00:00.00000Z";
-        if (amount < 0 && !this.expenseCat.includes(name)) {
-          name = "Others"
-        }
-        
-        return axios.post('api/', {name: name, username: username,
-                amount: amount, created_at:created_at})
-                .catch(err => console.log(err))
-        }
+handleExel =e => {
+  this.setState({
+    text: <Exel/>
+  })
 
-        fileHandler = (event) => {
-            let fileObj = event.target.files[0];
-            
-            //just pass the fileObj as parameter
-            ExcelRenderer(fileObj, (err, resp) => {
-              if(err){
-                console.log(err);            
-              }
-              else{
-                this.setState({
-                  cols: resp.cols,
-                  rows: resp.rows,
-                    workbook:excel.readFile(fileObj)
-                });
-              }
-            });     
-            // const username = localStorage.getItem("username"); 
-            // return this.state.rows.map(element => {
-            //     const name = element[0]
-            //     const amount = element[1]
-            //     const created_at =element[2]
-            
-            // });
-            }
+  
+}
 
-             handleUpload = (e) => {
-                e.preventDefault();
-                let fileObj = e.target.files[0];
-                ExcelRenderer(fileObj, (err, resp) => {
-                    if(err){
-                      console.log(err);            
-                    }
-                    else{
-                      this.setState({
-                        cols: resp.cols,
-                        rows: resp.rows,
-                    
-                      });
-                      var trans = []
-                    delete resp.rows[0]
-                     for (var key in resp.rows) {
-                       var date = new Date(Math.round((resp.rows[key][2]- 25569)*86400*1000))
-                       var name = resp.rows[key][0]
-                       var amount = resp.rows[key][1]
-                       if (amount < 0 && !this.expenseCat.includes(name)) {
-                        name = "Others"
-                      }
-                       trans.push({name:name,
-                      amount:amount,
-                      created_at:date.toISOString(),
-                      username:localStorage.getItem("username")})
-                    }
-                    trans.forEach(x => {
-                      console.log(x)
-                      axios.post('api/', x)
-                    .catch(err => console.log(err))})
-                  }});     
-    }; 
+
             
     
   
       render() {
         return ( 
             <div>
-                <Row>
-                    {/* col 1 */}
-                    <Col className="wrap2">
-                        {/* Header */}
-                        <Row className ="header-5">
-                        <h1 className="test-5">Add Past Data</h1>
-                        </Row>
-                        {/* Add manual */}
-                        <Row >
-                       <div className="content">
-                <form onSubmit={this.onSubmit}>
-                    <br/>
-                    <h4>Category</h4>
-                    <input type="text"  name = "name" placeholder="Enter..." />
-                    <br/>
-                    <h4>Amount</h4>
-                    <label style={{paddingLeft:'5%'}}>(negative for expense and positive for revenue)</label>
-                    <input type="text"  name = "amount" placeholder="Enter..." />
-                    <br/>
-                    <h4>Date</h4>
-                    <input type="date"  name = "created_at" placeholder="Enter..." 
-                    max = {new Date(new Date().getTime() + 8*60*60*1000).toISOString().substring(0,10)}
-                    />
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <button>Add Past Data</button>
-                
-                   
-                </form>
-                </div>
-                        </Row>
-                    </Col>
-                    {/* col 2 */}
-                    <Col className="wrap2">
-                     {/* Header */}
-                     <Row className ="header-5">
-                        <h1 className="test-5">Import Data</h1>
-                        </Row>
-                        {/* import excel */}
-                        <Row>
-                            <div className="content">
-                        <h4 style= {{textAlign:'center'}}>Import Previous Data Files</h4>
-                        <br/>
-                    <input type="file" onChange={this.handleUpload} />
-                    </div>
-                    
-                    <div className="content">
-                        {this.state.rows && 
-                        <h1 className="test-5"
-                        style= {{textAlign:'center'}}>Data imported successfully!</h1>}
-                        
-                    </div>
-                        </Row>
-                        <div className = "format">
-                        <h1 className="test-5">Excel Format Required:</h1>
-                                  <img 
-                  src= {format}
-                  alt="format"
-                  />
-                  </div>
-                    </Col>
+               <h3 className='text0'>IMPORT DATA </h3>
+            
+              <br/>
+             <div>
+              <Paper square>
+      <Tabs
+    
+        indicatorColor="primary"
+        textColor="primary"
 
-                </Row>
+        aria-label="disabled tabs example"
+      >
+        <Tab  onClick={this.handlemanual} label="Manual Import" />
+        <Tab onClick={this.handleExel} label="Excel Import"  />
+   
+      </Tabs>
+      <br/>
+      <div className='size'>
+     <p>{this.state.text}</p> 
+     </div> 
+    </Paper>
+           
+    </div>
+              <br/>
+            <br/>
+            
             </div>
         )
       }
@@ -175,4 +93,5 @@ const mapStateToProps = state => {
   }
   
   export default connect(mapStateToProps)(Import);
+
 

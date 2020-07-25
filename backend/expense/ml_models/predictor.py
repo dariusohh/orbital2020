@@ -23,7 +23,7 @@ def predictor(sample_data):
     fname = 'holidays.xlsx'
     path = os.path.join(pre, fname)
     public_holidays = pd.read_excel(path)
-    gm_prophet = fbprophet.Prophet(changepoint_prior_scale=0.15,yearly_seasonality=True,holidays=public_holidays)
+    gm_prophet = fbprophet.Prophet(changepoint_prior_scale=0.15,weekly_seasonality=True,yearly_seasonality=True,holidays=public_holidays)
     gm_prophet.fit(data)
     gm_forecast = gm_prophet.make_future_dataframe(periods=6, freq='M')
     gm_forecast = gm_prophet.predict(gm_forecast)

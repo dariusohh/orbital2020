@@ -1,4 +1,5 @@
   
+  
 @import url(https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap);
 
 :root {
@@ -63,6 +64,7 @@ h4 {
   letter-spacing: 1px;
   margin: 0%;
   color: black;
+  text-align: center;
   float:none;
 }
 
@@ -257,4 +259,29 @@ label {
 
 .exp-dropdown:disabled {
   opacity:0.5;
+}
+
+.box {
+  background-color: DimGray;
+ 
+ 
+}
+.box2 {
+  background-color: DimGrey;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+.box h3 {
+  
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size:20px;
+  color:white;
+  text-align: center;
+
+ 
+
+}
+
+.box-3{
+  height:220px;
 }

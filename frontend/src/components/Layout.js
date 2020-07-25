@@ -1,9 +1,9 @@
 import React from 'react';
-import { Layout } from 'antd';
 import Dashboard from './Dashboard/Dashboard'
-import Navbar from './Navbar/Navbar';
-
-const { Content } = Layout;
+import vc_background from "./login/vc_background.jpg"
+import HomeIcon from '@material-ui/icons/Home';
+import Grid from '@material-ui/core/Grid';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 class CustomLayout extends React.Component {
     render() {
@@ -17,19 +17,42 @@ class CustomLayout extends React.Component {
             ?
         <Dashboard child={this.props.children}/>
             :
-            <div>{this.props.children}</div>
+            (
+                (window.location.pathname.startsWith('/profile/') ? 
+                <div style={{padding:" 40px 120px",backgroundImage: `url(${vc_background})`,backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
+                { !localStorage.getItem("username") && 
+        <div className="sidenav">
+        <a href="/" className="home">
+        <Grid container direction="row" alignItems="center">
+            <Grid item>
+                Home  
+            </Grid>
+            <Grid item>
+            <HomeIcon style={{marginLeft:"100%"}}/>
+            </Grid>
+            </Grid>
+        </a>
+        <a href="/listing" className="back">
+        <Grid container direction="row" alignItems="center">
+            <Grid item>
+                Back&nbsp;
+            </Grid>
+            <Grid item>
+            <ArrowBackIcon style={{marginLeft:"100%"}}/>
+            </Grid>
+            </Grid>
+        </a>
+        </div>
+        }
+                {this.props.children}
+                </div>
+                :
+                <div>{this.props.children}</div>
+            )
+            )
+            
         }
         </div>
-                /* <Layout>
-        <Navbar />
-        <Content style={{ padding: '0 50px' }}>
-            <div style={{
-                padding: 24,
-                minHeight: 280}}>
-                {this.props.children}
-            </div>
-        </Content>
-        </Layout> */
     )
     }
 }

@@ -2,7 +2,9 @@ import React from 'react'
 import './VC.css';
 import user from './user.png';
 import StarRatings from 'react-star-ratings';
-import {Link,BrowserRouter } from "react-router-dom"; 
+import { BrowserRouter } from "react-router-dom"; 
+
+
 export class StartUp extends React.Component{
 
     render() {
@@ -32,11 +34,7 @@ export class StartUp extends React.Component{
             </div>
             <br/>
            <BrowserRouter>
-            <Link to={`/profile/${this.props.data.username}`}>
-            <button className="detail-btn">
-              View details
-            </button>
-            </Link>
+            <a href={`/profile/${this.props.data.username}`} className="button1">View Details</a>
    </BrowserRouter>
             </div>
         </div>

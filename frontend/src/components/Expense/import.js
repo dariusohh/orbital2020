@@ -1,25 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import Manual from './manual';
-import HelpIcon from '@material-ui/icons/Help';
 import { connect } from 'react-redux';
-import Button from '@material-ui/core/button';
 import Paper from '@material-ui/core/Paper';
 import Exel from './Exel';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import format from './format.png';
-import { Row,Col}from 'react-grid-system';
-import TextField from '@material-ui/core/TextField';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
 import './import.css';
-import {ExcelRenderer} from 'react-excel-renderer';
-import Popup from "reactjs-popup";
-import { DropzoneArea} from 'material-ui-dropzone';
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
-
 
 class Import extends React.Component {
 state = {
@@ -46,10 +34,7 @@ handleExel =e => {
   })
 
   
-}
-
-
-            
+} 
     
   
       render() {
@@ -59,16 +44,15 @@ handleExel =e => {
             
               <br/>
              <div>
-              <Paper square>
+              <Paper square style={{backgroundColor:"transparent",boxShadow:"none"}}>
       <Tabs
     
         indicatorColor="primary"
         textColor="primary"
 
-        aria-label="disabled tabs example"
       >
-        <Tab  onClick={this.handlemanual} label="Manual Import" />
-        <Tab onClick={this.handleExel} label="Excel Import"  />
+        <Tab  style={{border:"3px",borderStyle:"solid"}} onClick={this.handlemanual} label="Manual Import" />
+        <Tab style={{border:"3px",borderStyle:"solid"}} onClick={this.handleExel} label="Excel Import"  />
    
       </Tabs>
       <br/>

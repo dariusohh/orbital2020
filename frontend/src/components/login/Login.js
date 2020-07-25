@@ -5,7 +5,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import Typography from '@material-ui/core/Typography';
@@ -25,14 +24,6 @@ import ReactPlayer from 'react-player'
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
-  },
-  image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
-    backgroundRepeat: 'no-repeat',
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
   },
   paper: {
     margin: theme.spacing(0, 4),
@@ -87,13 +78,13 @@ if (props.error) {
       <Grid item xs={false} sm={4} md={7} align="center" style={{backgroundImage: `url(${vc_background})`,backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
       <ReactPlayer url="https://www.youtube.com/watch?v=ioNng23DkIM" style={{marginTop:"5%",marginBottom:"10%",width:"100%"}}/>
       <img src={vc_logo} alt="Venture Logo" style={{width:"70%"}}/>
-      <div class='btn-cont'>
-  <a class='btn' href='/listing'>
+      <div className='btn-cont'>
+  <a className='btn' href='/listing'>
     View Start Ups to invest in
-    <span class='line-1'></span>
-    <span class='line-2'></span>
-    <span class='line-3'></span>
-    <span class='line-4'></span>
+    <span className='line-1'></span>
+    <span className='line-2'></span>
+    <span className='line-3'></span>
+    <span className='line-4'></span>
   </a>
 </div>
       </Grid>

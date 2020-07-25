@@ -4,14 +4,11 @@ import Popup from "reactjs-popup";
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import Button from '@material-ui/core/button';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
-import TextField from '@material-ui/core/TextField';
 export const Revenue = ({transaction}) => {
   
     const onDelete = event => {
-        axios.delete(`api/${transaction.id}/`);
+        return axios.delete(`api/${transaction.id}/`);
     }
 
 
@@ -67,13 +64,13 @@ export const Revenue = ({transaction}) => {
             <div className ="form-control">
             <InputLabel >Category</InputLabel>
             <br/>
-            <input type="text" style={{margin:"0"}} name = "name" placeholder="Enter..." />
+            <input className="trans-input" type="text" name = "name" placeholder="Enter..." />
             </div>
             <br/>
             <div className="form-control">
             <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
            
-            <input name= "amount" type = "text" 
+            <input className="trans-input" name= "amount" type = "text" 
             placeholder="Enter amount..." />
             </div>
             <br/>

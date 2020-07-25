@@ -5,19 +5,15 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import * as actions from '../../store/actions/auth'
 import { connect } from 'react-redux'; 
-import {useForm} from "react-hook-form";
 import GridLoader from "react-spinners/ClipLoader"
-import { changeConfirmLocale } from 'antd/lib/modal/locale';
 import {Redirect} from 'react-router-dom';
 import startup_logo from "./startup_logo.png"
-
 
 const useStyles = makeStyles((theme) => ({
   paper: {

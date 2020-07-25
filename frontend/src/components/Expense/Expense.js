@@ -1,19 +1,15 @@
 import React from 'react'
 import axios from 'axios';
 import Popup from "reactjs-popup";
-import MenuItem from '@material-ui/core/MenuItem';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/button';
 import EditIcon from '@material-ui/icons/Edit';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
-import TextField from '@material-ui/core/TextField';
 import './import.css';
 export const Expense = ({transaction}) => {
 
     const onDelete = event => {
-        axios.delete(`api/${transaction.id}/`);
+        return axios.delete(`api/${transaction.id}/`);
     }
 
     const onUpdate = event => {
@@ -77,7 +73,7 @@ export const Expense = ({transaction}) => {
             <div className="form-control">
             <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
          
-            <input name= "amount" type = "text" 
+            <input className="trans-input" name= "amount" type = "text" 
             placeholder="Enter amount..." />
             </div>
             <br/>
@@ -85,7 +81,12 @@ export const Expense = ({transaction}) => {
         </form>
         </div>
     </Popup>
-    <DeleteIcon  className="delete-btn"  onClick ={onDelete} type="submit"/>
+    <Popup trigger={<DeleteIcon className="delete-btn">Delete</DeleteIcon>} modal closeOnDocumentClick>
+    <form onSubmit={onDelete}>
+    <InputLabel >Are you sure you want to delete this transaction?</InputLabel>
+    <Button variant="contained"  type="submit"  fullWidth  color="primary">Yes</Button>
+    </form>
+    </Popup>
         </li>
         }
     </div>

@@ -14,7 +14,7 @@ opacity: 0.9;
    font-size: 70px;
    letter-spacing: 10px;
    text-align: center;
-   color:white;
+   color:black;
 }
 
 .avatar {
@@ -115,16 +115,3 @@ opacity: 0.9;
 .bc:active {
     transform:translateY(0px);
 }
-
-input[type=text] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-  }
-  input[type=amount] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-  }

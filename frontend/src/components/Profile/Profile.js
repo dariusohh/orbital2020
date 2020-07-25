@@ -1,11 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Input from '@material-ui/core/Input';
 import axios from 'axios';
 import Button from '@material-ui/core/button';
-import TextField from '@material-ui/core/TextField';
 
 class Profile extends React.Component {
 
@@ -87,12 +84,12 @@ return axios.put(`profile/${username}/`,
             <form onSubmit={this.onSubmit}>
             <InputLabel >Company Name:</InputLabel>
            
-                <input type="text" name = "company_name" defaultValue = {this.state.profile.company_name} disabled = {!this.state.update}/>
+                <input className="trans-input" type="text" name = "company_name" defaultValue = {this.state.profile.company_name} disabled = {!this.state.update}/>
                 <br/>
         
                 <InputLabel >Company Industry:</InputLabel>
          
-                <select className="exp-dropdown" style={{margin:"15px 15px 25px 15px", 
+                <select className="exp-dropdown" style={{margin:"15px 15px 25px 0px", 
                 borderRadius:"0px",padding:"10px 12px"}} name = "company_industry" 
                 disabled = {!this.state.update}>
                 {
@@ -108,7 +105,7 @@ return axios.put(`profile/${username}/`,
                   <br/>
                   <InputLabel >Company Description:</InputLabel>
        
-                <textarea style={{height:'100px', width:'100%',margin:15}} name = "company_description" onChange={(event)=>this.handleKeypress(event)} defaultValue = {this.state.profile.company_description} disabled  = {!this.state.update}/>
+                <textarea style={{height:'100px', width:'100%'}} name = "company_description" onChange={(event)=>this.handleKeypress(event)} defaultValue = {this.state.profile.company_description} disabled  = {!this.state.update}/>
                 <p> Count :  {this.state.count} / 750 </p>
                 {this.state.count > 750 &&
                 <p style={{color:'red'}}>Maximum Character Reached</p>
@@ -116,28 +113,28 @@ return axios.put(`profile/${username}/`,
                 <br/>
                 <InputLabel >Company Contact Number:</InputLabel>
              
-                <input type = "text" name = "tele" defaultValue = {this.state.profile.tele} disabled  = {!this.state.update}/>
+                <input className="trans-input" type = "text" name = "tele" defaultValue = {this.state.profile.tele} disabled  = {!this.state.update}/>
                 <br/>
                 <InputLabel >Company Email:</InputLabel>
            
-                <input type = "text" name = "email" defaultValue = {this.state.profile.email} disabled  = {!this.state.update}/>
+                <input className="trans-input" type = "text" name = "email" defaultValue = {this.state.profile.email} disabled  = {!this.state.update}/>
                 <br/>
                 <InputLabel >Company Office:</InputLabel>
          
-                <input type = "text" name = "office" defaultValue = {this.state.profile.office} disabled  = {!this.state.update}/>
+                <input className="trans-input" type = "text" name = "office" defaultValue = {this.state.profile.office} disabled  = {!this.state.update}/>
                 <br/>
                 <InputLabel >Company Budget:</InputLabel>
           
-                <input type = "text" name = "budget" defaultValue = {this.state.profile.budget} disabled  = {!this.state.update}/>
+                <input className="trans-input" style={{width:"20%"}} type = "text" name = "budget" defaultValue = {this.state.profile.budget} disabled  = {!this.state.update}/>
                 <br/>
                 <InputLabel >Company Target:</InputLabel>
              
-                <input type = "text" name = "target" defaultValue = {this.state.profile.target} disabled  = {!this.state.update}/>
+                <input className="trans-input" style={{width:"20%"}} type = "text" name = "target" defaultValue = {this.state.profile.target} disabled  = {!this.state.update}/>
                 <br/>
                 <InputLabel >Company Acheivement:</InputLabel>
                 <p>(Place a comma between each achievement)</p>
            
-                <input type = "text" name = "achievement" defaultValue = {this.state.profile.achievement} disabled  = {!this.state.update}/>
+                <input className="trans-input" type = "text" name = "achievement" defaultValue = {this.state.profile.achievement} disabled  = {!this.state.update}/>
                 <br/>
                 {/* <label>Profile Picture: </label>
                 <br/>

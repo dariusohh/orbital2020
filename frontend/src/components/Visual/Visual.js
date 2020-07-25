@@ -1,7 +1,6 @@
 
 import axios from 'axios';
 import React from 'react';
-import { makeStyles } from "@material-ui/core/styles";
 import Button from '@material-ui/core/Button';
 import './visual.css';
 import MoneyIcon from '@material-ui/icons/Money';
@@ -22,7 +21,6 @@ import GridContainer from "../Grid/GridContainer.js";
 import CardHeader from "../Card/CardHeader.js";
 import CardIcon from "../Card/CardIcon.js";
 import DateRange from "@material-ui/icons/DateRange";
-import Store from "@material-ui/icons/Store";
 import Update from "@material-ui/icons/Update";
 import CardFooter from "../Card/CardFooter.js";
 import Target from './target';
@@ -30,10 +28,8 @@ import Revenue from './revenue';
 import 'rsuite/dist/styles/rsuite-default.css';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import CardBody from "../Card/CardBody.js";
-import dashboardStyle from '../assets/jss/material-dashboard-react/views/dashboardStyle.js';
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
 
-const useStyles = makeStyles(dashboardStyle);
 class Visualisation extends React.Component {
    
   state = {
@@ -100,9 +96,8 @@ componentDidMount() {
      <Row>
         <Col sm={10} >
        <h3>OVERALL ANALYSIS</h3>
-        </Col>
-        <Col sm={2}>
-        { this.state.filter ? 
+       <br/>
+       { this.state.filter ? 
         <Button
         aria-controls="customized-menu"
         aria-haspopup="true"
@@ -137,6 +132,9 @@ componentDidMount() {
         disabledDate={date => date.getTime() - new Date().getTime() > 0}/>
         </div>
         }
+        </Col>
+        <Col sm={2}>
+        
         </Col>
       </Row>
       <br/>    <br/>   

@@ -3,7 +3,6 @@ import axios from 'axios';
 import {Expense} from './Expense';
 import {Revenue} from './Revenue';
 import AddButton from './AddButton';
-import { Row,Col}from 'react-grid-system';
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
 
 class TransactionList extends React.Component {
@@ -12,15 +11,8 @@ class TransactionList extends React.Component {
     return (
       <>
       <div className="box">
-        <Row>
-          <Col>
-                <h3>REVENUE</h3>
-                </Col>
-                <Col>
-             <h3>EXPENSE</h3>
-             </Col>
-             </Row>
-
+          <h3 style={{float:"left",marginLeft:"25%"}}>REVENUE</h3>
+          <h3 style={{marginLeft:"50%"}}>EXPENSE</h3>
       </div>
     
         <div className = "trans-container">

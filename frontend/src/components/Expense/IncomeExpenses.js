@@ -16,7 +16,6 @@ class IncomeExpenses extends React.Component {
       <div>
       <br/>
           <br/>
-          <br/>
       <h4 style={{ textAlign:'center' , color :'DimGrey'}}>Revenue</h4>
         
     <p className="money plus"> $ {this.props.data

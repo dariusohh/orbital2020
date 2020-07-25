@@ -20,7 +20,6 @@ import Contact from './contact';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import About from './about.js';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import GridItem from "../Grid/GridItem";
 import GridContainer from "../Grid/GridContainer.js";
@@ -54,13 +53,13 @@ class Profile2 extends React.Component {
     profile:{},
     expense :[]
   }
-  componentDidMount() {
-    setTimeout(() => 
-        axios.post('predict/',this.props.data.expense).then(res => {
-              this.setState({predict:res.data})
-          })
-      , 200);
-  }
+  // componentDidMount() {
+  //   setTimeout(() => 
+  //       axios.post('predict/',this.props.data.expense).then(res => {
+  //             this.setState({predict:res.data})
+  //         })
+  //     , 200);
+  // }
 
 componentDidMount() {
   const name= this.props.match.params.username
@@ -179,7 +178,7 @@ render() {
         <Tab onClick={this.handleratings} label="Ratings" />
       </Tabs>
       <br/>
-      <div className='size'>
+      <div style={{margin:"0.5% 1%"}}>
      <p>{this.state.text}</p> 
      </div> 
     </Paper>
@@ -187,7 +186,7 @@ render() {
 
             <div >
               <StarsIcon/>
-    Comapny specialised in {this.state.profile.company_industry}
+    Company specialised in {this.state.profile.company_industry}
               </div>
             </CardFooter>
           </Card>
@@ -221,8 +220,7 @@ render() {
            <MonetizationOnIcon/>
               <p > Expense Breakdown
                 <br/>
-                It is vital to be transparent about the expense of the company so that
-                Venture Capitalist can have an aggarated investment amount.
+                Venture Capitalists want to know where their investments will be put into.
               </p>
             </CardBody>
         
@@ -237,7 +235,7 @@ render() {
               <TrackChangesIcon/>
               <p >Target Progress
                 <br/>
-                It is important to let Venture Capitalist know how far off the 
+                Venture Capitalist wabt ti know how far the 
                 company is from its aim so that they can decide whether or not to invest.
               </p>
 

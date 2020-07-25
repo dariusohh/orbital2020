@@ -109,7 +109,6 @@ function Dashboard(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   if (!localStorage.getItem("username")) {
     window.location.href = "/"
@@ -129,7 +128,7 @@ function Dashboard(props) {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
+            AnalyticsWallet
           </Typography>
           <a a href="/" onClick = {props.logout} style={{color:"white",textDecoration:"none"}}>
           <IconButton color="inherit">
@@ -155,9 +154,18 @@ function Dashboard(props) {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <div style={{margin:"30px"}}>
+        {
+          window.location.pathname === '/listing' 
+            ?
+            <div>
          {props.child}
          </div>
+            :
+            <div style={{margin:"30px"}}>
+         {props.child}
+         </div>
+        }
+        
       </main>
     </div>
   );

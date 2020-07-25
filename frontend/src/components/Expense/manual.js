@@ -45,18 +45,19 @@ class Manual extends React.Component {
                     <br/>
                   
                     <InputLabel >Category</InputLabel>
-                    <input type="text"  name = "name" placeholder="Enter..." />
+                    <input className="trans-input" type="text"  name = "name" placeholder="Enter..." style={{width:"50%"}}/>
                     <br/>
                     <br/>
                     <InputLabel >Amount</InputLabel>
                 
                     <p style={{color:'grey'}}>(negative for expense and positive for revenue)</p>
-                    <input type="text"  name = "amount" placeholder="Enter..." />
+                    <input className="trans-input" type="text"  name = "amount" placeholder="Enter..." style={{width:"50%"}} />
                     <br/>
                     <br/>
                     <InputLabel >Data</InputLabel>
-                    <input type="date"  name = "created_at" placeholder="Enter..." 
+                    <input className="trans-input" type="date"  name = "created_at" placeholder="Enter..." 
                     max = {new Date(new Date().getTime() + 8*60*60*1000).toISOString().substring(0,10)}
+                    style={{width:"15%"}}
                     />
                     <br/>
                     <br/>

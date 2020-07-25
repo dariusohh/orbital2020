@@ -102,3 +102,7 @@
 .toggle-btn:hover {
     background-color:turquoise;
 }
+
+.rs-picker-toggle-clean {
+    display:none;
+}

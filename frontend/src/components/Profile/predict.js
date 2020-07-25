@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import Chart from "react-apexcharts";
 import {Line} from 'react-chartjs-2';
 import Dialog from '@material-ui/core/Dialog';
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
@@ -51,7 +50,7 @@ const data = {
      <Dialog open={this.state.popup} maxWidth='lg'>
        <br/> 
                     <h4 style={{paddingLeft:'1%',paddingRight:'1%', textAlign:'center',color:"DarkSlateGrey"}}> As the heroku hosting service is very slow and times out after 30 seconds, 
-                    we are unable to show the actual predictions of our machine learning model. To 
+                    We are unable to show the actual predictions of our machine learning model. To 
                     find out more about the model and try it yourself, we have included a link to 
                     the Jupyter Notebook in our ReadMe. The predicted data shown here is artificial. </h4> 
                     <br/>

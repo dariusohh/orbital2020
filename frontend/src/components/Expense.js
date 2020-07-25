@@ -60,10 +60,9 @@ componentDidMount() {
   return (
       <>
       <Row>
-        <Col sm={10} >
+        
+        <Col>
         <Header />
-        </Col>
-        <Col sm={2}>
         { this.state.filter ? 
         <Button
         aria-controls="customized-menu"
@@ -71,7 +70,6 @@ componentDidMount() {
         variant="contained"
         color="primary"
         onClick={() => this.setState({filter:false})}
-      
       >
         ▼  Filter Date
         </Button>
@@ -99,6 +97,9 @@ componentDidMount() {
         disabledDate={date => date.getTime() - new Date().getTime() > 0}/>
         </div>
         }
+        </Col>
+        <Col>
+        
         </Col>
       </Row>
     

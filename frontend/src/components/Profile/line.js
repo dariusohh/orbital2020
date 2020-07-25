@@ -128,13 +128,22 @@ render() {
     return (
     
        <>
-        <Line data={data} options={options}/>
-        <text style= {{fontSize:30, color:'DarkSlateGray', textAlign:"center"}}>
-    Total Profit: SGD ${this.props.data
+         <h5>
+COMPANY'S PROGRESS
+  </h5>
+  <h4 style={{float:'right'}} >
+SGD ${this.props.data
           .map(transaction => transaction.amount)
           .map(num => parseFloat(num))
           .reduce((acc, item) => (acc += item), 0).toFixed(2)}
-   </text>
+  </h4>
+
+  <br/>
+   <div className="line"></div>
+        <Line data={data} options={options}/>
+       
+  
+
      </>
     
     )

@@ -72,15 +72,17 @@ class Predict extends React.Component {
       render() {
         return ( 
             <div>
-                <Dialog open={this.state.popup} maxWidth='lg'> 
-                    <h2>As the heroku hosting service is very slow and times out after 30 seconds, 
+                        <Dialog open={this.state.popup} maxWidth='lg'>
+       <br/> 
+                    <h4 style={{paddingLeft:'1%',paddingRight:'1%', textAlign:'center',color:"DarkSlateGrey"}}> As the heroku hosting service is very slow and times out after 30 seconds, 
                     we are unable to show the actual predictions of our machine learning model. To 
                     find out more about the model and try it yourself, we have included a link to 
-                    the Jupyter Notebook in our ReadMe. The predicted data shown here is artificial. </h2> 
+                    the Jupyter Notebook in our ReadMe. The predicted data shown here is artificial. </h4> 
+                    <br/>
                 <button onClick={() => this.handleClose()} style={{padding:"10px 5px"}}>Close</button>
                 </Dialog>
-                <h1 className='text'>Prediction Analysis</h1>
-                <h2 className='line'> </h2>
+                <h3 className='text'>PREDICTION ANALYSIS</h3>
+            
             { this.state.prediction.length === 0 ?
                 <div>
                 <h1 style={{textAlign:"center",marginTop:"15%"}}>Loading</h1>

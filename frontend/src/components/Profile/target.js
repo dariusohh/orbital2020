@@ -36,16 +36,23 @@ export class Target extends React.Component {
     };
   return (
     <>
-   
-<Doughnut data={data} />
-{/* <RadarChartOutlined style={{ fontSize: '90px',color: '#08c' }}/> */}
-  <text style= {{fontSize:30, color:'DarkSlateGray', textAlign:"center"}}>
-  Target Progress: {((this.props.data.expense
+
+   <h5>
+  TARGET PROGRESS
+  </h5>
+  <h4 style={{float:'right'}} >
+   {((this.props.data.expense
        .map(transaction => transaction.amount)
        .map(num => parseFloat(num))
        .reduce((acc, item) => (acc += item), 0).toFixed(2))/ 
-       this.props.data.profile.target * 100).toFixed(2)} %
-   </text>
+       this.props.data.profile.target * 100).toFixed(2)}%
+   </h4>
+
+   <br/>
+   <div className="line"></div>
+<Doughnut data={data} />
+{/* <RadarChartOutlined style={{ fontSize: '90px',color: '#08c' }}/> */}
+  
 </>
 
     )

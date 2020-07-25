@@ -3,8 +3,10 @@ import { Header } from './Expense/Header';
 import IncomeExpenses from './Expense/IncomeExpenses';
 import TransactionList from './Expense/TransactionList';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 import { DateRangePicker } from 'rsuite';
+import { Row,Col}from 'react-grid-system';
 import 'rsuite/dist/styles/rsuite-default.css'
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
@@ -57,26 +59,57 @@ componentDidMount() {
   render() {
   return (
       <>
-      <Header />
-      <h2 className='line'> </h2>
-      <div className='container' style={{marginTop:"0px"}}> 
+      <Row>
+        <Col sm={10} >
+        <Header />
+        </Col>
+        <Col sm={2}>
         { this.state.filter ? 
-        <button className= "filter-button" onClick={() => this.setState({filter:false})}>▼  Filter</button>
-            :
-        <button className= "filter-button" onClick={() => this.setState({filter:true})}>▶  Filter</button>
+        <Button
+        aria-controls="customized-menu"
+        aria-haspopup="true"
+        variant="contained"
+        color="primary"
+        onClick={() => this.setState({filter:false})}
+      
+      >
+        ▼  Filter Date
+        </Button>
+        :
+        <Button
+        aria-controls="customized-menu"
+        aria-haspopup="true"
+        variant="contained"
+        color="primary"
+        onClick={() => this.setState({filter:true})}
+      
+      >
+        ▶   Filter Date
+        </Button>
+        // <button className= "filter-button" onClick={() => this.setState({filter:false})}>▼  Filter</button>
+        //     :
+        // <button className= "filter-button" onClick={() => this.setState({filter:true})}>▶  Filter</button>
         }
         { this.state.filter && 
           <div>
-        <label className="date-label">Date:</label>
+        
         <DateRangePicker 
         value={[this.state.startDate,this.state.endDate]}
         onChange={arr => this.setState({startDate:arr[0],endDate:arr[1]})}
         disabledDate={date => date.getTime() - new Date().getTime() > 0}/>
         </div>
         }
+        </Col>
+      </Row>
+    
+      <div className='container' style={{marginTop:"0px"}}> 
+   
+  
+      
         <IncomeExpenses data={this.state.expense}/>
         <TransactionList data={this.state.expense}/>
       </div>
+      
       </>
     )
   }

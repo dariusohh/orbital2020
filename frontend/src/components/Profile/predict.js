@@ -2,16 +2,24 @@ import React from 'react';
 import axios from 'axios';
 import Chart from "react-apexcharts";
 import {Line} from 'react-chartjs-2';
+import Dialog from '@material-ui/core/Dialog';
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
 
 export class Prediction extends React.Component {
 
+  state= {
+    popup:true
+  }
+  handleClose() {
+    this.setState({popup:false})
+  }
 render() {
 
 
 
 const data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  labels: ["2020-01", "2020-02", "2020-03", "2020-04", "2020-05", "2020-06", 
+  "2020-07","2020-08","2020-09","2020-10","2020-11","2020-12"],
   datasets: [
     {
       label: 'My First dataset',
@@ -32,7 +40,7 @@ const data = {
       pointHoverBorderWidth: 2,
       pointRadius: 1,
       pointHitRadius: 10,
-      data: [65, 59, 80, 81, 56, 55, 40]
+      data: [400,800,1300,2400,3400,6000,8000,11000,8000,10000,13000,15000]
     }
   ]
 };
@@ -40,7 +48,15 @@ const data = {
 
     return (
         <>
-    
+     <Dialog open={this.state.popup} maxWidth='lg'>
+       <br/> 
+                    <h4 style={{paddingLeft:'1%',paddingRight:'1%', textAlign:'center',color:"DarkSlateGrey"}}> As the heroku hosting service is very slow and times out after 30 seconds, 
+                    we are unable to show the actual predictions of our machine learning model. To 
+                    find out more about the model and try it yourself, we have included a link to 
+                    the Jupyter Notebook in our ReadMe. The predicted data shown here is artificial. </h4> 
+                    <br/>
+                <button onClick={() => this.handleClose()} style={{padding:"10px 5px"}}>Close</button>
+                </Dialog>
     <h5>
 FORECASTED REVENUE
   </h5>

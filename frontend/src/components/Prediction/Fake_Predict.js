@@ -81,7 +81,7 @@ class Predict extends React.Component {
                     <br/>
                 <button onClick={() => this.handleClose()} style={{padding:"10px 5px"}}>Close</button>
                 </Dialog>
-                <h3 className='text'>PREDICTION ANALYSIS</h3>
+                <h3>PREDICTION ANALYSIS</h3>
             
             { this.state.prediction.length === 0 ?
                 <div>

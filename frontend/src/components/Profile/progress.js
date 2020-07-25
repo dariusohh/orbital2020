@@ -26,59 +26,8 @@ componentDidMount() {
 render() {
     return (
       <div>
-        <Row>
-          <Col> 
-            <Row style = {{textAlign:"center", justifyContent:"center", display:"flex",flexWrap:"nowrap"}}>
-              <Col className="wrap">
-              <Row className ="header-5">
-                <h1 className="test-5">Forecasted Company's Progress</h1>
-            </Row>
-                 <div className ='content'><Graph2 data={this.props.data.expense}/></div> 
-
-              </Col >
-
-
-              <Col className="wrap">
-              <Row className ="header-5">
-                <h1 className="test-5"> Expense Breakdown</h1>
-            </Row>
-            <Row>
-                 <div className ='content'><Expense data={this.props.data.expense}/></div> 
-                 </Row>
-              </Col >
-
-
-            </Row>
-            <Row>
-            <Col className="wrap">
-              <Row className ="header-5">
-                <h1 className="test-5"> Forecasted Revenue</h1>
-            </Row>
-            <Row>
-                 <div className ='content'>
-                  { this.state.predict.length !== 0 ?
-                  <Prediction data={this.props.data.expense} prediction={this.state.predict}/>
-                  : 
-                  <div>
-                  <h1 style={{marginTop:"16%",marginLeft:"10%"}}>Loading</h1>
-                  <CircleLoader css={{marginLeft:"10%"}}/>
-                  </div>
-                  }
-                   </div> 
-                 </Row>
-              </Col >
-
-              <Col className="wrap">
-              <Row className ="header-5">
-                <h1 className="test-5"> Target Progress</h1>
-            </Row>
-            <Row>
-                 <div className ='content'><Target data={this.props.data}/></div> 
-                 </Row>
-              </Col >
-            </Row>
-          </Col>
-        </Row>
+                <Target data={this.props.data}/>
+ 
       </div>
     )
 }

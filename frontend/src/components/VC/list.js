@@ -27,20 +27,13 @@ class List extends React.Component {
         };
       }
     componentDidMount() {
-     
         axios.get('profile/')
         .then(res => {
-            const x =[]
-            const y =[]
-            const z=[]
-           res.data.map(y => x.push(y)).map(x => y.push(x.company_industry))
-           .map(y => z.push(y.company_name))
            this.setState ({
-               profile: x,
+               profile: res.data,
               
            })
-        })
-          
+        }) 
       }
     
        

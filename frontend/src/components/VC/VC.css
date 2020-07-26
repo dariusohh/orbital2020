@@ -14,9 +14,8 @@
     padding-top: 100px;
     text-align: center;
     font-size: 80px;
-    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    letter-spacing: 2px;
-    font-style: italic; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
 .sidenav {
@@ -62,7 +61,7 @@
 
 .startup-list {
     background-color:whitesmoke;
-    border-radius: 30px;
+
     width: 100%;
     display:inline-block;
 }

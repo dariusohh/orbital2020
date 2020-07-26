@@ -1,8 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import './profile.css';
-import{ MailOutlined, PhoneOutlined, HomeOutlined} from  '@ant-design/icons';
-
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
+import MailIcon from '@material-ui/icons/Mail';
+import CallIcon from '@material-ui/icons/Call';
+import BusinessIcon from '@material-ui/icons/Business';
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
 
 export class Contact extends React.Component {
@@ -13,20 +19,34 @@ render() {
   
     return (
         <>
-        <div>
-        <PhoneOutlined style={{fontSize:"40px", marginRight:"15px"}}/>
-        <span style={{fontSize:"30px"}}>{this.props.data.tele}</span>
-        </div>
-        <br/>
-        <div>
-        <MailOutlined style={{fontSize:"40px", marginRight:"15px"}}/>
-        <span style={{fontSize:"30px"}}>{this.props.data.email}</span>
-        </div>
-        <br/>
-        <div>
-        <HomeOutlined style={{fontSize:"40px", marginRight:"15px"}}/>
-        <span style={{fontSize:"30px"}}>{this.props.data.office}</span>
-        </div>
+
+<List >
+      <ListItem>
+        <ListItemAvatar>
+          <Avatar >
+            <CallIcon/>
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText primary={this.props.data.tele}  />
+      </ListItem>
+      <ListItem>
+        <ListItemAvatar>
+          <Avatar>
+          <MailIcon/>
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText primary={this.props.data.email} />
+      </ListItem>
+      <ListItem>
+        <ListItemAvatar>
+          <Avatar>
+            <BusinessIcon />
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText primary={this.props.data.office} />
+      </ListItem>
+    </List>
+
         </>
     )
 }

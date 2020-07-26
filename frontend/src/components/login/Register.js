@@ -80,16 +80,21 @@ function Register(props) {
         <Avatar className={classes.avatar}>
           <VpnKeyIcon />
         </Avatar>
-        <Typography component="h1" variant="h4">
-          Registration
-          { props.loading && 
+        { props.loading ? 
                 <div>    
-            <h4 style={{marginTop:"5%"}}>Loading </h4>
-            <GridLoader size={30} css={{marginLeft:"35%"}}/>
+                <Typography component="h1" variant="h4">
+                Loading
+                </Typography>
+            <GridLoader size={30}/>
+            </div>
+              :
+              <div>    
+                <Typography component="h1" variant="h4">
+                Registration
+                </Typography>
             </div>
             }
             {errorMessage}
-        </Typography>
         <form className={classes.form} noValidate onSubmit={onSubmit}>
           <Grid container spacing={2}>
           <Grid item xs={12}>

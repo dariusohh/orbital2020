@@ -94,16 +94,22 @@ if (props.error) {
           <Avatar className={classes.avatar}>
             <LockOpenIcon />
           </Avatar>
-          <Typography component="h1" variant="h4">
-            Sign In
-            { props.loading && 
+            { props.loading ? 
                 <div>    
-            <h4 style={{marginLeft:'20%',marginTop:"5%"}}>Loading </h4>
-            <GridLoader size={30} css={{marginLeft:"40%"}}/>
+                <Typography component="h1" variant="h4">
+                Loading
+                </Typography>
+            <GridLoader size={30}/>
+            </div>
+              :
+              <div>    
+                <Typography component="h1" variant="h4">
+                Sign In
+                </Typography>
             </div>
             }
             {errorMessage}
-          </Typography>
+         
           <form className={classes.form} noValidate onSubmit={onSubmit}>
             <TextField
               variant="outlined"

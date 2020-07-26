@@ -102,7 +102,7 @@ class List extends React.Component {
         { this.state.filter &&
         <Col xs={7}>
            <h5 style={{marginTop:"75px",color:"rgb(213, 219, 223)"}}> Industry: </h5>
-        <Multiselect options={this.state.profile.map(x => x.company_industry)}
+        <Multiselect options={Array.from(new Set(this.state.profile.map(x => x.company_industry).filter(x => x !== "")))}
             onSelect= {lst => this.setState({industry:lst})}
             onRemove= {lst => this.setState({industry:lst})}
             isObject={false}

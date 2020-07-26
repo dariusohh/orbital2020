@@ -4,6 +4,7 @@ import './VC.css';
 import List2 from './list2';
 import { Row,Col}from 'react-grid-system';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
 import StarRatings from 'react-star-ratings';
 import { Multiselect } from 'multiselect-react-dropdown';
 import CancelIcon from '@material-ui/icons/Cancel';
@@ -61,7 +62,7 @@ class List extends React.Component {
         </div>
         }
         <div className='header'> 
-            <h1 style={{color:"lightgrey"}}>Start-Up Listing</h1>
+            <h1 style={{color:"lightgrey"}}>START-UP LISTING</h1>
         </div>
         <Divider style={{height:"12px",backgroundColor:"white",width:"60%",marginLeft:"20%"}}/>
  <div className="listing-bgr">
@@ -71,21 +72,42 @@ class List extends React.Component {
                 <Grid container direction="row" alignItems="center">
             <Grid item>
             { this.state.filter ? 
-        <button className= "filter-button" onClick={() => this.setState({filter:false})}>▼  Filter</button>
+           <Button
+           aria-controls="customized-menu"
+           aria-haspopup="true"
+           variant="contained"
+        
+           onClick={() => this.setState({filter:false})}
+         
+         >
+           ▼  Filter 
+           </Button>
             :
-        <button className= "filter-button" onClick={() => this.setState({filter:true})}>▶  Filter</button>
+            <Button
+            aria-controls="customized-menu"
+            aria-haspopup="true"
+            variant="contained"
+ 
+            onClick={() => this.setState({filter:true})}
+          
+          >
+               ▶   Filter 
+        </Button>
         }
+       
             </Grid>
+            <br/>
             <Grid item>
             { (this.state.rating !== 0 || this.state.industry.length !== 0) && 
             <CancelIcon style={{color:"white",marginLeft:"2%"}} onClick={() => this.setState({rating:0,industry:[],filter:false})}/>
+         
         }
             </Grid>
             </Grid>
         <br/>
         { this.state.filter &&
         <div style={{margin:"20px 50px",marginTop:"0px"}}>
-        <h5 style={{color:"rgb(213, 219, 223)"}}>Rating:</h5>
+        <h5 style={{color:"rgb(213, 219, 223)"}}>RATING:</h5>
         <StarRatings 
             rating= {this.state.rating}
             numberOfStars={5}
@@ -101,7 +123,7 @@ class List extends React.Component {
         </Col>
         { this.state.filter &&
         <Col xs={7}>
-           <h5 style={{marginTop:"75px",color:"rgb(213, 219, 223)"}}> Industry: </h5>
+           <h5 style={{marginTop:"75px",color:"rgb(213, 219, 223)"}}> INDUSTRY: </h5>
         <Multiselect options={this.state.profile.map(x => x.company_industry)}
             onSelect= {lst => this.setState({industry:lst})}
             onRemove= {lst => this.setState({industry:lst})}

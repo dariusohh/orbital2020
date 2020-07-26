@@ -13,9 +13,9 @@ export class StartUp extends React.Component{
         <>
         <div className ="startup-list">
             <div className='side'> <img  className="pic" src={user} alt="dp"/>
-            <h2>{ this.props.data.company_name}</h2>
+            <h3>{ this.props.data.company_name}</h3>
             <br/>
-             <h4 style={{color:"#2F4F4F"}}> {this.props.data.company_industry}</h4>
+             <h5 style={{color:"#2F4F4F"}}> {this.props.data.company_industry}</h5>
             <StarRatings
           rating={this.props.data.ratings}
           starRatedColor="GoldenRod"
@@ -26,9 +26,9 @@ export class StartUp extends React.Component{
             </div>
             <div className="description-box">
             <div className="description">
-                <h5 style={{textAlign:"center", fontSize:"25px"}}>Description</h5>
+                <h3 style={{textAlign:"center", color:"#2F4F4F",fontSize:"25px"}}>DESCRIPTION</h3>
             <br/>
-                <h6>{this.props.data.company_description}</h6>
+                <p style={{fontsize:'12px'}}>{this.props.data.company_description}</p>
                 <br/>
 
             </div>

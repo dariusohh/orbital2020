@@ -1,0 +1,295 @@
+  
+  
+@import url(https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap);
+
+:root {
+  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: 	#e9f0f8 !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  min-width: 1500px;
+}
+
+.container {
+  margin: 30px auto;
+  width: 1500px auto;
+}
+
+h1 {
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+h3 {
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 10px;
+  margin: 40px 0 10px;
+}
+
+h4 {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.inc-exp-container {
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.inc-exp-container > div {
+  flex: 1;
+  text-align: center;
+}
+
+.inc-exp-container > div:not(:last-of-type) {
+  border-right: 1px solid #dedede;
+}
+
+.money {
+  font-size: 40px;
+  letter-spacing: 1px;
+  margin: 0%;
+  color: black;
+  text-align: center;
+  float:none;
+}
+
+.money.plus {
+  color: #2ecc71;
+}
+
+.money.minus {
+  color: #c0392b;
+}
+
+label {
+  display: inline-block;
+  margin: 10px 0;
+}
+
+
+.btn {
+  cursor: pointer;
+  background-color: #3399FF;
+  box-shadow: var(--box-shadow);
+  color: #fff;
+  border: 0;
+  display: block;
+  font-size: 20px;
+  margin: 10px 0 30px;
+  padding: 10px;
+  width: 100%;
+}
+
+.btn:focus,
+.delete-btn:focus {
+  outline: 0;
+}
+.update-btn:focus {
+  outline: 0;
+}
+
+.trans-container {
+  display:flex;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0px 0px 5px 0px;
+  width:50%;
+}
+
+.divider {
+  width:5%
+}
+
+.list h3 {
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 10px;
+  margin-top: 15px;
+}
+
+.list li {
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 15px 10px;
+  margin: 10px 0;
+}
+
+.list li.plus {
+  border-right: 5px solid #2ecc71;
+}
+
+.list li.minus {
+  border-right: 5px solid #c0392b;
+}
+
+.list li.total {
+  border-right: 5px solid #336BFF;
+}
+
+.delete-btn {
+  cursor: pointer;
+  background-color: #e74c3c;
+  border: 0;
+  color: #fff;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 2px 5px;
+  position:absolute;
+  margin-left:92%;
+  bottom:3px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.delete-btn:hover {background-color: #c73319}
+
+.update-btn {
+  cursor: pointer;
+  background-color: #20d0dd;
+  border: 0;
+  color: #fff;
+  font-size: 15px;
+  line-height: 20px;
+  padding: 2px 5px;
+  opacity: 0;
+  position:absolute;
+  margin-left:88%;
+  bottom:3px;
+  transition: opacity 0.3s ease;
+}
+
+.update-btn:hover {
+  background-color: #0d8eda
+}
+
+.add-btn {
+  background-color: rgb(18, 68, 177);
+  border: none;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+}
+
+.add-btn:hover {
+  background-color: #06135f
+}
+
+.list li:hover .delete-btn {
+  opacity: 1;
+}
+
+.list li:hover .update-btn {
+  opacity: 1;
+}
+
+.text-1 {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size:25px;
+  letter-spacing: 5px;
+  color:black;
+}
+
+.text-2 {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size:15px;
+  letter-spacing: 5px;
+  color:black;
+}
+
+.text-3 {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size:20px;
+  letter-spacing: 5px;
+  color:black;
+}
+
+.exp-dropdown {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #444;
+    line-height: 1.3;
+    padding: 7px 5px;
+    width: 100%;
+    max-width: 100%; /* useful when width is set to anything other than 100% */
+    box-sizing: border-box;
+    margin: 0;
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    border-radius: .5em;
+    background-color: #fff;
+}
+
+.react-datepicker__input-container input {
+  border-radius:30px;
+  font-size:14px !important;
+  padding: 5px 10px !important;
+  width: 50% !important;
+}
+
+.date-label{
+  font-family: 'Roboto', sans-serif;
+  font-size : 18px;
+  margin-right: 15px;
+  margin-left: 50px;
+  margin-top:20px;
+}
+
+.exp-dropdown:disabled {
+  opacity:0.5;
+}
+
+.box {
+  background-color: DimGray;
+}
+.box2 {
+  background-color: DimGrey;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+.box h3 {
+  
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size:20px;
+  color:white;
+  text-align: center;
+
+ 
+
+}
+
+.box-3{
+  height:200px;
+}
+
+.trans-input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
